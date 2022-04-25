@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+p {
+	@apply font-poppins
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-semibold leading-normal
+}
+
+
+.btn {
+	@apply shadow-md py-5 px-9 rounded-md transition duration-300 font-bold text-lg
+}
+
+.btn--primary {
+	@apply bg-red-600 text-white hover:bg-red-700
+}
+.btn--white {
+	@apply bg-slate-50
+}
+
+
+.image-box {
+	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , var(--image-url) center center;
+	background-size: cover;
+}
+
+
+.icon-list--inline {
+	@apply flex flex-col md:flex-row
+}
+.icon-list li {
+	@apply flex flex-row
+}
+.icon-list li .icon-list-icon {
+	@apply self-start mt-1 mr-3
+}
+.icon-list .icon-list-text {
+	@apply inline-block
+}
