@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Get Cool Air – Active Plumbing & Air Conditioning</title>
-    <meta name="description" content="$0 Down, 0% Interest For Up to 60-Monts On New AC Replacements">
+    <title>Get Cool Air! Free Esimtates on AC Replacements – Active Plumbing & Air Conditioning</title>
+    <meta name="description" content="$0 Down, 0% Interest For Up to 60-Months On New AC Replacements">
     <meta name="author" content="Active Plumbing & Air Conditioning">
 
-    <!-- Open Graph Meta
-    <meta property="og:title" content="A simple Grunt, PostCSS, and Tailwind Template for new projects.">
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Get Cool Air! Free Esimtates on AC Replacements – Active Plumbing & Air Conditioning">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.google.com/blueprint">
-    <meta property="og:description" content="A simple Grunt, PostCSS, and Tailwind Template for new projects.">
+    <meta property="og:description" content="$0 Down, 0% Interest For Up to 60-Months On New AC Replacements. Contact us today for a free esimtate!">
     <meta property="og:image" content="image.png">
 
     <!-- Favicons & Touch Icons
@@ -128,7 +128,7 @@
             <div class="flex flex-col bg-white rounded-lg p-8 md:p-12 shadow-xl border-t-8 border-red-600 text-center">
                 <h4 class="text-3xl mb-3 font-bold">Fill Out For A FREE No-Obligation Quote</h4>
                 <p class="mb-6 text-md">Send us your contact information in the form below and our representative will contact you within <span class="font-semibold">20 minutes</span>.</p>
-                <form name="AC Replacement" method="POST" data-netlify="true" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-2">
+                <form id="lead-form" name="AC Replacement" method="POST" data-netlify="true" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-2">
                     <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="text" name="full_name" placeholder="Full name">
                     <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="email" name="email" placeholder="Email address">
                     <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="tel" name="phone" placeholder="Phone number">
@@ -560,6 +560,29 @@
         </div>
     </div>
 </footer>
+
+
+<script type="text/javascript">
+    <script>
+    // modify this line to get your unique form element ID
+    var form = document.getElementById('lead-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Creates a timeout to call submitForm after one second.
+        setTimeout(submitForm, 1000);
+        var formSubmitted = false;
+        function submitForm() {
+            if (!formSubmitted) {
+              formSubmitted = true;
+              form.submit();
+            }
+        }
+        window.dataLayer.push({
+            "event" : "FormSubmission"
+        });
+    });
+    </script>
+</script>
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
