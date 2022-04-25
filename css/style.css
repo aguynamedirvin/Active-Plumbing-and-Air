@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+html {
+	scroll-behavior: smooth;
+}
+
 
 p {
 	@apply font-poppins

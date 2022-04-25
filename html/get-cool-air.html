@@ -124,7 +124,7 @@
         </div>
 
         <!-- Form -->
-        <div class="flex flex-col lg:w-5/12 pt-0 pb-0 md:py-12 lg:pl-14 -mb-32 md:mb-0">
+        <div id="hero-form" class="flex flex-col lg:w-5/12 pt-0 pb-0 md:py-12 lg:pl-14 -mb-32 md:mb-0">
             <div class="flex flex-col bg-white rounded-lg p-8 md:p-12 shadow-xl border-t-8 border-red-600 text-center">
                 <h4 class="text-3xl mb-3 font-bold">Fill Out For A FREE No-Obligation Quote</h4>
                 <p class="mb-6 text-md">Send us your contact information in the form below and our representative will contact you within <span class="font-semibold">20 minutes</span>.</p>
@@ -144,7 +144,7 @@
 
                 <div class="text-center pt-3 border-t mt-4">
                     <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
-                     <a class="font-bold text-2xl text-blue-600" href="#">(702) 4383-357</a>
+                     <a class="font-bold text-2xl text-blue-600" href="tel:7024383357">(702) 4383-357</a>
                 </div>
 
             </div>
@@ -284,7 +284,7 @@
                 </li>
             </ul>
             <p class="text-lg my-6">If you are experiencing any of these signs, contact Active Plumbing & Air Conditioning today. We offer same-day service.</p>
-            <button class="btn btn--primary">Get A Free Quote</button>
+            <a href="#hero-form" class="btn btn--primary">Get A Free Quote</a>
             <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7024383357">(702) 4383-357</a></p>
         </div>
     </div>
@@ -297,10 +297,10 @@
         <div class="md:w-7/12 py-14">
             <h2 class="text-4xl leading-tight mb-4 text-white">SPECIAL OFFER: $O Down, 0% APR For A Limited Time Only</h2>
             <p class="text-xl">Get up to 15% off select units and up to 0% interest for 48-months. We offer same-day replacements. Contact us today for more information and a free no-obligation quote.</p>
-            <button class="group mt-8 btn btn--primary flex-row inline-flex">
+            <a href="#hero-form" class="group mt-8 btn btn--primary flex-row inline-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                 Schedule Free Estimate
-            </button>
+            </a>
         </div>
         <div class="flex flex-1 justify-end">
             <img class="lazy" data-src="assets/images/condenser.webp" alt="">
@@ -377,7 +377,7 @@
         </div>
         </div>
 
-        <button class="btn btn--primary">Get A Free Quote</button>
+        <a href="#hero-form" class="btn btn--primary">Get A Free Quote</a>
 
         <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7024383357">(702) 4383-357</a></p>
     </div>
@@ -480,7 +480,7 @@
             </div>
         </div>
 
-        <button class="btn btn--primary">Get A Free Quote</button>
+        <a href="#hero-form" class="btn btn--primary">Get A Free Quote</a>
     </div>
 </section>
 
@@ -492,10 +492,10 @@
             <h2 class="text-3xl md:text-5xl mb-6 leading-tight md:leading-tight text-white">Ready For Upgraded Comfort?</h2>
             <p class="text-xl">Upgrade Your AC Unit. Call Active Plumbing & Air Conditioning Today, We Are Ready To Help!</p>
             <p class="text-xl mt-4">Call Us At <a class="font-semibold" href="tel:7024383357">(702) 4383-357</a> or schedule online.</p>
-            <button class="group my-12 btn btn--primary flex-row inline-flex">
+            <a href="hero-form" class="group my-12 btn btn--primary flex-row inline-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                 Schedule Free Estimate
-            </button>
+            </a>
             <ul class="icon-list icon-list--inline justify-center items-center gap-3 md:gap-8 text-lg">
                 <li>
                     <svg class="icon-list-icon w-6 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
@@ -564,34 +564,34 @@
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-      var lazyloadImages = document.querySelectorAll("img.lazy");
-      var lazyloadThrottleTimeout;
+    var lazyloadImages = document.querySelectorAll("img.lazy");
+    var lazyloadThrottleTimeout;
 
-      function lazyload () {
+    function lazyload () {
         if(lazyloadThrottleTimeout) {
-          clearTimeout(lazyloadThrottleTimeout);
+            clearTimeout(lazyloadThrottleTimeout);
         }
 
         lazyloadThrottleTimeout = setTimeout(function() {
             var scrollTop = window.pageYOffset;
             lazyloadImages.forEach(function(img) {
                 if(img.offsetTop < (window.innerHeight + scrollTop)) {
-                  img.src = img.dataset.src;
-                  img.classList.remove('lazy');
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
                 }
             });
             if(lazyloadImages.length == 0) {
-              document.removeEventListener("scroll", lazyload);
-              window.removeEventListener("resize", lazyload);
-              window.removeEventListener("orientationChange", lazyload);
+                document.removeEventListener("scroll", lazyload);
+                window.removeEventListener("resize", lazyload);
+                window.removeEventListener("orientationChange", lazyload);
             }
         }, 20);
-      }
+    }
 
-      document.addEventListener("scroll", lazyload);
-      window.addEventListener("resize", lazyload);
-      window.addEventListener("orientationChange", lazyload);
-    });
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+});
 </script>
 
 </body>
