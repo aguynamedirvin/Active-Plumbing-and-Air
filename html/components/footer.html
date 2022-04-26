@@ -1,0 +1,83 @@
+<footer class="py-12 bg-zinc-100">
+    <div class="container flex-col flex md:flex-row flex-wrap gap-12 md:gap-24 text-sm leading-relaxed">
+        <div class="flex-1">
+            <img class="h-36 w-auto mb-4 md:-mt-24" src="assets/images/logo-color.png" alt="Logo">
+            <p>Locally-owned & operated plumbing, air conditioning, and heating company with over 31 years of experience. We get the job done right the first time around.</p>
+            <p class="mt-4">LIC.#<br>HVAC: 84450<br>Plumbing: 47021</p>
+        </div>
+        <div class="flex flex-col flex-1">
+            <h5 class="font-bold uppercase mb-4 text-lg">Services</h5>
+            <ul class="grid grid-cols-2 gap-y-2">
+                <li>AC Repair</li>
+                <li>AC Tune-Up</li>
+                <li>Heater Repair</li>
+                <li>Mini-Splits</li>
+                <li>Heater Repair</li>
+                <li>AC Installation</li>
+            </ul>
+        </div>
+        <div class="flex flex-col flex-1">
+            <h5 class="font-bold uppercase mb-4 text-lg">Contact Us</h5>
+            <div class="grid grid-cols-1 gap-y-4">
+                <div class="flex items-start">
+                    <div class="mr-4 bg-slate-300 p-2 rounded-md">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                    </div>
+                    <div class="flex-row flex-1">
+                        <h3 class="font-semibold">We're Located At</h3>
+                        <p class="text-lg">13580 Polaris Ave #17</br>Las Vegas, NV 89103</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="mr-4 bg-slate-300 p-2 rounded-md">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                    </div>
+                    <div class="flex-row flex-1">
+                        <h3 class="font-semibold">Call us 24/7</h3>
+                        <p class="text-lg"><a href="tel:7024383357">(702) 438-3357</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-center mt-4 py-10 border-t border-gray-300 text-sm text-gray-400 leading-loose">
+            <p>2022 © Active Plumbing & Air Conditioning, LLC. All Rights Reserved.</p>
+            <p>A Licensed, Insured, and Bonded Business.</p>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyloadImages = document.querySelectorAll("img.lazy");
+    var lazyloadThrottleTimeout;
+
+    function lazyload () {
+        if(lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
+        }
+
+        lazyloadThrottleTimeout = setTimeout(function() {
+            var scrollTop = window.pageYOffset;
+            lazyloadImages.forEach(function(img) {
+                if(img.offsetTop < (window.innerHeight + scrollTop)) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                }
+            });
+            if(lazyloadImages.length == 0) {
+                document.removeEventListener("scroll", lazyload);
+                window.removeEventListener("resize", lazyload);
+                window.removeEventListener("orientationChange", lazyload);
+            }
+        }, 20);
+    }
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+});
+</script>
+
+</body>
+</html>
