@@ -4,12 +4,12 @@
 
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 
 p {
-	@apply font-poppins
+    @apply font-poppins
 }
 
 h1,
@@ -18,37 +18,126 @@ h3,
 h4,
 h5,
 h6 {
-	@apply font-semibold leading-normal
+    @apply font-semibold leading-normal
 }
 
 
 .btn {
-	@apply shadow-md py-5 px-9 rounded-md transition duration-300 font-bold text-lg
+    @apply shadow-md py-5 px-9 rounded-md transition duration-300 font-bold text-lg
 }
 
 .btn--primary {
-	@apply bg-red-600 text-white hover:bg-red-700
+    @apply bg-red-600 text-white hover:bg-red-700
 }
 .btn--white {
-	@apply bg-slate-50
+    @apply bg-slate-50
 }
 
 
 .image-box {
-	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , var(--image-url) center center;
-	background-size: cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , var(--image-url) center center;
+    background-size: cover;
 }
 
 
 .icon-list--inline {
-	@apply flex flex-col md:flex-row
+    @apply flex flex-col md:flex-row
 }
 .icon-list li {
-	@apply flex flex-row
+    @apply flex flex-row
 }
 .icon-list li .icon-list-icon {
-	@apply self-start mt-1 mr-3
+    @apply self-start mt-1 mr-3
 }
 .icon-list .icon-list-text {
-	@apply inline-block
+    @apply inline-block
 }
+
+
+.jPopup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    max-width: 100%;
+    padding: 6rem;
+    background: rgba(0,0,0,.8);
+    opacity: 0;
+}
+.jPopup--fade {
+  pointer-events: none;
+}
+.jPopup-closeBtn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 5rem;
+  height: 5rem;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.jPopup-closeBtn:before, .jPopup-closeBtn:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2.6rem;
+  width: 0.3rem;
+  background-color: #fff;
+}
+
+.jPopup-closeBtn:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.jPopup-closeBtn:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.jPopup-content {
+  /**top: 50%;**/
+  left: 1.5rem;
+  right: 1.5rem;
+  position: absolute;
+  /**transform: translateY(-50%);**/
+  overflow: scroll;
+}
+.jPopup--isOpen .jPopup {
+    overflow: scroll;
+}
+.jPopup--isOpen body {
+  overflow: hidden;
+}
+
+.jPopup--isOpen .jPopup {
+  pointer-events: all;
+}
+
+.jPopup--isOpen .jPopup--fade {
+  -webkit-animation: fade 350ms ease-in-out forwards;
+          animation: fade 350ms ease-in-out forwards;
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

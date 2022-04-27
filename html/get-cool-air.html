@@ -35,6 +35,42 @@
 <body class="font-poppins">
 
 
+<div class="hidden fixed top-0 min-w-full min-h-screen bg-black/80 z-30 flex flex-col justify-center items-center px-4 scroll">
+    <div class="bg-white rounded-lg max-w-lg flex flex-col p-12 relative text-center">
+
+        <div class="z-40 bg-black rounded-full text-white absolute top-[-25px] right-[-15px] drop-shadow-lg hover:pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+
+        <div class="p-2 rounded-tl-md absolute top-0 left-0 bg-green-500/80 text-white w-full">
+            <svg class="inline-flex w-5 mr-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            Spring $49 Tune-Up Promotion Applied
+        </div>
+
+        <h4 class="text-4xl mt-6">Schedule Your AC Tune-Up</h4>
+        <p class="my-4">Enter your information below to get started. One of our representatives will contact you within 20 minutes to confirm your appointment.</p>
+
+        <form id="lead-form" name="AC Replacement" method="POST" data-netlify="true" class="grid grid-cols-1 gap-2">
+            <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="text" name="full_name" placeholder="Full name">
+            <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="email" name="email" placeholder="Email address">
+            <input class="p-3 border-2 border-gray-300 rounded-md w-full mt-3" type="tel" name="phone" placeholder="Phone number">
+            <button type="submit" class="col-span-full !px-0 group btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
+            </button>
+        </form>
+        <div class="text-center mt-4 text-xs text-slate-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <span class="align-middle">Your Information Is SSL Encrypted.</span>
+        </div>
+
+
+        <div class="text-center pt-3 border-t mt-4">
+            <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
+             <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+        </div>
+    </div>
+</div>
+
 
 <!-- Header -->
 <header>
@@ -240,9 +276,9 @@
         <div class="md:w-5/12 mb-16 md:mb-0">
             <img class="lazy rounded-lg shadow-xl" data-src="assets/images/ac-unit-outdoors-123.jpg" alt="" loading="lazy">
         </div>
-        <div class="md:w-7/12 md:mr-24 leading-tight">
-            <h2 class="text-5xl mb-6">Should I Replace Or Repair My Air Conditioner?</h2>
-            <p class="text-lg">There’s a few signs to look out for that’ll tell you if you need to replace or repair your unit. <b>Here are a few signs your AC unit needs to be replaced:</b></p>
+        <div class="md:w-7/12 md:mr-24">
+            <h2 class="text-5xl mb-6 leading-tight">Should I Replace Or Repair My Air Conditioner?</h2>
+            <p class="text-lg leading-relaxed">There’s a few signs to look out for that’ll tell you if you need to replace or repair your unit. <b>Here are a few signs your AC unit needs to be replaced:</b></p>
             <ul class="icon-list my-6 text-lg font-semibold">
                 <li class="py-1">
                     <span class="icon-list-icon h-6 w-6 mr-1">
@@ -281,8 +317,8 @@
                     <span class="icon-list-text">AC uses R22 freon (it is phased out by the federal government)</span>
                 </li>
             </ul>
-            <p class="text-lg my-6">If you are experiencing any of these signs, contact Active Plumbing & Air Conditioning today. We offer same-day service.</p>
-            <a href="#hero-form" class="btn btn--primary">Get A Free Quote</a>
+            <p class="text-lg my-6 leading-relaxed">If you are experiencing any of these signs, contact Active Plumbing & Air Conditioning today. We offer same-day service.</p>
+            <a href="#hero-form" class="btn btn--primary inline-flex">Get A Free Quote</a>
             <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a></p>
         </div>
     </div>

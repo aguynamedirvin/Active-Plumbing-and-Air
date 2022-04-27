@@ -80,13 +80,21 @@ module.exports = function (grunt) {
                         dest: 'dist/assets/',
                     }
                 ],
-            },
-            js: {
-                    expand: true,
-                    src: '<%= path.dist.js %>/**/*',
-                    dest: 'dist/assets/',
             }
         },
+
+
+        /**
+            Concatenate JS files
+            https://github.com/gruntjs/grunt-contrib-concat
+        **/
+        concat: {
+            default: {
+                src: '<%= path.src.js %>/**/*.js',
+                dest: '<%= path.dist.js %>/main.js'
+            }
+        },
+        
 
         /**
             Remove production files from production
@@ -132,7 +140,7 @@ module.exports = function (grunt) {
 
             js: {
                 files: '<%= path.src.js %>/**/*.js',
-                tasks: ['copy:js'],
+                tasks: ['concat'],
             }
         }
 
@@ -149,7 +157,7 @@ module.exports = function (grunt) {
      */
 
     // Build our CSS and JS files
-    grunt.registerTask('build', ['includes', 'dom_munger', 'postcss', 'copy']);
+    grunt.registerTask('build', ['includes', 'dom_munger', 'postcss', 'copy', 'concat']);
 
     // Watch our files and compile if any changes
     grunt.registerTask('default', ['build', 'watch']);
