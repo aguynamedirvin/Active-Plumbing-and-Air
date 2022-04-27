@@ -29,6 +29,8 @@
 
     <!-- JavaScript -->
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/mattkingshott/iodine@3/dist/iodine.min.js"></script>
 
 </head>
 
@@ -38,11 +40,11 @@
 
 <!-- Header -->
 <header>
-    <nav class="container flex items-center py-2 md:py-4">
-        <div class="max-w-[150px] md:max-w-[125px] bg-white rounded-full p-1 -mb-12 z-10">
-            <img class="w-full" src="assets/images/logo-color.png" alt="Logo">
+    <nav class="container flex items-center py-3 md:py-4 gap-12">
+        <div class="w-[100px] md:w-[125px] bg-white rounded-full p-1 -mb-12 -mt-4 z-10">
+            <img loading="lazy" class="w-full" src="assets/images/logo-color.png" alt="Logo">
         </div>
-        <div class="w-90 text-sm ml-6 hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
+        <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
         <div class="flex flex-1 justify-end items-center gap-12">
             <div class="flex w-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
                 <div class="">
@@ -128,12 +130,12 @@
 <div class="pt-12 mt-20 md:mt-0">
     <div class="container">
         <div class="grid grid-cols-3 md:grid-cols-6 gap-16 md:gap-12 lg:gap-24 justify-items-center place-items-center">
-            <img class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/bonded-and-insured.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/elite.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/soap.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/toprated.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/bonded-and-insured.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/elite.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/soap.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/toprated.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
         </div>
     </div>
 </div>
@@ -144,7 +146,7 @@
 <section class="relative pt-12 md:pt-36 pb-36">
     <div class="container flex flex-col md:flex-row items-center gap-8">
         <div class="flex md:w-1/2">
-            <img class="lazy rounded-lg shadow-xl" data-src="assets/images/HVAC-maintenance.jpg" alt="HVAC Maintenance and Tune-Up" width="100%" />
+            <img loading="lazy" class="lazy rounded-lg shadow-xl" data-src="assets/images/HVAC-maintenance.jpg" alt="HVAC Maintenance and Tune-Up" width="100%" />
         </div>
         <div class="flex flex-col md:w-1/2 md:ml-12">
             <span class="mb-2 text-blue-500 text-xl">Las Vegas Best AC Team</span>
@@ -188,7 +190,7 @@
             <p class="text-xl md:text-2xl italic leading-relaxed">“Excellent service. Albert went beyond what I expected for AC maintenance. For example, he found trash left behind by other companies inside an electronic unit in the attic avoiding a potential hazard! He was very professional and thorough in his work. Also, Liz, the dispatch lady, was very nice to work with. I will stick with this company in the future.”</p>
             <div class="flex flex-row mt-12 place-items-center">
                 <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
-                    <img class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" loading="lazy" alt="Cecilia Alvarez">
+                    <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" loading="lazy" alt="Cecilia Alvarez">
                 </div>
                 <div class="flex flex-col">
                     <p class="text-lg">Cecilia Alvarez</p>
@@ -209,7 +211,7 @@
 <section class="py-36">
     <div class="container flex flex-col md:flex-row md:flex-row-reverse place-items-center">
         <div class="md:w-5/12 mb-16 md:mb-0">
-            <img class="lazy rounded-lg shadow-xl" data-src="assets/images/ac-unit-outdoors-123.jpg" alt="" loading="lazy">
+            <img loading="lazy" class="lazy rounded-lg shadow-xl" data-src="assets/images/ac-unit-outdoors-123.jpg" alt="" loading="lazy">
         </div>
         <div class="md:w-7/12 md:mr-24 leading-tight">
             <h2 class="text-5xl mb-6">HVAC Services That Fix Your Issues FAST & Affordably</h2>
@@ -272,7 +274,7 @@
             </a>
         </div>
         <div class="flex flex-1 justify-end">
-            <img class="lazy" data-src="assets/images/condenser.webp" alt="">
+            <img loading="lazy" class="lazy" data-src="assets/images/condenser.webp" alt="">
         </div>
     </div>
 </section>
@@ -320,7 +322,7 @@ include "components/section-why-us.html"
                 <p class="italic text-lg">"Technician was very professional and helpful. Came out on Christmas day to replace a failed AC unit in my home. I had an excellent experience with Active Pluming. Receptionist was very knowledge and it was easy to setup an appointment. Fast and Reliable service. Will recommend them to anyone and I will be using their service again if needed."</p>
                 <div class="flex flex-row mt-12 place-items-center">
                     <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
-                        <img class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" alt="Jason P.">
+                        <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" alt="Jason P.">
                     </div>
                     <div class="flex flex-col">
                         <p class="text-lg">Jason P.</p>

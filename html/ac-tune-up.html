@@ -29,44 +29,155 @@
 
     <!-- JavaScript -->
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/mattkingshott/iodine@3/dist/iodine.min.js"></script>
 
 </head>
 
-<body class="font-poppins">
+<body class="font-poppins" x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
+
+<div class="hidden" :class="showModal ? 'overlay' : ''" x-show="showModal" x-cloak></div>
+<div
+    class="modal"
+
+    x-show="showModal"
+    :class="showModal ? 'open' : ''"
 
 
+
+    x-transition:enter="motion-safe:ease-out duration-500"
+    x-transition:enter-start="opacity-0 scale-90"
+    x-transition:enter-end="opacity-100 scale-100"
+
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-90"
+>
+    <div
+        class="modalInner p-16 bg-white rounded-md text-center"
+
+        @click.away="showModal = true"
+    >
+
+        <button class="closeModal-btn" aria-label="Close" @click="showModal=false">
+            <!--✖-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[50px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </button>
+
+        <div class="p-2 rounded-tl-md absolute top-0 left-0 bg-green-500/80 text-white w-full">
+            <svg class="inline-flex w-5 mr-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            Spring $49 Tune-Up Promotion Applied
+        </div>
+
+        <h4 class="text-4xl mt-6">Schedule Your AC Tune-Up</h4>
+        <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
+
+        <form
+            id="form"
+            class="grid grid-cols-1 gap-2"
+
+            name="AC Tune-Up"
+            method="POST"
+            data-netlify="true"
+
+            action=""
+            x-data="form()"
+            @submit="submit"
+
+        >
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="full_name"
+
+                type="text" name="full_name" placeholder="Full name"
+
+                x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
+                data-rules='["required"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="full_name.errorMessage && email.blurred" x-text="full_name.errorMessage"></p>
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="email"
+
+                type="email" name="email" placeholder="Email address"
+
+                x-bind:class="{'invalid':email.errorMessage && email.blurred}"
+                data-rules='["required","email"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="email.errorMessage && email.blurred" x-text="email.errorMessage"></p>
+
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="phone"
+
+                type="tel" name="phone" placeholder="Phone number"
+
+                x-bind:class="{'invalid':phone.errorMessage && phone.blurred}"
+                data-rules='["required", "numeric", "minimum:7"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="phone.errorMessage && email.blurred" x-text="phone.errorMessage"></p>
+
+            <button type="submit" class="col-span-full !px-0 group btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
+            </button>
+
+        </form>
+
+
+        <div class="text-center mt-4 text-xs text-slate-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <span class="align-middle">Your Information Is SSL Encrypted.</span>
+        </div>
+
+
+        <div class="text-center pt-3 border-t mt-4">
+            <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
+             <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+        </div>
+    </div>
+</div>
 
 <!-- Header -->
 <header>
-    <nav class="container flex items-center py-2 md:py-4">
-        <div class="max-w-[150px] md:max-w-[125px] bg-white rounded-full p-1 -mb-12 z-10">
-            <img class="w-full" src="assets/images/logo-color.png" alt="Logo">
+    <nav class="container flex items-center py-3 md:py-4 gap-12">
+        <div class="w-[100px] md:w-[125px] bg-white rounded-full p-1 -mb-12 -mt-4 z-10">
+            <img loading="lazy" class="w-full" src="assets/images/logo-color.png" alt="Logo">
         </div>
-        <div class="w-90 text-sm ml-6 hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
+        <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
         <div class="flex flex-1 justify-end items-center gap-12">
             <div class="flex w-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
                 <div class="">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                 </div>
                 <div class="flex flex-1 justify-end flex-col">
-                    <span class="italic text-xs md:text-sm">Call Now To Schedule Service!</span>
+                    <span class="italic text-xs md:text-sm">Call Now For Service!</span>
                     <a class="font-bold text-xl md:text-2xl" href="tel:7025531171">(702) 553-1171</a>
                 </div>
             </div>
         </div>
+        <button @click="showModal = true" type="button" class="btn btn--primary hidden lg:inline-flex">Schedule Tune-Up</button>
     </nav>
 </header>
 
 
 <!-- Hero -->
-<section class="relative bg-secondary--dark py-14 md:pb-0 image-box" style="background-image: url(assets/images/hero-image.jpeg); background-position: center; background-size: cover">
+<section class="relative bg-secondary--dark py-8 md:pb-0 image-box" style="background-image: url(assets/images/hero-image.jpeg); background-position: center; background-size: cover">
 
     <div class="absolute h-full w-full bg-secondary-dark opacity-90 z-0 top-0"></div>
 
     <div class="container relative flex flex-col text-white text-center z-20 place-items-center">
             <p class="text-lg mb-4">Keeping Your Family Cool & Comfortable Year Round</p>
             <h1 class="text-4xl md:text-5xl mb-6 font-semibold leading-tight md:leading-tight text-white">The <u>Best A/C Tune-Up Deal</u> In Las Vegas!</h1>
-            <p class="md:w-8/12 text-2xl font-semibold mb-12 leading-tight md:leading-relaxed"><u>Your Local Las Vegas HVAC Pros</u> – Fast Response, Honest Pricing & Friendly Service, Guaranteed</p>
+            <p class="hidden md:block md:w-8/12 text-2xl font-semibold mb-12 leading-tight md:leading-relaxed"><u>Your Local Las Vegas HVAC Pros</u> – Fast Response, Honest Pricing & Friendly Service, Guaranteed</p>
     </div>
 
     <div class="container relative flex flex-col lg:flex-row gap-12 lg:flex-row-reverse">
@@ -74,25 +185,25 @@
         <!-- Promo -->
         <div id="hero-form" class="flex flex-col lg:w-5/12 pt-0 pb-0 md:py-12 lg:pl-14 md:-mb-32">
             <div class="flex flex-col relative bg-white rounded-lg p-8 mt-[100px] md:mt-0 md:p-12 shadow-xl border-t-8 border-red-600 text-center">
-                <div class="absolute -top-[100px] text-center">
-                    <img class="max-w-[400px] w-full m-auto" src="assets/images/ac-units.webp">
+                <div class="absolute -top-[130px] text-center">
+                    <img loading="lazy" class="max-w-[400px] w-full m-auto" src="assets/images/ac-units.webp">
                 </div>
-                <div class="mt-[125px] text-3xl font-extrabold mb-1"><strike>$100.00</strike></div>
+                <div class="mt-[80px] text-3xl font-extrabold mb-1"><strike>$100.00</strike></div>
                 <div class="relative text-green-500 text-7xl font-extrabold">
                     <svg class="absolute -top-[75px] -left-1/4 md:-left-[120px] w-[150px] h-[150px] fill-green-500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="513px" height="480px" viewBox="0 0 513 480"><title>arrow-down-right</title><g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="arrow-down-right" transform="translate(256.819130, 239.926363) scale(-1, 1) rotate(-90.000000) translate(-256.819130, -239.926363) translate(17.000000, -16.000000)" fill="fill-green-500" fill-rule="nonzero"><path d="M160.857334,9.30933505 L267.438667,115.890668 C279.854667,128.306668 279.854667,148.434668 267.438667,160.850668 C255.012,173.266668 234.884,173.266668 222.468,160.850668 L190.073334,128.456002 C179.385334,345.906668 325.326667,487.282668 474.916,488.594668 C480.324,488.637335 481.422667,496.232002 476.452,497.917335 C320.942667,550.418668 125.625334,454.930668 90.3080004,205.362668 C87.1613338,181.192002 84.7720004,156.744002 83.0440004,132.104002 L54.2760004,160.872002 C41.8600004,173.288002 21.7213338,173.288002 9.31600043,160.872002 C-3.09999957,148.456002 -3.11066624,128.328002 9.31600043,115.912002 L115.897334,9.33066838 C128.302667,-3.10666495 148.430667,-3.10666495 160.857334,9.30933505 Z" id="XMLID_955_"></path></g></g></svg>
                     $49.99
                 </div>
-                <h4 class="text-3xl mb-3 font-bold">AC Tune-Up Spring Special!</h4>
-                <p class="mb-6 text-lg"><b><u>Call now to schedule your tune-up.</u></b> You'll love our high-quality, fast, and professional service or it's <span class="font-semibold">FREE</span>.</p>
+                <h4 class="text-3xl font-bold">AC Tune-Up Spring Special!</h4>
+
                 <!-- Button -->
-                <div class="flex flex-1 col-span-full flex-row inline-flex justify-center">
+                <div class="flex flex-1 col-span-full flex-row inline-flex justify-center my-6">
                     <span class="relative">
                         <a href="tel:7025531171" class="btn btn--primary block !p-4 flex items-center">
                             <span class="p-3 bg-red-700 rounded-full mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                             </span>
                             <span class="flex flex-col">
-                                <span class="italic text-base font-normal">Call Now To Schedule Service!</span>
+                                <span class="italic text-base font-normal">Call Now To Schedule!</span>
                                 <span class="font-bold text-3xl">(702) 553-1171</span>
                             </span>
                         </a>
@@ -102,6 +213,9 @@
                         </span>
                     </span>
                 </div>
+
+                <p class="mb-3 text-lg"><b><u><i>Call now</i> to schedule your Tune-Up!</u></b><br>You'll love our high-quality, fast, and professional service or it's <span class="font-semibold">FREE</span>.</p>
+
                 <div class="text-base mt-4">SPECIAL OFFER EXPIRES 5/30/2022</div>
 
 
@@ -152,12 +266,12 @@
 <div class="pt-12 mt-20 md:mt-0">
     <div class="container">
         <div class="grid grid-cols-3 md:grid-cols-6 gap-16 md:gap-12 lg:gap-24 justify-items-center place-items-center">
-            <img class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/bonded-and-insured.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/elite.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/soap.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/toprated.jpeg" alt="accreditation" />
-            <img class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/bonded-and-insured.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/elite.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/soap.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/toprated.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
         </div>
     </div>
 </div>
@@ -168,7 +282,7 @@
 <section class="relative pt-12 md:pt-36 pb-36">
     <div class="container flex flex-col md:flex-row items-center gap-8">
         <div class="flex md:w-1/2">
-            <img class="lazy rounded-lg shadow-xl" data-src="assets/images/HVAC-maintenance.jpg" alt="HVAC Maintenance and Tune-Up" width="100%" />
+            <img loading="lazy" class="lazy rounded-lg shadow-xl" data-src="assets/images/HVAC-maintenance.jpg" alt="HVAC Maintenance and Tune-Up" width="100%" />
         </div>
         <div class="flex flex-col md:w-1/2 md:ml-12">
             <p class="font-poppins">When You Need Your AC Unit Rejuvenated, Active Plumbing & Air Conditioning The Clear Winner</p>
@@ -212,7 +326,7 @@
             <p class="text-xl md:text-2xl italic leading-relaxed">“Excellent service. Albert went beyond what I expected for AC maintenance. For example, he found trash left behind by other companies inside an electronic unit in the attic avoiding a potential hazard! He was very professional and thorough in his work. Also, Liz, the dispatch lady, was very nice to work with. I will stick with this company in the future.”</p>
             <div class="flex flex-row mt-12 place-items-center">
                 <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
-                    <img class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" loading="lazy" alt="Cecilia Alvarez">
+                    <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" loading="lazy" alt="Cecilia Alvarez">
                 </div>
                 <div class="flex flex-col">
                     <p class="text-lg">Cecilia Alvarez</p>
@@ -400,7 +514,7 @@ Our 26-Point Checklist</h2>
             </ul>
         </div>
         <p class="text-xl my-6 text-center">Ready to get schedule your AC tune-up? Call us today at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a> for all your residential HVAC needs.</p>
-        <a href="#openPopup" class="btn btn--primary">Schedule Tune-Up</a>
+        <button @click="showModal = true" class="btn btn--primary">Schedule Tune-Up</button>
         <p class="text-xl mt-6 text-center">Same-Day Service Available</p>
     </div>
 </section>
@@ -410,7 +524,7 @@ Our 26-Point Checklist</h2>
 <section class="bg-secondary-dark">
     <div class="container flex text-white place-items-center">
         <div class="md:w-7/12 py-14">
-            <h2 class="text-4xl leading-tight mb-4 text-white"><span class="font-semibold underline">Call Today to Save $40 On Your AC Tune-Up.</span> Regularly $90.</h2>
+            <h2 class="text-4xl leading-tight mb-4 text-white"><span class="font-semibold underline">Call Today and Save!</h2>
             <p class="text-xl">At Active Plumbing & Air Conditioning, we guarantee after our tune-up, your utility bill will be at least $68 less the next five months. Contact us today to schedule your ac tune-up. Our team is ready to help.</p>
             <a href="tel:7025531171" class="group mt-8 btn btn--primary flex-row inline-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
@@ -418,14 +532,85 @@ Our 26-Point Checklist</h2>
             </a>
         </div>
         <div class="flex flex-1 justify-end">
-            <img class="lazy" data-src="assets/images/condenser.webp" alt="">
+            <img loading="lazy" data-src="assets/images/condenser.webp" alt="AC Unit Condenser">
         </div>
     </div>
 </section>
 
 
 <!-- Why Us -->
-include "components/section-why-us.html"
+<section class="py-36">
+    <!-- Heading -->
+    <div class="container flex flex-col items-center">
+        <div class="text-center">
+            <h2 class="text-4xl md:text-5xl mb-6 leading-tight md:leading-tight">Why Is Active Plumbing & Air Conditioning Is Trusted By Thousands of Homeowners In Las Vegas & Henderson?</h2>
+            <p class="text-base md:text-xl">Whatever kind of AC, refrigeration, or heater repair you need help with, Active Plumbing & Air Conditioning is ready to help. For over 25 years we’ve been the <b>trusted experts in Las Vegas with over 40,000 satisfied customers</b>. We focus on <b>providing customers with the best HVAC service available</b>, solving your issue <b>fast with affordable and honest service that fixes your issue the first time.</b></p>
+        </div>
+
+
+        <div class="md:w-10/12 grid grid-cols-1 md:grid-cols-2 gap-8 my-16">
+
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1 mb-6">
+                <h3 class="font-bold text-lg">Hundreds Of Happy Customers</h3>
+                <p class="text-lg">Great service = Happy customers! And we've had hundreds of them.</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1 mb-6">
+                <h3 class="font-bold text-lg">Family Owned & Operated</h3>
+                <p class="text-lg">We’re a family owned and operated Las Vegas business, so we won’t risk the reputation of our livelihood..</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1 mb-6">
+                <h3 class="font-bold text-lg">Over 25 Years of Experience</h3>
+                <p class="text-lg">We’ve been your trusted Las Vegas Plumbing & Air Conditioning company for over 25 years.</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1">
+                <h3 class="font-bold text-lg">Tradesman You Can Trust</h3>
+                <p class="text-lg">All our staff are licensed, insured and trained to the highest standard of work and ethics.</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1">
+                <h3 class="font-bold text-lg">Affordable Prices</h3>
+                <p class="text-lg">Enjoy affordable prices combined with superior quality workmanship that lasts.</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-12 mr-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="flex-row flex-1">
+                <h3 class="font-bold text-lg">Only The Best Service & Materials</h3>
+                <p class="text-lg">No skimping on materials or service - high quality is what separates us.</p>
+            </div>
+        </div>
+        </div>
+
+        <button @click="showModal = true" class="btn btn--primary">Schedule AC Tune-Up</button>
+
+        <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a></p>
+    </div>
+</section>
 
 
 <!-- Testimonials -->
@@ -466,7 +651,7 @@ include "components/section-why-us.html"
                 <p class="italic text-lg">"Technician was very professional and helpful. Came out on Christmas day to replace a failed AC unit in my home. I had an excellent experience with Active Pluming. Receptionist was very knowledge and it was easy to setup an appointment. Fast and Reliable service. Will recommend them to anyone and I will be using their service again if needed."</p>
                 <div class="flex flex-row mt-12 place-items-center">
                     <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
-                        <img class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" alt="Jason P.">
+                        <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" alt="Jason P.">
                     </div>
                     <div class="flex flex-col">
                         <p class="text-lg">Jason P.</p>
@@ -524,7 +709,7 @@ include "components/section-why-us.html"
             </div>
         </div>
 
-        <a href="#openPopup" class="btn btn--primary">Schedule Tune-Up</a>
+        <button @click="showModal = true" class="btn btn--primary">Schedule Tune-Up</button>
         <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a></p>
     </div>
 </section>
@@ -538,10 +723,12 @@ include "components/section-why-us.html"
             <h2 class="text-3xl md:text-5xl mb-6 leading-tight md:leading-tight text-white">Ready For Upgraded Comfort?</h2>
             <p class="text-xl">Call Active Plumbing & Air Conditioning Today, We Are Ready To Help!</p>
             <p class="text-xl mt-4">Call Us At <a class="font-semibold underline" href="tel:7025531171">(702) 553-1171</a> or schedule online.</p>
-            <a href="#openPopup" class="group my-12 btn btn--primary flex-row inline-flex">
+
+            <button @click="showModal = true" class="group my-12 btn btn--primary flex-row inline-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                 Schedule AC Tune-Up
-            </a>
+            </button>
+
             <ul class="text-lg icon-list text-left flex flex-col md:flex-row md:gap-12 text-white">
                 <li class="py-1">
                     <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>

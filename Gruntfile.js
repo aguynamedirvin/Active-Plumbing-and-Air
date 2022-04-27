@@ -60,7 +60,7 @@ module.exports = function (grunt) {
             default: {
                 files: [{
                     cwd: '<%= path.src.html %>/',
-                    src: '*.html',
+                    src: '**/*.html',
                     dest: '<%= path.dist.html %>',
                     flatten: true
                 }]
@@ -129,7 +129,8 @@ module.exports = function (grunt) {
                 files: ['<%= path.src.css %>/**/*.css', 'tailwind.config.js'],
                 tasks: ['postcss'],
                 options: {
-                    interrupt: true
+                    interrupt: true,
+                    reloadrel: true
                 },
             },
 

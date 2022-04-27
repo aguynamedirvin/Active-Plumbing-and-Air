@@ -141,3 +141,63 @@ h6 {
   }
 }
 
+
+
+/** Pop-up Modal Styles **/
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5em;
+}
+.modal.open {
+  display: flex;
+}
+.modalInner {
+  @apply relative max-w-lg shadow-2xl
+}
+.closeModal-btn {
+  top: -20px;
+  right: -20px;
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  padding: 1px;
+  @apply z-40 bg-black rounded-full text-white
+}
+.overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: black;
+  opacity: 0.75;
+}
+
+
+
+/** Input Validation **/
+.invalid {
+  border-color: darkred;
+  background-color: hsl(0, 30%, 95%);
+  margin-bottom: 0em;
+}
+.error-message {
+  color: hsl(0deg, 100%, 15%);
+  @apply text-sm
+}
+
+
+
+/** Alpine JS **/
+[x-clock] {
+  display: none;
+}
+
