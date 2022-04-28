@@ -31,7 +31,7 @@
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
     <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/mattkingshott/iodine@3/dist/iodine.min.js"></script>
+    <script defer src="/assets/js/vendor/iodine.min.js"></script>
 
 </head>
 
@@ -93,7 +93,7 @@
                 type="text" name="full_name" placeholder="Full name"
 
                 x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
-                data-rules='["required"]'
+                data-rules='["required", "minimum:3"]'
                 @blur="blur"
                 @input="input"
             >
@@ -108,7 +108,7 @@
                 x-mask="(999) 999-9999"
 
                 x-bind:class="{'invalid':phone.errorMessage && phone.blurred}"
-                data-rules='["required", "minimum:7"]'
+                data-rules='["required", "minimum:14"]'
                 @blur="blur"
                 @input="input"
             >
@@ -156,17 +156,16 @@
             <img class="w-full" src="assets/images/logo-color.png" alt="Logo">
         </div>
         <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
-        <div class="flex flex-1 justify-end items-center gap-12">
-            <div class="flex w-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
-                <div class="flex flex-1 justify-end flex-col">
-                    <span class="italic text-md">Need HVAC Services? Call Now!</span>
-                    <a class="flex flex-row font-bold text-3xl" href="tel:7025531171">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                        (702) 553-1171
-                    </a>
-                </div>
+        <!-- Call CTA -->
+        <div class="flex w-auto ml-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
+            <div class="flex flex-1 justify-end flex-col">
+                <span class="italic text-md">Need HVAC Services? Call Now!</span>
+                <a class="flex flex-row font-bold text-3xl" href="tel:7025531171">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                    (702) 553-1171
+                </a>
             </div>
-        </div>
+        </div><!-- /Call CTA -->
     </nav>
 </header>
 

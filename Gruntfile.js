@@ -90,7 +90,7 @@ module.exports = function (grunt) {
         **/
         concat: {
             default: {
-                src: '<%= path.src.js %>/**/*.js',
+                src: '<%= path.src.js %>/main.js',
                 dest: '<%= path.dist.js %>/main.js'
             }
         },
