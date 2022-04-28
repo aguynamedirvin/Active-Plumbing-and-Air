@@ -34,7 +34,117 @@
 
 </head>
 
-<body class="font-poppins">
+<body class="font-poppins" x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
+
+<div class="hidden" :class="showModal ? 'overlay' : ''" x-show="showModal" x-cloak></div>
+<div
+    class="modal"
+
+    x-show="showModal"
+    :class="showModal ? 'open' : ''"
+
+
+
+    x-transition:enter="motion-safe:ease-out duration-500"
+    x-transition:enter-start="opacity-0 scale-90"
+    x-transition:enter-end="opacity-100 scale-100"
+
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-90">
+    <div
+        class="modalInner text-center"
+
+        @click.away="showModal = true"
+    >
+
+        <button class="closeModal-btn" aria-label="Close" @click="showModal=false">
+            <!--✖-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[50px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </button>
+
+        <div class="p-2 rounded-tl-md absolute top-0 left-0 bg-green-500/80 text-white w-full">
+            <svg class="inline-flex w-5 mr-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            $25 OFF Any AC Repair Applied
+        </div>
+
+        <h4 class="text-4xl mt-6">Schedule Your AC Repair</h4>
+        <p class="my-4">Enter your information below and we'll give you a call back <b>within 20 minutes</b> to set up your appointment.</p>
+
+        <form
+            id="form"
+            class="grid grid-cols-1 gap-2"
+
+            name="AC Repair / Other"
+            method="POST"
+            data-netlify="true"
+
+            action=""
+            x-data="form()"
+            @submit="submit"
+
+        >
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="full_name"
+
+                type="text" name="full_name" placeholder="Full name"
+
+                x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
+                data-rules='["required"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="full_name.errorMessage && email.blurred" x-text="full_name.errorMessage"></p>
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="phone"
+
+                type="tel" name="phone" placeholder="Phone number"
+
+                x-mask="(999) 999-9999"
+
+                x-bind:class="{'invalid':phone.errorMessage && phone.blurred}"
+                data-rules='["required", "minimum:7"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="phone.errorMessage && phone.blurred" x-text="phone.errorMessage"></p>
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
+                id="email"
+
+                type="email" name="email" placeholder="Email address"
+
+                x-bind:class="{'invalid':email.errorMessage && email.blurred}"
+                data-rules='["required","email"]'
+                @blur="blur"
+                @input="input"
+            >
+            <p x-show="email.errorMessage && email.blurred" x-text="email.errorMessage"></p>
+
+            <button type="submit" class="col-span-full !px-0 group btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Request AC Repair
+            </button>
+
+        </form>
+
+
+        <div class="text-center mt-4 text-xs text-slate-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <span class="align-middle">Your Information Is SSL Encrypted.</span>
+        </div>
+
+
+        <div class="text-center pt-3 border-t mt-4">
+            <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
+             <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+        </div>
+    </div>
+</div>
 
 
 
@@ -49,7 +159,7 @@
             <div class="flex w-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
                 <div class="flex flex-1 justify-end flex-col">
                     <span class="italic text-md">Need HVAC Services? Call Now!</span>
-                    <a class="flex flex-row font-bold text-3xl text-red-700" href="tel:7025531171">
+                    <a class="flex flex-row font-bold text-3xl" href="tel:7025531171">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                         (702) 553-1171
                     </a>
@@ -67,7 +177,7 @@
 
     <div class="container md:w-10/12 relative flex flex-col text-white text-center z-20 place-items-center">
             <p class="text-lg mb-4">Keeping Your Family Cool & Comfortable Year Round</p>
-            <h1 class="text-3xl md:text-4xl mb-6 font-semibold leading-tight md:leading-tight text-white"><u>Your Local Las Vegas HVAC Pros</u> – Fast Response, Honest Pricing & Friendly Service, Guaranteed</h1>
+            <h1 class="text-3xl md:text-4xl mb-6 font-semibold leading-tight md:leading-tight text-white"><u>Your Local Las Vegas HVAC Pros</u> – Fast Response, Honest Pricing and Friendly Service, Guaranteed</h1>
             <p class="text-lg md:text-xl mb-12 leading-relaxed">Affordable local HVAC technicians for all your ac installation, repair, and tune-up needs. No hidden costs and competitive, affordable pricing on all services. Contact our team today for service details and up-front pricing.</p>
     </div>
 
@@ -81,7 +191,7 @@
             <div class="flex flex-1 col-span-full flex-row inline-flex justify-center">
                 <span class="relative">
                     <a href="tel:7025531171" class="btn btn--primary block !p-4 flex items-center">
-                        <span class="p-3 bg-red-700 rounded-full mr-3">
+                        <span class="hidden md:inline-flex p-3 bg-red-700 rounded-full mr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                         </span>
                         <span class="flex flex-col">
@@ -179,7 +289,7 @@
                 </li>
             </ul>
             <p class="text-lg mb-6"><span class="font-semibold">Call Active Plumbing & Air Conditioning today at <a class="text-blue-500" href="tel:7025531171">(702) 553-1171</a></span> to learn more about our air conditioning services and receive more information from a friendly, professional service representative.</p>
-            <a href="#hero-form" class="btn btn--primary inline-flex">Schedule a Repair</a>
+            <button @click="showModal = true" class="btn btn--primary inline-flex">Schedule a Repair</button>
         </div>
     </div>
 </section>
@@ -274,7 +384,7 @@
             </ul>
             <p class="text-lg leading-relaxed"><b>Is your AC having any of these issues? Call us today!</b> Our mobile technicians are in your neighborhood and ready to help.</p>
             <p class="text-lg leading-relaxed font-semibold my-3">Call us today at <a href="tel:7025531171" class="font-semibold text-blue-600">(702) 553-1171</a> or schedule online for all your residential HVAC needs.</p>
-            <a href="#hero-form" class="btn btn--primary inline-block mb-4">Schedule a Repair</a>
+            <button @click="showModal = true" class="btn btn--primary inline-block mb-4">Schedule a Repair</button>
             <p class="text-lg">Same-day service available</p>
         </div>
     </div>
@@ -399,7 +509,7 @@ include "components/section-why-us.html"
             </div>
         </div>
 
-        <a href="#hero-form" class="btn btn--primary">Schedule A Repair</a>
+        <button @click="showModal = true" class="btn btn--primary">Schedule A Repair</button>
         <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a></p>
     </div>
 </section>
@@ -409,13 +519,13 @@ include "components/section-why-us.html"
 <section class="bg-blue-900 py-24">
     <div class="container flex flex-col items-center">
         <div class="text-center text-white">
-            <h2 class="text-3xl md:text-5xl mb-6 leading-tight md:leading-tight text-white">Ready For Upgraded Comfort?</h2>
+            <h2 class="text-3xl md:text-5xl mb-6 leading-tight md:leading-tight text-white">Ready To Restore The Comfort of Your Home?</h2>
             <p class="text-xl">Call Active Plumbing & Air Conditioning Today, We Are Ready To Help!</p>
             <p class="text-xl mt-4">Call Us At <a class="font-semibold underline" href="tel:7025531171">(702) 553-1171</a> or schedule online.</p>
-            <a href="#hero-form" class="group my-12 btn btn--primary flex-row inline-flex">
+            <button @click="showModal = true" class="group my-12 btn btn--primary flex-row inline-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
-                Schedule Free Estimate
-            </a>
+                Request Pricing & Service
+            </button>
             <ul class="text-lg text-left icon-list grid md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-12 text-white place-items-center md:place-items-start">
                 <li>
                     <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
