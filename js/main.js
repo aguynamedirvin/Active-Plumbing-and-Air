@@ -2,10 +2,6 @@
  * Form Validation
  *
  */
-
-
-
-
 function form() {
     return {
 
