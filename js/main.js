@@ -32,7 +32,6 @@ function form() {
         },
         getErrorMessage: function (id, value, rules) {
             let isValid = Iodine.is(value, rules);
-
             if (isValid !== true) {
                 switch (id) {
                     case 'full_name': 
