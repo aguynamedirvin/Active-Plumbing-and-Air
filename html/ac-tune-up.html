@@ -52,8 +52,7 @@
 
     x-transition:leave="transition ease-in duration-300"
     x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-90"
->
+    x-transition:leave-end="opacity-0 scale-90">
     <div
         class="modalInner text-center"
 
@@ -73,7 +72,7 @@
         <h4 class="text-4xl mt-6">Schedule Your AC Tune-Up</h4>
         <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
 
-        <form hidden
+        <!--<form hidden
             name="AC Tune-Up"
             method="POST"
             data-netlify="true"
@@ -82,9 +81,47 @@
             <input name="full_name">
             <input name="phone">
             <input name="email">
-        </form>
+        </form>-->
 
         <form
+            id="form"
+            class="grid grid-cols-1 gap-4"
+
+            name="AC Tune-Up"
+            method="POST"
+            data-netlify="true"
+        >
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md"
+                id="full_name"
+
+                type="text" name="full_name" placeholder="Full name" required
+            >
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md"
+                id="phone"
+
+                type="tel" name="phone" placeholder="Phone number" required
+
+                x-mask="(999) 999-9999"
+            >
+
+            <input
+                class="p-3 border-2 border-gray-300 rounded-md"
+                id="email"
+
+                type="email" name="email" placeholder="Email address" required
+            >
+
+            <button type="submit" class="col-span-full !px-0 group btn btn--primary flex-row inline-flex justify-center uppercase">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
+            </button>
+
+        </form>
+
+        <!--<form
             id="form"
             class="grid grid-cols-1 gap-2"
 
@@ -138,7 +175,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
             </button>
 
-        </form>
+        </form>-->
 
 
         <div class="text-center mt-4 text-xs text-slate-500">
