@@ -32,27 +32,6 @@ function form() {
             inputs.map((input) => {
                 if (Iodine.is(input.value, JSON.parse(input.dataset.rules)) !== true) {
                     event.preventDefault();
-                } else {
-                        console.log(JSON.stringify(this.formData));
-
-                        this.formMessage = "";
-                          fetch("/", {
-                            method: "POST",
-                            headers: {
-                              "Content-Type": "application/json",
-                              Accept: "application/json",
-                            },
-                            body: JSON.stringify(this.formData),
-                          })
-                            .then(() => {
-                              this.formData.name = "";
-                              this.formData.email = "";
-                              this.formData.phone = "";
-                              this.formMessage = "Form successfully submitted.";
-                            })
-                            .catch(() => {
-                              this.formMessage = "Something went wrong.";
-                            });
                 }
             });
         },
@@ -75,6 +54,27 @@ function form() {
                 return Iodine.getErrorMessage(isValid);
             }
             return "";
+
+            console.log(JSON.stringify(this.formData));
+
+            this.formMessage = "";
+              fetch("/", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(this.formData),
+              })
+                .then(() => {
+                  this.formData.name = "";
+                  this.formData.email = "";
+                  this.formData.phone = "";
+                  this.formMessage = "Form successfully submitted.";
+                })
+                .catch(() => {
+                  this.formMessage = "Something went wrong.";
+                });
         }
     };
 }
