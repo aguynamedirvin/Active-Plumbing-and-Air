@@ -27,6 +27,8 @@ function form() {
                     event.preventDefault();
                 }
             });
+            console.log("Submitted");
+            dataLayer.push({'event': 'Form submission'});
         },
         getErrorMessage: function (id, value, rules) {
             let isValid = Iodine.is(value, rules);
