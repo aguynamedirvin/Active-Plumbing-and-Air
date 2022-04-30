@@ -73,15 +73,22 @@
         <h4 class="text-4xl mt-6">Schedule Your AC Tune-Up</h4>
         <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
 
+        <form hidden
+            name="AC Tune-Up"
+            method="POST"
+            data-netlify="true"
+        >
+
+            <input name="full_name">
+            <input name="phone">
+            <input name="email">
+        </form>
+
         <form
             id="form"
             class="grid grid-cols-1 gap-2"
 
-            name="AC Tune-Up"
-            method="POST"
-            data-netlify="true"
-
-            x-data="form()"
+            x-data="form"
             @submit="submit"
 
         >
