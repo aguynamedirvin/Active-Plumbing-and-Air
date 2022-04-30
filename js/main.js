@@ -30,19 +30,24 @@ function form() {
             console.log("Submitted");
             dataLayer.push({'event': 'Form submission'});
 
-            const handleSubmit = (e) => {
-              e.preventDefault();
-              let myForm = event.target;
-              let formData = new FormData(myForm);
-              fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString(),
+            let formElement = document.getElementById("form");
+            let body = new URLSearchParams(new FormData(formElement)).toString();
+            return fetch("/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: body,
+            })
+              .then((response) => {
+                if (response.ok) {
+                  formElement.reset();
+                  alert("Thank you for your message!");
+                } else {
+                  throw new Error(`Something went wrong: ${response.statusText}`);
+                }
               })
-                .then(() => console.log("Form successfully submitted"))
-                .catch((error) => alert(error));
-            };
-            handleSubmit();
+              .catch((error) => console.error(error));
         },
         getErrorMessage: function (id, value, rules) {
             let isValid = Iodine.is(value, rules);
