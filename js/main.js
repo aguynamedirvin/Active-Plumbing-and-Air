@@ -42,7 +42,6 @@ function form() {
                 .then(() => console.log("Form successfully submitted"))
                 .catch((error) => alert(error));
             };
-            
         },
         getErrorMessage: function (id, value, rules) {
             let isValid = Iodine.is(value, rules);
