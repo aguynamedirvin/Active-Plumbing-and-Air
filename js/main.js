@@ -46,7 +46,6 @@ function form() {
                       })
                       .catch((error) => console.error(error));
                   }
-                }
             });
         },
         getErrorMessage: function (id, value, rules) {
