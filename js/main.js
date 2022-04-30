@@ -5,7 +5,7 @@
 function form() {
     return {
 
-        fullName: { errorMessage: "", blurred: false },
+        full_name: { errorMessage: "", blurred: false },
         email: { errorMessage: "", blurred: false },
         phone: { errorMessage: "", blurred: false },
 
@@ -35,7 +35,7 @@ function form() {
 
             if (isValid !== true) {
                 switch (id) {
-                    case 'fullName': 
+                    case 'full_name': 
                         return Iodine.setErrorMessage = "Please enter your full name";
                         break;
                     case 'email': 
