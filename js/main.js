@@ -32,6 +32,7 @@ function form() {
 
             let formElement = document.getElementById("form");
             let body = new URLSearchParams(new FormData(formElement)).toString();
+            console.log(body);
             return fetch("/", {
               method: "POST",
               headers: {
