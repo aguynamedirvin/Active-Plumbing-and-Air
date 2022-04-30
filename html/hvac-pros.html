@@ -72,15 +72,22 @@
         <h4 class="text-4xl mt-6">Schedule Your AC Repair</h4>
         <p class="my-4">Enter your information below and we'll give you a call back <b>within 20 minutes</b> to set up your appointment.</p>
 
+        <form hidden
+            name="AC Repair / Other"
+            method="POST"
+            data-netlify="true"
+        >
+
+            <input name="full_name">
+            <input name="phone">
+            <input name="email">
+        </form>
+
         <form
             id="form"
             class="grid grid-cols-1 gap-2"
 
-            name="AC Repair / Other"
-            method="POST"
-            data-netlify="true"
-
-            x-data="form()"
+            x-data="form"
             @submit="submit"
 
         >
