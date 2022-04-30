@@ -156,9 +156,11 @@
                         type="text" name="full_name" placeholder="Full name"
 
                         x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
-                        data-rules='["required", "minimum:3"]'
+                        data-rules='["required","minimum:3"]'
                         @blur="blur"
                         @input="input"
+
+                        x-model="formData.name"
                     >
                     <p x-show="full_name.errorMessage && full_name.blurred" x-text="full_name.errorMessage"></p>
 

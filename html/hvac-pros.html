@@ -99,7 +99,7 @@
                 type="text" name="full_name" placeholder="Full name"
 
                 x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
-                data-rules='["required", "minimum:3"]'
+                data-rules='["required","minimum:3"]'
                 @blur="blur"
                 @input="input"
             >
@@ -114,7 +114,7 @@
                 x-mask="(999) 999-9999"
 
                 x-bind:class="{'invalid':phone.errorMessage && phone.blurred}"
-                data-rules='["required", "minimum:14"]'
+                data-rules='["required","minimum:14"]'
                 @blur="blur"
                 @input="input"
             >

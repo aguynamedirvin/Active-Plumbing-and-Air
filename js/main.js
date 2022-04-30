@@ -5,6 +5,12 @@
 function form() {
     return {
 
+        formData: {
+            name: "",
+            email: "",
+            phone: ""
+        },
+
         full_name: { errorMessage: "", blurred: false },
         email: { errorMessage: "", blurred: false },
         phone: { errorMessage: "", blurred: false },
@@ -21,13 +27,32 @@ function form() {
             this[ele.name].errorMessage = this.getErrorMessage(ele.value, rules);
         },
         submit: function (event) {
-            console.log('Submitted');
-            console.log(JSON.stringify(this.formData));
 
             let inputs = [...this.$el.querySelectorAll("input[data-rules]")];
             inputs.map((input) => {
                 if (Iodine.is(input.value, JSON.parse(input.dataset.rules)) !== true) {
                     event.preventDefault();
+                } else {
+                        console.log(JSON.stringify(this.formData));
+
+                        this.formMessage = "";
+                          fetch("/", {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Accept: "application/json",
+                            },
+                            body: JSON.stringify(this.formData),
+                          })
+                            .then(() => {
+                              this.formData.name = "";
+                              this.formData.email = "";
+                              this.formData.phone = "";
+                              this.formMessage = "Form successfully submitted.";
+                            })
+                            .catch(() => {
+                              this.formMessage = "Something went wrong.";
+                            });
                 }
             });
         },
