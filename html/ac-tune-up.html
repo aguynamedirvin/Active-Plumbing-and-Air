@@ -97,7 +97,7 @@
                 @blur="blur"
                 @input="input"
             >
-            <p x-show="full_name.errorMessage && email.blurred" x-text="full_name.errorMessage"></p>
+            <p x-show="full_name.errorMessage && full_name.blurred" x-text="full_name.errorMessage"></p>
 
             <input
                 class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
