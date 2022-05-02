@@ -71,6 +71,8 @@
         .then((response) => {
             if (response.ok) {
                 formElement.reset();
+                document.getElementById('form-success').classList.remove('hidden');
+                formElement.classList.add('hidden');
                 alert("Thank you for your message!");
                 //console.log('Success');
             } else {
