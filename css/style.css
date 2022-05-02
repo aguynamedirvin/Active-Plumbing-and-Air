@@ -34,6 +34,22 @@ h6 {
 }
 
 
+input[type=text],
+input[type=email],
+input[type=tel] {
+  @apply p-3 border-2 border-gray-300 rounded-md w-full mt-3
+}
+input[type=text].invalid,
+input[type=email].invalid,
+input[type=tel].invalid {
+  @apply border-red-600 bg-red-50
+}
+
+.error-message {
+  @apply text-sm text-red-600
+}
+
+
 .image-box {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , var(--image-url) center center;
     background-size: cover;
@@ -52,95 +68,6 @@ h6 {
 .icon-list .icon-list-text {
     @apply inline-block
 }
-
-
-.jPopup {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-    max-width: 100%;
-    padding: 6rem;
-    background: rgba(0,0,0,.8);
-    opacity: 0;
-}
-.jPopup--fade {
-  pointer-events: none;
-}
-.jPopup-closeBtn {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  width: 5rem;
-  height: 5rem;
-  outline: 0;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  z-index: 9999;
-}
-
-.jPopup-closeBtn:before, .jPopup-closeBtn:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 2.6rem;
-  width: 0.3rem;
-  background-color: #fff;
-}
-
-.jPopup-closeBtn:before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.jPopup-closeBtn:after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.jPopup-content {
-  /**top: 50%;**/
-  left: 1.5rem;
-  right: 1.5rem;
-  position: absolute;
-  /**transform: translateY(-50%);**/
-  overflow: scroll;
-}
-.jPopup--isOpen .jPopup {
-    overflow: scroll;
-}
-.jPopup--isOpen body {
-  overflow: hidden;
-}
-
-.jPopup--isOpen .jPopup {
-  pointer-events: all;
-}
-
-.jPopup--isOpen .jPopup--fade {
-  -webkit-animation: fade 350ms ease-in-out forwards;
-          animation: fade 350ms ease-in-out forwards;
-}
-@-webkit-keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 
 
 /** Pop-up Modal Styles **/
@@ -181,18 +108,6 @@ h6 {
   opacity: 0.75;
 }
 
-
-
-/** Input Validation **/
-.invalid {
-  border-color: darkred;
-  background-color: hsl(0, 30%, 95%);
-  margin-bottom: 0em;
-}
-.error-message {
-  color: hsl(0deg, 100%, 15%);
-  @apply text-sm
-}
 
 
 

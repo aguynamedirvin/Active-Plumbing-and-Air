@@ -130,16 +130,14 @@
                       method="POST"
                       data-netlify="true"
                       netlify-honeypot="bot-field"
-                      data-netlify-recaptcha="true"
                     >
                       <label><input type="text" name="name" /></label>
                       <label><input type="email" name="email" /></label>
                       <label><input type="tel" name="phone"></textarea></label>
-                      <div data-netlify-recaptcha="true"></div>
                 </form>
 
                 <form
-                    class="grid grid-cols-1 gap-2"
+                    class="grid grid-cols-1 gap-2 text-left"
 
                     x-data = "{
                         name : '',
@@ -152,7 +150,7 @@
                     x-on:submit.prevent="
                         nameDirty = true;
                         emailDirty = true;
-                        messageDirty = true;
+                        phoneDirty = true;
                         submitMessage(name, email, phone);"
                         id="lead-form"
                 >
@@ -163,39 +161,34 @@
                     <input type="hidden" name="AC Replacement" value="lead-form" />
 
                     <input
-                        class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-
                         type="text" name="name" placeholder="Full name"
 
                         x-model="name"
                         x-on:blur="nameDirty = true"
+                        x-bind:class="{'invalid':nameDirty && name.length < 3}"
                     >
-                    <p x-show.transition="nameDirty && name.length < 3" x-cloak class="text-red-600">Please enter your full name.</p>
+                    <p x-show.transition="nameDirty && name.length < 3" x-cloak class="error-message">Please enter your full name.</p>
 
 
                     <input
-                        class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-
-                        type="email" name="email" placeholder="Email address"
-
-                        x-model="email"
-                        x-on:blur="emailDirty = true"
-                    >
-                    <p x-show.transition="emailDirty && !isEmail(email)" x-cloak class="text-red-600">Please enter valid email addresss.</p>
-
-
-                    <input
-                        class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-
                         type="tel" name="phone" placeholder="Phone number"
 
                         x-mask="(999) 999-9999"
                         x-model="phone"
                         x-on:blur="phoneDirty = true"
+                        x-bind:class="{'invalid':phoneDirty && phone.length < 14}"
                     >
-                    <p x-show.transition="phoneDirty && phone.length < 14" x-cloak class="text-red-600">Please enter valid phone number.</p>
+                    <p x-show.transition="phoneDirty && phone.length < 14" x-cloak class="error-message">Please enter valid phone number.</p>
 
-                    <div data-netlify-recaptcha="true"></div>
+
+                    <input
+                        type="email" name="email" placeholder="Email address"
+
+                        x-model="email"
+                        x-on:blur="emailDirty = true"
+                        x-bind:class="{'invalid':emailDirty && !isEmail(email)}"
+                    >
+                    <p x-show.transition="emailDirty && !isEmail(email)" x-cloak class="error-message">Please enter valid email addresss.</p>
 
                     <button type="submit" class="col-span-full !px-0 btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Get My Free Quote!

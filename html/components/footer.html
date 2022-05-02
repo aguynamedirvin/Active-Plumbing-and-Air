@@ -51,33 +51,33 @@
 
 
 <script type="text/javascript">
-  function isEmail(value) {
-    return new RegExp("^\\S+@\\S+[\\.][0-9a-z]+$").test(String(value).toLowerCase());
-  }
-
-  function submitMessage(name, email, message) {
-    if (!name || name.length == 0 || !email || !isEmail || !phone || phone.length == 0) {
-      return;
+    function isEmail(value) {
+        return new RegExp("^\\S+@\\S+[\\.][0-9a-z]+$").test(String(value).toLowerCase());
     }
-    let formElement = document.getElementById("lead-form");
-    let body = new URLSearchParams(new FormData(formElement)).toString();
-    return fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: body,
-    })
-      .then((response) => {
-        if (response.ok) {
-          formElement.reset();
-          alert("Thank you for your message!");
-        } else {
-          throw new Error(`Something went wrong: ${response.statusText}`);
+
+    function submitMessage(name, email, phone) {
+        if (!name || name.length == 0 || !email || !isEmail || !phone || phone.length == 0) {
+            return;
         }
-      })
-      .catch((error) => console.error(error));
-  }
+        let formElement = document.getElementById("lead-form");
+        let body = new URLSearchParams(new FormData(formElement)).toString();
+        return fetch("/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: body,
+        })
+        .then((response) => {
+            if (response.ok) {
+                formElement.reset();
+                alert("Thank you for your message!");
+            } else {
+                throw new Error(`Something went wrong: ${response.statusText}`);
+            }
+        })
+        .catch((error) => console.error(error));
+}
 </script>
 
 <script type="text/javascript">
