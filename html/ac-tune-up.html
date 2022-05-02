@@ -86,20 +86,23 @@
             <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
 
             <form
-                  hidden
-                  name="AC Tune-Up"
-                  method="POST"
-                  data-netlify="true"
-                  netlify-honeypot="bot-field"
-                >
-                  <label><input type="text" name="name" /></label>
-                  <label><input type="email" name="email" /></label>
-                  <label><input type="tel" name="phone" /></label>
+                hidden
+                name="AC Tune-Up"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+            >
+                <input type="text" name="name" />
+                <input type="email" name="email" />
+                <input type="tel" name="phone" />
+                <input type="text" name="campaign" />
+                <input type="text" name="keyword" />
+                <input type="text" name="gclid" />
             </form>
 
             <form
                 class="grid grid-cols-1 gap-2 text-left"
-                id="contact"
+                id="lead-form"
 
                 x-data = "{
                     name : '',
@@ -113,7 +116,7 @@
                     nameDirty = true;
                     emailDirty = true;
                     phoneDirty = true;
-                    submitMessage(name, email, phone);"
+                    submitMessage(name, email, phone, campaign, keyword, gclid);"
             >
                 <p hidden><label>ignore: <input name="bot-field" /></label></p>
 
@@ -148,6 +151,10 @@
                     x-bind:class="{'invalid':emailDirty && !isEmail(email)}"
                 >
                 <p x-show.transition="emailDirty && !isEmail(email)" x-cloak class="error-message">Please enter valid email addresss.</p>
+
+                <input hidden type="text" name="campaign">
+                <input hidden type="text" name="keyword">
+                <input hidden type="text" name="gclid">
 
                 <button type="submit" class="col-span-full !px-0 btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Request My AC Tune-Up!
