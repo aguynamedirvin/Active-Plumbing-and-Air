@@ -81,7 +81,9 @@ function submitMessage(name, email, phone) {
             document.getElementById('form-success').classList.remove('hidden');
             document.getElementById('form-content').classList.add('hidden');
 
-            gtagEvent('form_submission');
+
+            // Push GTM datalayer event
+            gtagEvent('formSubmission');
         } else {
             let errorMessage = `<div class="text-red-500">Something went wrong. Please try again later.</div>`;
             formElement.insertAdjacentHTML('afterbegin', errorMessage);
