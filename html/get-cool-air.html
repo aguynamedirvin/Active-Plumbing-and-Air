@@ -120,16 +120,25 @@
 
         <!-- Form -->
         <div id="hero-form" class="lg:w-5/12 lg:pl-14 -mb-32 md:mb-0">
-            <div class="bg-white rounded-lg p-12 shadow-xl border-t-8 border-red-600 text-center">
+
+            <!-- Success Message -->
+            <div id="form-success" class="hidden bg-white rounded-lg p-12 shadow-xl border-t-8 border-red-600 text-center">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                <p class="text-4xl mb-4 font-semibold">Thank you!</p>
+                <p class="text-lg mb-4">We have received your free estimate request. One of our representatives will contact you shortly.</p>
+                <p class="text-lg">If you have an emergency, please call us today. Our live agents are ready to help.</p>
+
+                <div class="pt-3 border-t mt-4">
+                    <div class="text-sm uppercase font-semibold text-slate-500">Call us now</div>
+                    <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+                </div>
+            </div>
+
+            <!-- Form Content -->
+            <div id="form-content" class="bg-white rounded-lg p-12 shadow-xl border-t-8 border-red-600 text-center">
                 <h4 class="text-3xl mb-3 font-bold">Fill Out For A FREE No-Obligation Quote</h4>
                 <p class="mb-6 text-md">Send us your contact information in the form below and our representative will contact you within <span class="font-semibold">20 minutes</span>.</p>
 
-                <div id="form-success" class="hidden">
-                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                    <p class="text-3xl mb-2 font-semibold">Thank you!</p>
-                    <p class="text-lg">We have received your free estimate request. One of our representatives will contact you shortly.</p>
-                    <p class="text-lg">If you have an emergency, please call us today. Our live agents are ready to help.</p>
-                </div>
 
                  <form
                       hidden
@@ -209,12 +218,12 @@
 
                 <div class="text-center pt-3 border-t mt-4">
                     <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
-                     <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+                    <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
                 </div>
 
-            </div>
+            </div><!-- /End Form Content -->
         </div>
-        <!-- End Form -->
+        <!-- /End Form -->
     </div>
 </section>
 <!-- End Hero -->

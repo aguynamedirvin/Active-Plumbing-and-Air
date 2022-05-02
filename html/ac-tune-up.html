@@ -22,7 +22,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -31,7 +31,6 @@
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
     <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/mattkingshott/iodine@3/dist/iodine.min.js"></script>
 
 </head>
 
@@ -69,123 +68,106 @@
             Spring $49 Tune-Up Promotion Applied
         </div>
 
-        <h4 class="text-4xl mt-6">Schedule Your AC Tune-Up</h4>
-        <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
+        <!-- Success Message -->
+        <div id="form-success" class="hidden text-center">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+            <p class="text-4xl mb-4 font-semibold">Thank you!</p>
+            <p class="text-lg mb-4">We have received your AC Tune-Up request. One of our representatives will contact you shortly.</p>
 
-        <!--<form hidden
-            name="AC Tune-Up"
-            method="POST"
-            data-netlify="true"
-        >
-
-            <input name="full_name">
-            <input name="phone">
-            <input name="email">
-        </form>-->
-
-        <form
-            id="form"
-            class="grid grid-cols-1 gap-4"
-
-            name="AC Tune-Up"
-            method="POST"
-            data-netlify="true"
-        >
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md"
-                id="full_name"
-
-                type="text" name="full_name" placeholder="Full name" required
-            >
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md"
-                id="phone"
-
-                type="tel" name="phone" placeholder="Phone number" required
-
-                x-mask="(999) 999-9999"
-            >
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md"
-                id="email"
-
-                type="email" name="email" placeholder="Email address" required
-            >
-
-            <button type="submit" class="col-span-full !px-0 group btn btn--primary flex-row inline-flex justify-center uppercase">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
-            </button>
-
-        </form>
-
-        <!--<form
-            id="form"
-            class="grid grid-cols-1 gap-2"
-
-            x-data="form"
-            @submit="submit">
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-                id="full_name"
-
-                type="text" name="full_name" placeholder="Full name"
-
-                x-bind:class="{'invalid':full_name.errorMessage && full_name.blurred}"
-                data-rules='["required", "minimum:3"]'
-                @blur="blur"
-                @input="input"
-            >
-            <p x-show="full_name.errorMessage && full_name.blurred" x-text="full_name.errorMessage"></p>
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-                id="phone"
-
-                type="tel" name="phone" placeholder="Phone number"
-
-                x-mask="(999) 999-9999"
-
-                x-bind:class="{'invalid':phone.errorMessage && phone.blurred}"
-                data-rules='["required", "minimum:14"]'
-                @blur="blur"
-                @input="input"
-            >
-            <p x-show="phone.errorMessage && phone.blurred" x-text="phone.errorMessage"></p>
-
-            <input
-                class="p-3 border-2 border-gray-300 rounded-md w-full mt-3"
-                id="email"
-
-                type="email" name="email" placeholder="Email address"
-
-                x-bind:class="{'invalid':email.errorMessage && email.blurred}"
-                data-rules='["required","email"]'
-                @blur="blur"
-                @input="input"
-            >
-            <p x-show="email.errorMessage && email.blurred" x-text="email.errorMessage"></p>
-
-            <button type="submit" class="col-span-full !px-0 group btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Schedule My AC Tune-Up!
-            </button>
-
-        </form>-->
-
-
-        <div class="text-center mt-4 text-xs text-slate-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            <span class="align-middle">Your Information Is SSL Encrypted.</span>
+            <div class="pt-3 border-t mt-4">
+                <div class="text-sm uppercase font-semibold text-slate-500">Have an emergency? Call us now!</div>
+                <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+            </div>
         </div>
 
+        <div id="form-content" class=""
 
-        <div class="text-center pt-3 border-t mt-4">
-            <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
-             <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
-        </div>
+            <h4 class="text-4xl mt-6">Request Your AC Tune-Up</h4>
+            <p class="my-4">Enter your information below to get started. One of our representatives will contact you <b>within 20 minutes</b> to confirm your appointment.</p>
+
+            <form
+                  hidden
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                >
+                  <label><input type="text" name="name" /></label>
+                  <label><input type="email" name="email" /></label>
+                  <label><input type="tel" name="phone" /></label>
+            </form>
+
+            <form
+                class="grid grid-cols-1 gap-2 text-left"
+                id="contact"
+
+                x-data = "{
+                    name : '',
+                    nameDirty: false,
+                    email: '',
+                    emailDirty: false,
+                    phone: '',
+                    phoneDirty: false,
+                }"
+                x-on:submit.prevent="
+                    nameDirty = true;
+                    emailDirty = true;
+                    phoneDirty = true;
+                    submitMessage(name, email, phone);"
+            >
+                <p hidden><label>ignore: <input name="bot-field" /></label></p>
+
+                <input type="hidden" name="form-name" value="contact" />
+
+                <input
+                    type="text" name="name" placeholder="Full name"
+
+                    x-model="name"
+                    x-on:blur="nameDirty = true"
+                    x-bind:class="{'invalid':nameDirty && name.length < 3}"
+                >
+                <p x-show.transition="nameDirty && name.length < 3" x-cloak class="error-message">Please enter your full name.</p>
+
+
+                <input
+                    type="tel" name="phone" placeholder="Phone number"
+
+                    x-mask="(999) 999-9999"
+                    x-model="phone"
+                    x-on:blur="phoneDirty = true"
+                    x-bind:class="{'invalid':phoneDirty && phone.length < 14}"
+                >
+                <p x-show.transition="phoneDirty && phone.length < 14" x-cloak class="error-message">Please enter valid phone number.</p>
+
+
+                <input
+                    type="email" name="email" placeholder="Email address"
+
+                    x-model="email"
+                    x-on:blur="emailDirty = true"
+                    x-bind:class="{'invalid':emailDirty && !isEmail(email)}"
+                >
+                <p x-show.transition="emailDirty && !isEmail(email)" x-cloak class="error-message">Please enter valid email addresss.</p>
+
+                <button type="submit" class="col-span-full !px-0 btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Request My AC Tune-Up!
+                </button>
+
+            </form>
+
+
+            <div class="text-center mt-4 text-xs text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                <span class="align-middle">Your Information Is SSL Encrypted.</span>
+            </div>
+
+
+            <div class="text-center pt-3 border-t mt-4">
+                <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
+                 <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+            </div>
+
+        </div><!-- /End Form Content -->
     </div>
 </div>
 
@@ -195,7 +177,7 @@
         <div class="w-[100px] md:w-[125px] bg-white rounded-full p-1 -mb-12 -mt-4 z-10">
             <img class="w-full" src="assets/images/logo-color.png" alt="Logo">
         </div>
-        <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Helping <span class="font-semibold">Las Vegas & Henderson</span> Residents For 25+ Years</div>
+        <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Serving <span class="font-semibold">Las Vegas</span> Residents For 25+ Years</div>
         <!-- Call CTA -->
         <div class="flex w-auto ml-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
             <div class="flex flex-1 justify-end flex-col">

@@ -72,11 +72,12 @@
             if (response.ok) {
                 formElement.reset();
                 document.getElementById('form-success').classList.remove('hidden');
-                formElement.classList.add('hidden');
-                alert("Thank you for your message!");
-                //console.log('Success');
+                document.getElementById('form-content').classList.add('hidden');
+                //alert("Thank you for your message!");
             } else {
-                //console.log('Error');
+                let errorMessage = `<div class="text-red-500">Something went wrong. Please try again later.</div>`;
+                formElement.insertAdjacentHTML('afterbegin', errorMessage);
+
                 throw new Error(`Something went wrong: ${response.statusText}`);
             }
         })
