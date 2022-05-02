@@ -126,18 +126,19 @@
 
                  <form
                       hidden
-                      name="AC Replacement"
+                      name="contact"
                       method="POST"
                       data-netlify="true"
                       netlify-honeypot="bot-field"
                     >
                       <label><input type="text" name="name" /></label>
                       <label><input type="email" name="email" /></label>
-                      <label><input type="tel" name="phone" />/label>
+                      <label><input type="tel" name="phone" /></label>
                 </form>
 
                 <form
                     class="grid grid-cols-1 gap-2 text-left"
+                    id="contact"
 
                     x-data = "{
                         name : '',
@@ -152,13 +153,10 @@
                         emailDirty = true;
                         phoneDirty = true;
                         submitMessage(name, email, phone);"
-                        id="lead-form"
                 >
-                    <p hidden>
-                        <label>ignore: <input name="bot-field" /></label>
-                    </p>
+                    <p hidden><label>ignore: <input name="bot-field" /></label></p>
 
-                    <input type="hidden" name="AC Replacement" value="lead-form" />
+                    <input type="hidden" name="form-name" value="contact" />
 
                     <input
                         type="text" name="name" placeholder="Full name"
