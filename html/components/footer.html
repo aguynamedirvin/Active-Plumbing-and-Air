@@ -72,7 +72,9 @@
             if (response.ok) {
                 formElement.reset();
                 alert("Thank you for your message!");
+                console.log('Success')
             } else {
+                console.log('Error')
                 throw new Error(`Something went wrong: ${response.statusText}`);
             }
         })
