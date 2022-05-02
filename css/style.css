@@ -23,14 +23,13 @@ h6 {
 
 
 .btn {
-    @apply bg-red-600 hover:bg-red-700 shadow-md py-5 px-9 rounded-md transition duration-300 font-bold text-lg
+    @apply inline-flex text-white items-center text-left bg-red-600 hover:bg-red-700 shadow-md py-4 px-9 rounded-md transition duration-300 font-semibold text-lg
 }
-
-.btn--primary {
-    @apply text-white
+.btn--secondary {
+  @apply bg-secondary
 }
 .btn--white {
-    @apply bg-slate-50
+    @apply text-black bg-slate-50
 }
 
 
@@ -112,7 +111,7 @@ input[type=tel].invalid {
     @apply flex flex-row
 }
 .icon-list li .icon-list-icon {
-    @apply self-start mt-1 mr-3
+    @apply self-start mr-3
 }
 .icon-list .icon-list-text {
     @apply inline-block

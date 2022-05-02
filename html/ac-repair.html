@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AC Not Keeping You Cool? Call Us Today! Restore Back The Comfor Comfort of Your Home – Active Plumbing & Air Conditioning</title>
+    <meta name="description" content="Is Your AC Not Keeping You Cool? Call Us Today! Restore Back The Comfor Comfort of Your Home – Active Plumbing & Air Conditioning">
+    <meta name="author" content="Active Plumbing & Air Conditioning">
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Is Your AC Not Keeping You Cool? Call Us Today! Restore Back The Comfor Comfort of Your Home – Active Plumbing & Air Conditioning">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.google.com/blueprint">
+    <meta property="og:description" content="$0 Down, 0% Interest For Up to 60-Months On New AC Replacements. Contact us today for a free esimtate!">
+    <meta property="og:image" content="image.png">
+
+    <!-- Favicons & Touch Icons -->
+    <link rel="icon" href="assets/images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- JavaScript -->
+    <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
+    <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body class="font-poppins" x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
+
+<div class="hidden" :class="showModal ? 'overlay' : ''" x-show="showModal" x-cloak></div>
+<div
+    class="modal"
+
+    x-show="showModal"
+    :class="showModal ? 'open' : ''"
+
+
+
+    x-transition:enter="motion-safe:ease-out duration-500"
+    x-transition:enter-start="opacity-0 scale-90"
+    x-transition:enter-end="opacity-100 scale-100"
+
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-90">
+    <div
+        class="modalInner text-center"
+
+        @click.away="showModal = true"
+    >
+
+        <button class="closeModal-btn" aria-label="Close" @click="showModal=false">
+            <!--✖-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[50px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </button>
+
+        <div class="p-2 rounded-tl-md absolute top-0 left-0 bg-green-500/80 text-white w-full">
+            <svg class="inline-flex w-5 mr-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            $50 OFF First AC AC Repair Job Applied
+        </div>
+
+        <!-- Success Message -->
+        <div id="form-success" class="hidden text-center">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+            <p class="text-4xl mb-4 font-semibold">Thank you!</p>
+            <p class="text-lg mb-4">We have received your AC Repair request. One of our representatives will contact you shortly.</p>
+
+            <div class="pt-3 border-t mt-4">
+                <div class="text-sm uppercase font-semibold text-slate-500">Have an emergency? Call us now!</div>
+                <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+            </div>
+        </div>
+
+        <div id="form-content" class="">
+            <h4 class="text-4xl mt-6">Schedule Your AC Repair</h4>
+            <p class="my-4">Enter your information below and we'll give you a call back <b>within 20 minutes</b> to set up your appointment.</p>
+
+            <form
+                hidden
+                name="AC Repair"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+            >
+                <input type="text" name="name" />
+                <input type="email" name="email" />
+                <input type="tel" name="phone" />
+                <input type="text" name="campaign" />
+                <input type="text" name="keyword" />
+                <input type="text" name="gclid" />
+            </form>
+
+            <form
+                class="grid grid-cols-1 gap-2 text-left"
+                id="lead-form"
+
+                x-data = "{
+                    name : '',
+                    nameDirty: false,
+                    email: '',
+                    emailDirty: false,
+                    phone: '',
+                    phoneDirty: false,
+                }"
+                x-on:submit.prevent="
+                    nameDirty = true;
+                    emailDirty = true;
+                    phoneDirty = true;
+                    submitMessage(name, email, phone, campaign, keyword, gclid);"
+            >
+                <p hidden><label>ignore: <input name="bot-field" /></label></p>
+
+                <input type="hidden" name="form-name" value="AC Repair" />
+
+                <input
+                    type="text" name="name" placeholder="Full name"
+
+                    x-model="name"
+                    x-on:blur="nameDirty = true"
+                    x-bind:class="{'invalid':nameDirty && name.length < 3}"
+                >
+                <p x-show.transition="nameDirty && name.length < 3" x-cloak class="error-message">Please enter your full name.</p>
+
+
+                <input
+                    type="tel" name="phone" placeholder="Phone number"
+
+                    x-mask="(999) 999-9999"
+                    x-model="phone"
+                    x-on:blur="phoneDirty = true"
+                    x-bind:class="{'invalid':phoneDirty && phone.length < 14}"
+                >
+                <p x-show.transition="phoneDirty && phone.length < 14" x-cloak class="error-message">Please enter valid phone number.</p>
+
+
+                <input
+                    type="email" name="email" placeholder="Email address"
+
+                    x-model="email"
+                    x-on:blur="emailDirty = true"
+                    x-bind:class="{'invalid':emailDirty && !isEmail(email)}"
+                >
+                <p x-show.transition="emailDirty && !isEmail(email)" x-cloak class="error-message">Please enter valid email addresss.</p>
+
+                <input hidden type="text" name="campaign">
+                <input hidden type="text" name="keyword">
+                <input hidden type="text" name="gclid">
+
+                <button type="submit" class="col-span-full !px-0 btn btn--primary mt-3 flex-row inline-flex justify-center uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 group-hover:translate-x-1 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>Request AC Repair
+                </button>
+
+            </form>
+
+
+            <div class="text-center mt-4 text-xs text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                <span class="align-middle">Your Information Is SSL Encrypted.</span>
+            </div>
+
+
+            <div class="text-center pt-3 border-t mt-4">
+                <div class="text-sm uppercase font-semibold text-slate-500">Or call us now</div>
+                <a class="font-bold text-2xl text-blue-600" href="tel:7025531171">(702) 553-1171</a>
+            </div>
+        </div><!-- /End Form Content -->
+    </div>
+</div>
+
+
+
+<!-- Header -->
+<header>
+    <nav class="container flex items-center py-3 md:py-4 gap-12">
+        <div class="w-[100px] md:w-[125px] bg-white rounded-full p-1 -mb-12 -mt-4 z-10">
+            <img class="w-full" src="assets/images/logo-color.png" alt="Logo">
+        </div>
+        <div class="w-90 text-sm hidden md:inline-block">Local Las Vegas Heating & Cooling Specialists<br>Serving <span class="font-semibold">Las Vegas</span> Residents For 25+ Years</div>
+        <!-- Call CTA -->
+        <div class="flex w-auto ml-auto shrink-0 items-center gap-1 md:gap-3 flex-row">
+            <div class="flex flex-1 justify-end flex-col">
+                <span class="italic text-md">Call Us & We're On Our Way!</span>
+                <a class="flex flex-row font-bold text-3xl" href="tel:7025531171">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                    (702) 553-1171
+                </a>
+            </div>
+        </div><!-- /Call CTA -->
+    </nav>
+</header>
+
+<!-- Free Estimate Banner -->
+<div class="bg-secondary p-2 text-center">
+    <p class="text-xl text-white">Call Us Today For A FREE Estimate</p>
+</div>
+
+
+<!-- Hero -->
+<section class="relative bg-secondary--dark py-6 md:py-14 image-box" style="background-image: url(assets/images/hero-image.jpeg); background-position: center; background-size: cover">
+
+    <div class="absolute h-full w-full bg-black opacity-70 z-0 top-0"></div>
+
+    <div class="container md:w-10/12 relative flex flex-col text-white text-center z-20 place-items-center">
+            <p class="text-xl mb-4">Fast, Affordable A/C Repair, Tune-Up, and Maintenance Services from Active Plumbing & Air Conditioning</p>
+            <h1 class="text-4xl md:text-5xl mb-6 font-semibold leading-tight md:leading-tight text-white">Reliable, <u><i>Same-Day</i> A/C Repair & Service</u></h1>
+            <p class="text-lg md:text-xl leading-relaxed">Affordable local HVAC technicians for all your ac installation, repair, and tune-up needs. No hidden costs and competitive, affordable pricing on all services. Contact our team today for service details and up-front pricing.</p>
+    </div>
+
+    <!-- Benefits -->
+    <div class="container relative z-20 w-fit my-8">
+        <ul class="text-xl grid md:grid-cols-2 gap-4 icon-list text-white">
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Same / Next Day Appointments</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                   <span class="icon-list-text">Thousands Of Happy Customers</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">We Service & Repair All Makes & Models</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">97% of Jobs Completed the Same-Day</span>
+                </li>
+            </ul>
+    </div>
+
+
+    <!-- CTA -->
+    <div class="container relative flex flex-col text-center z-20 place-items-center mb-12 text-white">
+        <p class="text-2xl font-semibold">Call Now To Schedule Your AC Service & Get $50 OFF Your First Job</p>
+        <!-- Button -->
+        <a href="tel:7025531171" class="btn justify-center my-8">
+            <span class="inline-flex p-3 bg-red-700 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+            </span>
+            <span class="flex flex-col">
+                <span class="italic text-base font-normal">Get A Free No-Obligation Quote!</span>
+                <span class="text-3xl">(702) 553-1171</span>
+            </span>
+        </a><!-- /Button -->
+        <p class="text-xl mb-4 font-medium">You'll love our high-quality, <i>fast</i>, and professional service or it's <b>FREE.</b></p>
+        <p class="italic font-medium text-lg">Extra discount available for seniors and veterans</p>
+    </div><!-- /CTA -->
+
+
+</section>
+<!-- End Hero -->
+
+
+<!-- Accreditationss
+<div class="pt-12 mt-20 md:mt-0">
+    <div class="container">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-16 md:gap-12 lg:gap-24 justify-items-center place-items-center">
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/bonded-and-insured.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/elite.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/soap.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/toprated.jpeg" alt="accreditation" />
+            <img loading="lazy" class="lazy" data-src="assets/images/google-5-stars-badge.png" alt="accreditation" />
+        </div>
+    </div>
+</div>
+-->
+
+
+<!-- About -->
+<section class="py-24 container">
+    <div class="flex flex-col md:flex-row gap-24">
+        <div class="flex md:w-1/2">
+            <img loading="lazy" class="lazy rounded-lg shadow-xl" data-src="assets/images/HVAC-maintenance.jpg" alt="HVAC Maintenance and Tune-Up" />
+        </div>
+        <div class="flex-col md:w-1/2">
+            <h2 class="text-5xl mb-4 font-semibold leading-tight">Complete Heating & Cooling Services</h2>
+            <p class="text-xl text-lg leading-relaxed mb-6">We Are Your <b>Local Las Vegas, TX HVAC Experts</b>. If You're Looking For <b>Residential or Commercial HVAC Services</b>, Active Plumbing & Air Conditioning Is The Only Name You Can Rely On!</p>
+            <p class="my-4 text-xl font-semibold">Our HVAC Services:</p>
+            <ul class="icon-list flex flex-col gap-2 font-semibold mb-6">
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Air Conditioner Installation & Replacement</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">A/C Repair & Maintenance</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">A/C Tune-Ups</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Mini-Split Installation & Repair</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Commercial HVAC Repair & Maintenance</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-7 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Compressor Replacements</span>
+                </li>
+            </ul>
+            <p class="text-xl mb-6 leading-relaxed font-semibold">Call Active Plumbing & Air Conditioning today to schedule you AC service.</p>
+
+            <!-- Button -->
+            <a href="tel:7025531171" class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex mr-3 h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                Call Now! (702) 553-1171
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonials -->
+<section class="bg-secondary-dark relative text-white bg-center bg-[url('https://activeplumbingandair.com/wp-content/uploads/2022/04/about-us-bg-img-4.jpg')] bg-cover">
+    <div class="bg-gradient-to-r from-blue-900/90 to-black/80">
+        <div class="container flex flex-col py-24 text-center place-items-center">
+
+            <h2 class="text-5xl mb-12 leading-tight text-white">A Customer Focused Approach To Comfort</h2>
+            <span class="text-2xl tracking-[.3em] mb-6 text-yellow-600">★★★★★</span>
+            <p class="text-xl md:text-2xl italic leading-relaxed">“Wonderful and professional experience. Extremely knowledgeable technician. Swiftly diagnosed the root of the problem. Would recommend Jesse or anyone of the technicians for repair. This is a review from a home owner who recently had previous disappointing experience with a ac service. Highly recommended Active Plumbing to anyone!!!!”</p>
+            <div class="flex flex-row mt-12 place-items-center">
+                <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
+                    <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/dakees-jetton.png">
+                </div>
+                <div class="flex flex-col text-left">
+                    <p class="text-lg">dakees jetton</p>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <div class="w-5 h-5">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path style="fill:#fbbb00" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456C103.821,274.792,107.225,292.797,113.47,309.408z"/><path style="fill:#518ef8" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"/><path style="fill:#28b446" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"/><path style="fill:#f14336" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0C318.115,0,375.068,22.126,419.404,58.936z"/></svg>
+                        </div>
+                        <div class="text-sm start">
+                            Google Review
+                            <div class="text-xs opacity-70">3 Months Ago</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Should I Replace AC -->
+<section class="py-24">
+    <div class="container flex flex-col md:flex-row md:flex-row-reverse place-items-center">
+        <div class="md:w-5/12 mb-16 md:mb-0">
+            <img loading="lazy" class="lazy rounded-lg shadow-xl" data-src="assets/images/ac-unit-outdoors-123.jpg" alt="" loading="lazy">
+        </div>
+        <div class="md:w-7/12 md:mr-24">
+            <h2 class="text-5xl mb-6 leading-tight">HVAC Services That Fix Your Issue FAST & Affordably</h2>
+            <p class="text-lg leading-relaxed">If you’re looking for a <b>local, reliable HVAC company</b>, you’ve come to the right place! Finding a quality Las Vegas AC repair specialist is just a call away. Our HVAC technicians are <b>expertly trained, and certified</b> with the know-how to assess your air conditioner’s needs anytime of the day. <b>Our AC repair techs are available 24 hours a day, 7 days a week.</b></p>
+            <p class="text-lg font-semibold mt-8 mb-4">Our HVAC Specialists Will Solve Any AC Issue:</p>
+            <ul class="icon-list my-6 text-lg font-semibold grid md:grid-cols-2 gap-4">
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Blowing Hot Or Warm Air</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Thermostat Issues</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Unusual or Loud Noises</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Refrigerant Leaks</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Blower Running Excessively</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Tripping Circuit Breakers</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Pilot or Ignotion Problems</span>
+                </li>
+                <li class="py-2 border-b">
+                    <span class="icon-list-icon h-6 w-6 mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                    </span>
+                    <span class="icon-list-text">Mechanical Wear & tear</span>
+                </li>
+            </ul>
+            <p class="text-lg leading-relaxed mb-6"><b>Is your AC having any of these issues? Call us today!</b> Our mobile technicians are in your neighborhood and ready to help.</p>
+            <!-- Button -->
+            <a href="tel:7025531171" class="btn text-left">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex mr-3 h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                Call Now! (702) 553-1171
+            </a>
+            <p class="text-lg mt-4">Same-day service available</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Special Offer CTA -->
+<section class="bg-blue-900">
+    <div class="container flex flex-col text-center text-white place-items-center py-12">
+        <h2 class="text-4xl leading-tight mb-4 text-white">Best Prices & Service 24 Hours 7 Days a Week!</h2>
+        <!-- Button -->
+        <a href="tel:7025531171" class="btn text-left">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex mr-3 h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+            Call Now! (702) 553-1171
+        </a>
+    </div>
+</section>
+
+
+<!-- Why Us -->
+include "components/section-why-us.html"
+
+
+<!-- Testimonials -->
+<section class="bg-blue-900 bg-center bg-[url('https://activeplumbingandair.com/wp-content/uploads/2022/04/about-us-bg-img-4.jpg')] bg-cover">
+    <div class="bg-gradient-to-r from-blue-900/90 to-black/80">
+        <div class="container flex flex-col py-24 items-center">
+
+        <div class="text-center text-white mb-16">
+            <p class="text-lg mb-4">Rated 4.9 Stars From 4,000+ Homeowners!</p>
+            <h2 class="text-4xl md:text-5xl mb-6 leading-tight text-white">Customers Are Breathing In The Difference</h2>
+            <div class="max-w-screen-md mx-auto">
+                <p class="text-xl leading-relaxed">Thousands Of Happy Customers Choose Active Plumbing & Air Conditioning Every Year. Here’s What A Few Of Them Had To Say Working With Us:</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12">
+            <!-- Testimonial One -->
+            <div class="flex flex-1 flex-col bg-white rounded-md p-12">
+                <span class="text-xl tracking-[.3em] mb-4 text-yellow-600">★★★★★</span>
+                <p class="italic text-base">"We were having some issues with our furnace. I had a different company come out and couldn't diagnose it. TL came in and knew right away what the issue was and had it resolved right away. Great technician and an honest company. I will use them again."</p>
+                <div class="flex flex-row mt-12 place-items-center">
+                    <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6 bg-blue-400 flex items-center text-center">
+                        <div class="text-white font-bold w-full">B</div>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-lg">Brian Levanger</p>
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="w-4 h-4">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path style="fill:#fbbb00" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456C103.821,274.792,107.225,292.797,113.47,309.408z"/><path style="fill:#518ef8" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"/><path style="fill:#28b446" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"/><path style="fill:#f14336" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0C318.115,0,375.068,22.126,419.404,58.936z"/></svg>
+                            </div>
+                            <div class="text-sm">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Two -->
+            <div class="flex flex-1 flex-col bg-white rounded-md p-12">
+                <span class="text-xl tracking-[.3em] mb-4 text-yellow-600">★★★★★</span>
+                <p class="italic text-base">"Technician was very professional and helpful. Came out on Christmas day to replace a failed AC unit in my home. I had an excellent experience with Active Pluming. Receptionist was very knowledge and it was easy to setup an appointment. Fast and Reliable service. Will recommend them to anyone and I will be using their service again if needed."</p>
+                <div class="flex flex-row mt-12 place-items-center">
+                    <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6">
+                        <img loading="lazy" class="lazy w-full h-full absolute" data-src="assets/images/person-1.jpg" alt="Jason P.">
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-lg">Sarah Wilson</p>
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="w-4 h-4">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path style="fill:#F44336;" d="M128.477,23.317c26.016-20.32,76.032-26.112,96.608-22.144c20.608,3.936,31.36,15.36,31.488,29.312l1.184,177.504c0.096,13.952-7.2,26.752-16.224,28.48c-9.056,1.696-22.4-6.592-29.76-18.464L117.917,65.781C110.653,53.909,95.997,48.661,128.477,23.317L128.477,23.317z M97.309,360.917l94.496-33.184c13.152-4.64,24.96-17.536,26.272-28.736c1.28-11.2-8.288-24.512-21.28-29.6l-99.808-39.264c-12.992-5.12-28,6.976-31.936,26.752c0,0-2.368,68.896,0,83.136C67.453,354.293,84.125,365.589,97.309,360.917L97.309,360.917z M262.141,377.525c0.256-13.984-7.232-26.048-16.704-26.912c-9.472-0.864-24.512,7.136-33.504,17.792l-65.92,78.464c-8.96,10.656-4.512,35.68,8.576,40.448l68.928,23.744c13.12,4.736,36.224-9.28,36.48-23.232L262.141,377.525L262.141,377.525zM425.949,359.253l-82.656-23.584c-13.408-3.84-28.608-3.456-33.76,0.864c-5.152,4.256-3.872,17.792,2.88,30.016l52.16,94.752c6.72,12.192,33.728,10.112,41.152-1.728c0,0,31.424-46.016,37.216-63.296C448.733,378.965,439.357,363.061,425.949,359.253L425.949,359.253z M446.077,226.005c-3.712-12-29.568-47.328-43.552-59.36c-13.984-12.064-29.984-10.56-38.976,0.032l-53.28,63.008 c-9.024,10.592-11.456,27.424-5.44,37.28c6.016,9.888,22.048,15.488,35.68,12.448l92.128-16.96C449.277,258.485,449.885,238.005,446.077,226.005L446.077,226.005z"/></svg>
+                            </div>
+                            <div class="text-sm">Yelp Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Three -->
+            <div class="flex flex-1 flex-col bg-white rounded-md p-12">
+                <span class="text-xl tracking-[.3em] mb-4 text-yellow-600">★★★★★</span>
+                <p class="italic text-base">"Technician Tony did a FANTASTIC job, really went above and beyond, took the extra time to make sure the job was done properly."</p>
+                <div class="flex flex-row mt-12 place-items-center">
+                    <div class="w-14 h-14 rounded-full relative overflow-hidden mr-6 bg-red-400 flex items-center text-center">
+                        <div class="text-white font-bold w-full">S</div>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-lg">Steven Troy</p>
+                        <div class="flex flex-row items-center gap-2">
+                            <div class="w-4 h-4">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"><path style="fill:#fbbb00" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456C103.821,274.792,107.225,292.797,113.47,309.408z"/><path style="fill:#518ef8" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"/><path style="fill:#28b446" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"/><path style="fill:#f14336" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0C318.115,0,375.068,22.126,419.404,58.936z"/></svg>
+                            </div>
+                            <div class="text-sm">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- What Happens Next -->
+<section class="py-24">
+    <!-- Heading -->
+    <div class="container flex flex-col items-center">
+        <div class="text-center">
+            <h2 class="text-4xl md:text-5xl mb-6 leading-tight md:leading-tight">Here's How Our Team Fixes Your AC Quickly & Affordably</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 my-16">
+
+            <div class="flex">
+                <div class="w-12 mr-6">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="flex-row flex-1">
+                    <h3 class="font-bold text-lg mb-2">1. Call Us To Schedule Your Appointment</h3>
+                    <p class="text-lg">Call us at <a class="font-bold text-blue-600 underline" href="tel:7025531171">(702) 553-1171</a> to schedule your in-home asssesment at a day and time that's convenient for you. You'll get advice, options, and up-front pricing going before you agree to go with any HVAC service.</p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="w-12 mr-6">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="flex-row flex-1">
+                    <h3 class="font-bold text-lg mb-2">2. We'll Repair The Issue FAST & Efficiently + Workmanship Guarantee</h3>
+                    <p class="text-lg">No surprises. Once you've agreed to go ahead, our team comes out to your home and fixes your AC issue.</p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="w-12 mr-6">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 fill-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="flex-row flex-1">
+                    <h3 class="font-bold text-lg mb-2">3. Relax and Keep Your Home Comfortable With No Mess Left Behind</h3>
+                    <p class="text-lg">Sit back and relax as your trained HVAC professional fixes the AC problem right the first time. Most AC issues can be solved in half a day or less.</p>
+                </div>
+            </div>
+        </div>
+        <button @click="showModal = true" class="btn btn--primary">Schedule A Repair</button>
+        <p class="text-lg mt-6">Or call us at <a class="font-bold text-blue-600" href="tel:7025531171">(702) 553-1171</a></p>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="bg-blue-900 py-24">
+    <div class="container flex flex-col items-center">
+        <div class="text-center text-white">
+            <h2 class="text-3xl md:text-5xl mb-6 leading-tight md:leading-tight text-white">Ready For Quality Service? Call Active Plumbing & Air Conditioning.</h2>
+            <p class="text-xl">Call Active Plumbing & Air Conditioning Today To Schedule Your AC Repair</p>
+
+            <a href="tel:7025531171" class="btn text-left my-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex mr-3 h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                Call Now! (702) 553-1171
+            </a>
+
+            <ul class="hidden text-lg text-left icon-list grid md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-12 text-white place-items-center md:place-items-start">
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Same / Next Day Appointments</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                   <span class="icon-list-text">Free No-Obligation, Up-Front Quotes</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">We Services & Repair All Makes & Models</span>
+                </li>
+                <li>
+                    <svg class="icon-list-icon w-8 mr-3 fill-green-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    <span class="icon-list-text">Available 24 Hours, 7 Days A Week</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+include "components/footer.html"
