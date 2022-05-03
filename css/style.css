@@ -23,7 +23,7 @@ h6 {
 
 
 .btn {
-    @apply inline-flex text-white items-center text-left bg-red-600 hover:bg-red-700 shadow-md py-4 px-9 rounded-md transition duration-300 font-semibold text-lg
+    @apply text-white items-center text-left bg-red-600 hover:bg-red-700 shadow-md py-4 px-9 rounded-md transition duration-300 font-semibold text-lg
 }
 .btn--secondary {
   @apply bg-secondary
