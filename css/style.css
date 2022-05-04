@@ -108,7 +108,7 @@ input[type=tel].invalid {
     @apply flex flex-col md:flex-row
 }
 .icon-list li {
-    @apply flex flex-row
+    @apply flex flex-row py-1
 }
 .icon-list li .icon-list-icon {
     @apply self-start mr-3
