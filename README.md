@@ -1,5 +1,5 @@
 # Use
-1. Install latest <a href="https://nodejs.org/en/">Node.JS</a> and <a href="https://www.npmjs.com/">NPM</a>
+1. Install latest <a href="https://nodejs.org/en/">Node.JS</a>, <a href="https://www.npmjs.com/">NPM</a>, and <a href="https://gruntjs.com/getting-started">Grunt CLI (globally)</a>
 2. Run `npm install` within the project folder in Terminal
 3. Run `npm build` (first time only)
 4. Run `grunt` to start file watching. Boom!
