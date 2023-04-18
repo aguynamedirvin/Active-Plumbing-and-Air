@@ -39,9 +39,11 @@
 <!-- Header -->
 <header class="">
     <div class="container flex items-center gap-2 md:gap-5 py-3 md:py-5">
+
         <div class="w-20 md:w-24 relative self-stretch">
             <img class="w-full absolute -top-1 md:-top-3 -left-3" src="assets/images/logo-color.png" alt="Logo">
         </div>
+
         <div class="hidden md:block text-sm md:text-base">
             <div>Las Vegas HVAC Pros</div>
             <div class="text-green-600">
@@ -49,49 +51,66 @@
                 OPEN until 5pm
             </div>
         </div>
+
         <div class="text-right ml-auto shrink-0 text-sm md:text-base">
             <div class="text-small">For a Free Estimate Call</div>
             <a href="tel:+1" class="font-bold text-lg flex gap-1 items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-                </svg>                  
+                </svg>
                 (999) 999-9999
             </a>
         </div>
+
     </div>
 </header>
 
 
 <!-- Hero -->
-<section class="bg-blue-900">
-    <div class="md:hidden bg-slate-300 min-h-[200px]">
-        Image Here
+<section class="bg-blue-900 md:bg-[url('../images/hero-image.jpeg')] bg-cover bg-center relative">
+
+    <!-- Background Overlay for Table & Desktop -->
+    <div class="hidden md:block bg-blue-900 bg-opacity-90 absolute w-full h-full"></div>
+
+    <div class="md:hidden bg-slate-300 h-[200px] overflow-hidden">
+        <img src="assets/images/hero-image.jpeg" />
     </div>
 
-    <div class="container grid lg:grid-cols-12 gap-10 py-6">
+    <div class="container grid lg:grid-cols-12 gap-10 py-6 md:py-24 relative">
+
         <div class="lg:col-span-8 md:py-10 space-y-3 text-white">
             <h1 class="text-2xl md:text-4xl">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
             <p>25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
-            <p>Schedule Your FREE Consultation & Estimate Today!</p>
+            <p>Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
+            
             <div class="flex flex-col gap-4 md:flex-row">
                 <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
-                <a href="#" class="font-semibold text-center px-12 py-3 rounded text-white border border-white">Or call us: (999) 999-3434</a>
+                <a href="#" class="font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                    </svg>
+                    Or call us: (999) 999-3434
+                </a>
             </div>
+
         </div>
+
         <div class="hidden lg:col-span-4 lg:flex flex-col bg-white p-8">
             <h3 class="text-2xl">Request A Free Quote & Consultation</h3>
             <p>Form for free quote goes here</p>
             <form>
                 <input type="text" placeholder="Zip Code">
-                <button type="submit" class="font-semibold text-center px-12 py-3 bg-red-700 rounded text-white border border-red-700">Next</button>
+                <button type="submit" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Next</button>
             </form>
         </div>
+
     </div>
+    
 </section>
 
 
 <!-- Benefits -->
-<section class="container py-10 md:py-16">
+<section class="container py-10">
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <div class="flex flex-row gap-4">
@@ -100,7 +119,7 @@
             </div>
             <div>
                 <h3 class="text-lg">Affordable Financing</h3>
-                <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                <p class="text-gray-700">We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-120 months.</p>
             </div>
         </div>
 
@@ -110,7 +129,7 @@
             </div>
             <div>
                 <h3 class="text-lg">Done Right Gurantee</h3>
-                <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                <p class="text-gray-700">When we install your new HVAC system, we do it right. If your system doesn’t perform to spec, we make it right with repairs or a refund.</p>
             </div>
         </div>
 
@@ -119,8 +138,8 @@
                 <svg class="w-5 h-5" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
             </div>
             <div>
-                <h3 class="text-lg">Done Right Gurantee</h3>
-                <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                <h3 class="text-lg">Licensed & Experienced Technicians</h3>
+                <p class="text-gray-700">99% of installations are typically completed in a day or less.</p>
             </div>
         </div>
 
@@ -130,7 +149,7 @@
             </div>
             <div>
                 <h3 class="text-lg">Same-Day Installation</h3>
-                <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                <p class="text-gray-700">We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
             </div>
         </div>
 
@@ -140,10 +159,13 @@
 
 
 <!-- Process -->
-<section class="py-10 md:py-16">
-    <div class="container flex flex-col items-center">
-        <h2 class="text-2xl md:text-4xl text-center mb-3">How It Works: Our HVAC System Replacement Process</h2>
-        <p class="text-center text-lg">A Seamless, Stress-Free Process – Ensuring Your Home's Comfort & Efficiency</p>
+<section class="py-10 md:py-24">
+    <div class="container flex flex-col">
+        
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-4xl mb-3">How It Works: Our HVAC System Replacement Process</h2>
+            <p class="text-lg">A Seamless, Stress-Free Process – Ensuring Your Home's Comfort & Efficiency</p>
+        </div>
 
         <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-6 py-6">
             <div class="flex flex-row gap-4">
@@ -151,8 +173,8 @@
                     1
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Call To Schedule Your Free Expert Consultation & Get a Free Estimate</h3>
+                    <p class="text-gray-700">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
                 </div>
             </div>
 
@@ -161,8 +183,8 @@
                     2
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Expert Installation With Workmanship Gurantee</h3>
+                    <p class="text-gray-700">When you're ready to move forward, we'll schedule a convenient installation date. Our team of experts will bring all equipment and supplies necessary to install your new system and thoroughly clean up the job site. HVAC installation can typically be completed in a single day.</p>
                 </div>
             </div>
 
@@ -171,15 +193,15 @@
                     3
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Quality Assurance & Follow-Up</h3>
+                    <p class="text-gray-700">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-col gap-4 items-center">
-            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Schedule a Consultation</a>
-            <a href="#" class="font-semibold">Or call us: (999) 999-9999</a>
+        <div class="flex flex-col gap-4 md:items-center">
+            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Request an Appointment</a>
+            <a href="#" class="font-semibold self-center">Or call us: (999) 999-9999</a>
         </div>
 
     </div>
@@ -188,67 +210,177 @@
 
 
 <!-- Why Us -->
-<section class="py-10">
-    <div class="container flex flex-col items-center">
-        <h2 class="text-2xl md:text-4xl text-center mb-3">Why Is Active Plumbing & Air Conditioning Is Trusted By Thousands of Homeowners In Las Vegas?</h2>
-        <p class="text-center text-lg">Unparalleled Expertise, Quality Workmanship & a Commitment to Your Satisfaction</p>
+<section class="py-10 md:py-24">
+    <div class="container flex flex-col">
+
+        <div class="text-center">
+            <h2 class="text-2xl md:text-4xl mb-3">Why Is Active Plumbing & Air Conditioning Is Trusted By Thousands of Homeowners In Las Vegas?</h2>
+            <p class="text-lg">Unparalleled Expertise, Quality Workmanship & a Commitment to Your Satisfaction</p>
+        </div>
 
         <div class="grid md:grid-cols-2 gap-6 md:gap-9 py-6">
             <div class="flex flex-row gap-4">
                 <div class="rounded-full bg-green-700 w-8 h-8 flex items-center justify-center shrink-0 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>                      
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Industry Leading Experts: Over 25 Years of Experience</h3>
+                    <p class="text-gray-700">For over 25 years we’ve been the trusted HVAC experts in Las Vegas with over 40,000 satisfied customers and an A+ rating with the Better Business Bureau.</p>
                 </div>
             </div>
 
             <div class="flex flex-row gap-4">
                 <div class="rounded-full bg-green-700 w-8 h-8 flex items-center justify-center shrink-0 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>  
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Exceptional Customer Service: "Better of The Best" Guarantee</h3>
+                    <p class="text-gray-700">We continue to delight the homeowners of our community with legendary “Better of the Best” service.</p>
                 </div>
             </div>
 
             <div class="flex flex-row gap-4">
                 <div class="rounded-full bg-green-700 w-8 h-8 flex items-center justify-center shrink-0 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">Licensed & Experienced Technicians</h3>
+                    <p class="text-gray-700">All our staff are licensed, insured and trained to the highest standard of work and ethics.</p>
                 </div>
             </div>
 
             <div class="flex flex-row gap-4">
                 <div class="rounded-full bg-green-700 w-8 h-8 flex items-center justify-center shrink-0 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-lg">Affordable Financing</h3>
-                    <p>We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
+                    <h3 class="text-lg">High-Quality Products & Services</h3>
+                    <p class="text-gray-700">We offer a wide range of flexible, low-interest financing options to fit any budget. With terms ranging from 12-60 months.</p>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-col gap-4 items-center">
+        <div class="flex flex-col gap-4 md:items-center">
             <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Schedule a Consultation</a>
-            <a href="#" class="font-semibold">Or call us: (999) 999-9999</a>
+            <a href="#" class="font-semibold self-center">Or call us: (999) 999-9999</a>
         </div>
 
     </div>
+</section>
+
+<!-- Reviews -->
+<section class="py-10 md:py-24">
+    <div class="container">
+
+        <div class="text-center mb-8 flex flex-col gap-3">
+            <p><span class="font-semibold">4.9 Average</span> (Based on 607 Google Reviews)</p>
+            <h2 class="text-2xl md:text-4xl">See What Our Satisfied Customers Have to Say</h2>
+            <p class="text-lg">Hundreds Of Happy Customers Choose Active Plumbing & Air Conditioning Every Year. Here’s What A Few Of Them Had To Say Working With Us:</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6">
+
+            <div>
+                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
+                <p class="font-semibold">- John Doe</p>
+            </div>
+
+            <div>
+                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
+                <p class="font-semibold">- John Doe</p>
+            </div>
+
+            <div>
+                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
+                <p class="font-semibold">- John Doe</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="py-10 md:py-24 bg-blue-900">
+    <div class="container">
+
+        <div class="flex flex-col gap-3 text-white text-center mb-8">
+            <h2 class="text-3xl md:text-5xl">Ready To Upgrade Your Comfort?</h2>
+            <p>Don't Wait – Improve Your Home's Comfort, Efficiency & Value with a Professional HVAC System Replacement from Active Plumbing and Air</p>
+            <p class="font-semibold">Schedule Your FREE Consultation & Estimate Today!</p>
+            <p>Contact Us at <a href="tel:+1" class="font-semibold">(999) 999-9999</a> or Schedule Online</p>
+        </div>
+
+        <div class="flex flex-col gap-4 md:flex-row mb-8 md:justify-center">
+            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+            <a href="#" class="font-semibold text-center px-12 py-3 rounded text-white border border-white">Or call us: (999) 999-3434</a>
+        </div>
+
+        <ul class="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-12 text-white ">
+            <li class="flex gap-2">
+                <div class="rounded-full bg-green-700 w-6 h-6 flex items-center justify-center shrink-0 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                Fast, Same-Day Service
+            </li>
+            <li class="flex gap-2">
+                <div class="rounded-full bg-green-700 w-6 h-6 flex items-center justify-center shrink-0 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                Upfront Pricing
+            </li>
+            <li class="flex gap-2">
+                <div class="rounded-full bg-green-700 w-6 h-6 flex items-center justify-center shrink-0 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </div>
+                Flexible Financing
+            </li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<section class="py-10 bg-gray-300">
+    <div class="container flex flex-col md:flex-row gap-6">
+
+        <p class="text-sm text-gray-700">Locally-owned & operated plumbing, air conditioning, and heating company with over 31 years of experience. We get the job done right the first time around. HVAC License #84450 Plumbing License #47021</p>
+
+        <div>
+            <h6>Services</h6>
+            <ul class="text-sm text-gray-700">
+                <li>Repair</li>
+                <li>Installation</li>
+                <li>Maintenance</li>
+            </ul>
+        </div>
+        <div>
+            <h6>Contact Us</h6>
+            <ul class="text-sm text-gray-700">
+                <li>Call us at: (999) 999-9999</li>
+                <li>We are located at: 1234 Main St. Las Vegas, NV 88888</li>
+            </ul>
+        </div>
+
+        <p class="text-xs text-gray-500">2023 © Active Plumbing & Air Conditioning, LLC. All Rights Reserved. A Licensed, Insured, and Bonded Business.</p>
+    </div>
+
+    
 </section>
 
 
