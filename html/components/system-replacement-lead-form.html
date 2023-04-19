@@ -5,32 +5,27 @@
             method="POST"
             data-netlify="true"
             netlify-honeypot="bot-field"
-            x-show="step === 'success'"
-            x-ref="submitForm"
-        >
-            <input type="hidden" name="zipCode" x-model="zipCode" />
-            <input type="hidden" name="isSystemWorking" x-model="isSystemWorking" />
-            <input type="hidden" name="systemReplaced" x-model="systemReplaced" />
-            <input type="hidden" name="firstName" x-model="firstName" />
-            <input type="hidden" name="lastName" x-model="lastName" />
-            <input type="hidden" name="address" x-model="address" />
-            <input type="hidden" name="suiteApt" x-model="suiteApt" />
-            <input type="hidden" name="isHomeowner" x-model="isHomeowner" />
-            <input type="hidden" name="email" x-model="email" />
-            <input type="hidden" name="phone" x-model="phone" />
-            <input type="hidden" name="campaign" />
-            <input type="hidden" name="keyword" />
-            <input type="hidden" name="gclid" />
-        </form>
-
-        <form
-            class="text-center"
-            id="lead-form"
-            x-show="step !== 'success'"
             x-on:submit.prevent="validateAndProceed()"
             x-data="multiStepForm()"
             x-on:keydown="handleEnterKey($event)"
         >
+            <input type="hidden" name="form-name" value="HVAC Replacement Quote">
+            <template x-if="step !== 'success'">
+                <input type="hidden" name="zipCode" x-model="zipCode" />
+                <input type="hidden" name="isSystemWorking" x-model="isSystemWorking" />
+                <input type="hidden" name="systemReplaced" x-model="systemReplaced" />
+                <input type="hidden" name="firstName" x-model="firstName" />
+                <input type="hidden" name="lastName" x-model="lastName" />
+                <input type="hidden" name="address" x-model="address" />
+                <input type="hidden" name="suiteApt" x-model="suiteApt" />
+                <input type="hidden" name="isHomeowner" x-model="isHomeowner" />
+                <input type="hidden" name="email" x-model="email" />
+                <input type="hidden" name="phone" x-model="phone" />
+                <input type="hidden" name="campaign" />
+                <input type="hidden" name="keyword" />
+                <input type="hidden" name="gclid" />
+            </template>
+
             <!-- Step 1: Zip Code -->
             <template x-if="step === 'zipCode'" class="step">
                 <div>
@@ -70,9 +65,6 @@
                             </li>
                         </ul>
 
-                        <!--<input type="radio" name="isSystemWorking" value="Yes" x-model="isSystemWorking" @change="checkValidity() && nextStep()" required /> Yes
-                        <input type="radio" name="isSystemWorking" value="No" x-model="isSystemWorking" @change="checkValidity() && nextStep()" /> No
-                        <input type="radio" name="isSystemWorking" value="I don't know" x-model="isSystemWorking" @change="checkValidity() && nextStep()" /> I don't know-->
                     </div>
                 </div>
             </template>
@@ -106,10 +98,6 @@
                                 <label for="systemReplacedIDK">I Don't Know</label>
                             </li>
                         </ul>
-
-                        <!--<input type="radio" name="systemReplaced" value="Yes" x-model="systemReplaced" @change="checkValidity() && nextStep()" required /> Yes
-                        <input type="radio" name="systemReplaced" value="No" x-model="systemReplaced" @change="checkValidity() && nextStep()" /> No
-                        <input type="radio" name="systemReplaced" value="I don't know" x-model="systemReplaced" @change="checkValidity() && nextStep()" /> I don't know-->
                     </div>
                 </div>
             </template>
@@ -141,8 +129,21 @@
                 <div>
                     <p class="text-gray-800 text-lg mb-6">Are you the homeowner?</p>
                     <div>
-                        <input type="radio" name="isHomeowner" value="Yes" x-model="isHomeowner" @click="nextStep()" required /> Yes
-                        <input type="radio" name="isHomeowner" value="No" x-model="isHomeowner" @click="nextStep()" /> No
+                        <ul class="input-options--pretty">
+                            <li>
+                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()" required
+                                        id="isHomeownerYes" 
+                                        value="Yes">
+                                <label for="isHomeownerYes">Yes</label>
+                            </li>
+    
+                            <li>
+                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()"
+                                        id="isHomeownerNo" 
+                                        value="No">
+                                <label for="isHomeownerNo">No</label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </template>
@@ -160,7 +161,7 @@
 
             <!-- Navigation Buttons -->
             <div class="mt-4 flex flex-col justify-center gap-3">
-                <button type="button" x-show="step !== 'contactInfo'" @click="nextStep()" class="bg-blue-500 hover:bg-blue-700 text-white px-12 py-3 rounded">Next</button>
+                <button type="button" x-show="step !== 'contactInfo'" @click="nextStep()" class="bg-blue-600 hover:bg-blue-700 font-semibold text-white px-12 py-3 rounded">Next</button>
 
                 <button type="submit" x-show="step === 'contactInfo'" class="bg-green-500 hover:bg-green-700 text-white font-semibold px-12 py-3 rounded">Submit</button>
 
@@ -196,6 +197,7 @@ function multiStepForm() {
         emailError: false,
         phone: '',
         phoneError: false,
+        submitting: false,
 
         handleEnterKey(e) {
             if (e.key === 'Enter') {
@@ -232,6 +234,7 @@ function multiStepForm() {
                     break;
                 case 'isSystemWorking':
                 case 'systemReplaced':
+                case 'isHomeowner':
                     valid = this[this.step] !== '';
                     break;
             }
@@ -239,31 +242,35 @@ function multiStepForm() {
         },
 
         nextStep() {
-            switch (this.step) {
-                case 'zipCode':
-                    if (this.checkValidity()) {
-                        this.step = 'isSystemWorking';
+            if (this.checkValidity()) {
+                setTimeout(() => {
+                    switch (this.step) {
+                        case 'zipCode':
+                            if (this.checkValidity()) {
+                                this.step = 'isSystemWorking';
+                            }
+                            break;
+                        case 'isSystemWorking':
+                            this.step = 'systemReplaced';
+                            break;
+                        case 'systemReplaced':
+                            this.step = 'name';
+                            break;
+                        case 'name':
+                            if (this.checkValidity()) {
+                                this.step = 'address';
+                            }
+                            break;
+                        case 'address':
+                            if (this.checkValidity()) {
+                                this.step = 'isHomeowner';
+                            }
+                            break;
+                        case 'isHomeowner':
+                            this.step = 'contactInfo';
+                            break;
                     }
-                    break;
-                case 'isSystemWorking':
-                    this.step = 'systemReplaced';
-                    break;
-                case 'systemReplaced':
-                    this.step = 'name';
-                    break;
-                case 'name':
-                    if (this.checkValidity()) {
-                        this.step = 'address';
-                    }
-                    break;
-                case 'address':
-                    if (this.checkValidity()) {
-                        this.step = 'isHomeowner';
-                    }
-                    break;
-                case 'isHomeowner':
-                    this.step = 'contactInfo';
-                    break;
+                }, 250); // 250 ms delay
             }
         },
 
@@ -292,10 +299,45 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
-                this.$refs.submitForm.submit();
-                this.step = 'success';
+                this.$nextTick(() => this.submitForm());
             }
         },
+
+        submitForm() {
+            this.submitting = true;
+            const formData = new FormData();
+            formData.append('form-name', 'HVAC Replacement Quote');
+            formData.append('zipCode', this.zipCode);
+            formData.append('isSystemWorking', this.isSystemWorking);
+            formData.append('systemReplaced', this.systemReplaced);
+            formData.append('firstName', this.firstName);
+            formData.append('lastName', this.lastName);
+            formData.append('address', this.address);
+            formData.append('suiteApt', this.suiteApt);
+            formData.append('isHomeowner', this.isHomeowner);
+            formData.append('email', this.email);
+            formData.append('phone', this.phone);
+
+            fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then((response) => {
+                if (response.ok) {
+                    this.step = 'success';
+                } else {
+                    // Handle submission error here
+                }
+            })
+            .finally(() => {
+                this.submitting = false;
+            });
+        },
+
     };
 }
 
