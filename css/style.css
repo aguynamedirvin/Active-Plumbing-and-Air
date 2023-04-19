@@ -32,13 +32,10 @@ h6 {
     @apply text-black bg-slate-50
 }
 
-input {
-  @apply appearance-none
-}
-input[type='text'],
-input[type='email'],
-input[type='tel'] {
-  @apply p-3 border-2 border-gray-300 rounded w-full mt-3 appearance-none
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  @apply p-3 border-2 border-gray-300 border-solid rounded w-full mt-3
 }
 input[type=text].invalid,
 input[type=email].invalid,
