@@ -30,7 +30,7 @@
     <!-- Step 1: Zip Code -->
     <template x-if="step === 'zipCode'">
         <div>
-            <p class="mb-6 text-lg text-gray-800" for="zipCode">Enter your zip code to get started</p>
+            <p class="mb-4 text-lg text-gray-800" for="zipCode">Enter your zip code to get started</p>
             
             <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" inputmode="numeric" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" @input="zipCode = $event.target.value" required />
             <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
@@ -40,7 +40,7 @@
     <!-- Step 2: Is your system currently working? -->
     <template x-if="step === 'isSystemWorking'">
         <div>
-            <p class="mb-6 text-lg text-gray-800">Is your system currently working?</p>
+            <p class="mb-4 text-lg text-gray-800">Is your system currently working?</p>
             <div>
                 <ul class="input-options--pretty">
                     <li>
@@ -71,7 +71,7 @@
     <!-- Step 3: Has your system been replaced within the last 10 years? -->
     <template x-if="step === 'systemReplaced'">
         <div>
-            <p class="mb-6 text-lg text-gray-800">Has your system been replaced within the last 10 years?</p>
+            <p class="mb-4 text-lg text-gray-800">Has your system been replaced within the last 10 years?</p>
             
             <div>
                 <ul class="input-options--pretty">
@@ -102,7 +102,7 @@
 
     <!-- Step 4: What is your name? -->
     <div x-show="step === 'name'">
-        <p class="mb-6 text-lg text-gray-800">What is your nane?</p>
+        <p class="mb-4 text-lg text-gray-800">What is your nane?</p>
 
         <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" />
         <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" />
@@ -112,7 +112,7 @@
 
     <!-- Step 5: What is your address? -->
     <div x-show="step === 'address'">
-        <p class="mb-6 text-lg text-gray-800">What is your address?</p>
+        <p class="mb-4 text-lg text-gray-800">What is your address?</p>
 
         <div class="grid grid-cols-6 gap-4">
             <div class="col-span-4">
@@ -129,7 +129,7 @@
     <!-- Step 6: Are you the homeowner? -->
     <template x-if="step === 'isHomeowner'">
         <div>
-            <p class="mb-6 text-lg text-gray-800">Are you the homeowner?</p>
+            <p class="mb-4 text-lg text-gray-800">Are you the homeowner?</p>
             <div>
                 <ul class="input-options--pretty">
                     <li>
@@ -151,7 +151,7 @@
 
     <!-- Step 7: Your contact info -->
     <div x-show="step === 'contactInfo'">
-        <p class="mb-6 text-lg text-gray-800">What is your contact information?</p>
+        <p class="mb-4 text-lg text-gray-800">What is your contact information?</p>
 
         <input placeholder="Email Address" type="email" name="email" x-model="email" @input="email = $event.target.value" />
         <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
@@ -174,7 +174,7 @@
 
         <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="px-12 py-3 text-gray-500 rounded hover:text-gray-800">Previous</button>
 
-        <p x-show="step === 'zipCode'" class="mt-6 text-lg text-gray-800">Takes less than 2 minutes</p>
+        <p x-show="step === 'zipCode'" class="mt-3 text-gray-800">Takes less than 2 minutes</p>
     </div>
 
     <!-- Progress bar -->
