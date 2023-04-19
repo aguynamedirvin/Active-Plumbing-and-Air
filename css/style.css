@@ -35,15 +35,17 @@ h6 {
 input,
 input[type="text"],
 input[type="email"],
-input[type="tel"] {
+input[type="tel"],
+textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   @apply p-3 border-2 border-gray-300 border-solid rounded w-full mt-3
 }
-input[type=text].invalid,
-input[type=email].invalid,
-input[type=tel].invalid {
+input[type="text"].invalid,
+input[type="email"].invalid,
+input[type="tel"].invalid,
+textarea.invalid {
   @apply border-red-600 bg-red-50
 }
 
