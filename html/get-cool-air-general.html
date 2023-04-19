@@ -606,19 +606,24 @@
     </div>
 </section>
 
-<div class="fixed bottom-0 flex flex-row w-full gap-1 p-2 transition-all duration-300 transform md:hidden" 
-x-cloak 
-x-data="{ isVisible: false }" 
-x-init="isVisible = window.scrollY > 600" 
-x-show="isVisible" 
-@scroll.window="isVisible = window.scrollY > 600" 
-x-transition:enter="translate-y-full" 
-x-transition:enter-start="translate-y-full" 
-x-transition:enter-end="translate-y-0" 
-x-transition:leave="translate-y-full" 
-x-transition:leave-start="translate-y-0" 
-x-transition:leave-end="translate-y-full">
-
+<!-- Quick Mobile Actions -->
+<div 
+  x-data="{
+    isVisible: false, 
+    lastScrollY: 0
+  }" 
+  x-init="isVisible = window.scrollY > 600" 
+  x-show="isVisible" 
+  @scroll.window="isVisible = (window.scrollY > lastScrollY) && (window.scrollY > 600); lastScrollY = window.scrollY" 
+  x-cloak 
+  class="fixed bottom-0 flex flex-row w-full gap-1 p-2 transition-all duration-300 transform md:hidden" 
+  x-transition:enter="translate-y-full" 
+  x-transition:enter-start="translate-y-full" 
+  x-transition:enter-end="translate-y-0" 
+  x-transition:leave="translate-y-full" 
+  x-transition:leave-start="translate-y-0" 
+  x-transition:leave-end="translate-y-full"
+>
     <button @click="$store.modal.toggle()" class="px-10 py-3 text-sm font-semibold text-center text-white bg-blue-800 border border-blue-700 rounded-l shadow-md">
         Get a Quote
     </button>
