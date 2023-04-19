@@ -32,6 +32,7 @@ h6 {
     @apply text-black bg-slate-50
 }
 
+input,
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
