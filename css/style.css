@@ -179,7 +179,8 @@ input[type=tel].invalid {
 .input-options--pretty label {
   @apply inline-flex items-center justify-center w-full p-4 border border-gray-300 rounded cursor-pointer  
 }
-.input-options--pretty label:hover {
+.input-options--pretty label:hover,
+.input-options--pretty label:focus {
   @apply text-gray-600 bg-gray-100 
 }
 .input-options--pretty input[type="radio"] {
