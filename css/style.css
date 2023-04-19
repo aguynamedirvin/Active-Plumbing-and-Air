@@ -32,7 +32,9 @@ h6 {
     @apply text-black bg-slate-50
 }
 
-
+input {
+  @apply appearance-none
+}
 input[type=text],
 input[type=email],
 input[type=tel] {
