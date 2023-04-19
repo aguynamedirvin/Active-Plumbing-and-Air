@@ -123,7 +123,7 @@
 
 
 <!-- Hero -->
-<section class="bg-blue-900 md:bg-[url('../images/trane-technician-servicing-compressor.png')] bg-cover bg-center relative">
+<section class="bg-blue-800 md:bg-[url('../images/trane-technician-servicing-compressor.png')] bg-cover bg-center relative">
 
     <!-- Background Overlay for Table & Desktop -->
     <div class="absolute hidden w-full h-full bg-blue-900 md:block bg-opacity-90"></div>
@@ -135,15 +135,15 @@
         <div class="text-white lg:col-span-3">
             <div class="mb-2 text-sm md:text-base md:mb-4">
                 <span class="mb-2 tracking-[.25em] text-yellow-400">★★★★★</span>
-                <span class="opacity-80"><span class="font-semibold">4,000+</span> Satisfied Customers</span>
+                <span class="opacity-90">Over 4,000 Satisfied Customers</span>
             </div>
 
-            <div class="mb-1 text-sm md:text-lg opacity-70 md:opacity-90">Central AC Installation Las Vegas, NV</div>
+            <div class="mb-1 text-sm md:text-lg opacity-80 md:opacity-90">Central AC Installation Las Vegas, NV</div>
             
             <h1 class="mb-3 text-2xl md:text-5xl md:leading-tight mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
             
-            <p class="max-w-3xl mb-4 text-sm md:text-base opacity-80 md:opacity-90">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
-            <p class="text-sm md:text-base opacity-80 md:opacity-90">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
+            <p class="max-w-3xl mb-4 text-sm md:text-base opacity-90">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
+            <p class="text-sm md:text-base opacity-90">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
             
             <div class="flex flex-col gap-4 mt-4 md:flex-row md:mt-6">
                 <button @click="$store.modal.toggle()" class="flex items-center justify-center px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded shadow-md md:py-4 hover:bg-red-700">
@@ -294,50 +294,57 @@
 </section>
 
 
-<!-- Process -->
-<section class="hidden py-10 md:py-24 bg-slate-50">
-    <div class="container flex flex-col">
-
-        <div class="h-[250px] overflow-hidden mb-6">
-            <img class="w-full" src="assets/images/trane-technician-walking-into-home.jpg" />
-        </div>
-        
-        <div class="flex flex-col items-center mb-8 text-center md:mb-12">
-            <h2 class="mb-3 text-2xl md:text-4xl">How It Works: Our Convenient AC System Replacement Process</h2>
-            <p class="max-w-3xl text-base md:text-lg">A Seamless, Stress-Free Process – Ensuring Your Home's Comfort & Efficiency</p>
+<!-- CTA Financing Offer -->
+<section class="py-10 bg-blue-800">
+    <div class="container grid items-center grid-cols-12 gap-6">
+        <div class="col-span-8 col-start-2 md:order-last md:col-span-4">
+            <img class="min-w-full" src="assets/images/trane-units.png" alt="HVAC Installation and Replacement Services"/>
         </div>
 
-        <div class="grid gap-8 py-6 md:grid-cols-3 lg:grid-cols-3 md:gap-12">
-            <div class="flex flex-row gap-4 md:flex-col">
-                <div class="flex items-center justify-center w-8 h-8 font-semibold text-white bg-green-600 rounded-full shrink-0">1</div>
-                <div>
-                    <h3 class="text-lg md:mb-3">Call To Schedule Your Free Expert Consultation & Get a Free Estimate</h3>
-                    <p class="text-sm text-gray-700 md:text-base">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
-                </div>
+        <div class="col-span-12 text-white md:col-span-8">
+            <h2 class="mb-3 text-2xl md:text-4xl">Upgrade you Comfort With Low Monthly Payments</h2>
+            <p class="mb-6 text-sm md:text-base">Affordable payments starting from as low as $97/m and up to 15% OFF select system. We offer same-day installations. Contact us today for more information and get a free no-obligation quote.</p>
+            
+            <ul class="flex flex-col gap-4 text-sm md:text-base">
+                <li class="flex gap-2 md:gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    Fast, Same-Day Service
+                </li>
+                <li class="flex gap-2 md:gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    Upfront Pricing
+                </li>
+                <li class="flex gap-2 md:gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    Flexible Financing
+                </li>
+                <li class="flex gap-2 md:gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    10-Year Part & Labor Warranty
+                </li>
+            </ul>
+
+            <div class="flex flex-col gap-4 mt-6 md:flex-row md:items-center">
+                <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded md:py-4">Get a Free Quote</button>
+                <a href="tel:+17025531171" class="font-semibold">Or call us: (702) 553-1171</a>
             </div>
-
-            <div class="flex flex-row gap-4 md:flex-col">
-                <div class="flex items-center justify-center w-8 h-8 font-semibold text-white bg-green-600 rounded-full shrink-0">2</div>
-                <div>
-                    <h3 class="text-lg md:mb-3">Expert Installation With Workmanship Gurantee</h3>
-                    <p class="text-sm text-gray-70 md:text-base0">When you're ready to move forward, we'll schedule a convenient installation date. Our team of experts will bring all equipment and supplies necessary to install your new system and thoroughly clean up the job site. HVAC installation can typically be completed in a single day.</p>
-                </div>
-            </div>
-
-            <div class="flex flex-row gap-4 md:flex-col">
-                <div class="flex items-center justify-center w-8 h-8 font-semibold text-white bg-green-600 rounded-full shrink-0">3</div>
-                <div>
-                    <h3 class="text-lg md:mb-3">Quality Assurance & Follow-Up</h3>
-                    <p class="text-sm text-gray-700 md:text-base">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
-                </div>
-            </div>
         </div>
-
-        <div class="flex flex-col gap-4 mt-6 md:items-center md:mt-12">
-            <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded md:py-4">Request an Appointment</button>
-            <a href="tel:+17025531171" class="self-center font-semibold">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
-        </div>
-
     </div>
 </section>
 
@@ -411,7 +418,7 @@
 
 
 <!-- Reviews -->
-<section class="py-10 bg-blue-900 md:py-24">
+<section class="py-10 bg-blue-800 md:py-24">
     <div class="container">
 
         <div class="flex flex-col items-center mb-8 text-center text-white md:mb-12">
@@ -422,7 +429,7 @@
             <p class="max-w-3xl text-base md:text-lg">Hundreds Of Happy Customers Choose Active Plumbing & Air Conditioning Every Year. Here’s What A Few Of Them Had To Say Working With Us:</p>
         </div>
 
-        <div class="flex flex-col gap-8 md:flex-row md:gap-12">
+        <div class="flex flex-col gap-6 lg:flex-row lg:gap-10">
 
             <div class="p-4 bg-white border-2 border-gray-100 rounded">
                 <div class="mb-2 text-lg tracking-widest text-yellow-500">★★★★★</div>
@@ -475,7 +482,7 @@
 
 
 <!-- CTA -->
-<section class="py-10 bg-blue-900 md:py-24">
+<section class="py-10 bg-blue-800 md:py-24">
     <div class="container">
 
         <div class="flex flex-col items-center gap-3 mb-8 text-center text-white md:mb-12">
