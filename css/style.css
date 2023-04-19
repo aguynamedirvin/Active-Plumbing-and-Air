@@ -173,20 +173,20 @@ textarea.invalid {
 
 /** Custom Option Input **/
 .input-options--pretty {
-  @apply flex flex-col md:flex-row flex-wrap justify-center w-full gap-4
+  @apply flex flex-col flex-grow md:flex-row flex-wrap justify-center w-full gap-4
 }
-.input-options--pretty {
-  @apply flex-grow
+.input-options--pretty li {
+  @apply flex-auto
 }
 .input-options--pretty label {
-  @apply inline-flex items-center justify-center w-full p-4 border border-gray-300 rounded cursor-pointer  
+  @apply inline-flex items-center justify-center flex-1 w-full p-4 border border-gray-300 rounded cursor-pointer  
 }
 .input-options--pretty label:hover,
 .input-options--pretty label:focus {
   @apply text-gray-600 bg-gray-100 
 }
 .input-options--pretty input[type="radio"] {
-  @apply hidden 
+  @apply hidden
 }
 .input-options--pretty input[type="radio"]:checked ~ label {
   @apply border-blue-600 text-blue-600 
