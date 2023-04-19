@@ -32,7 +32,7 @@
         <div>
             <p class="text-gray-800 text-lg mb-6" for="zipCode">Enter your zip code to get started</p>
             
-            <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" inputmode="numeric" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
+            <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" inputmode="numeric" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" @input="zipCode = $event.target.value" required />
             <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
         </div>
     </template>
@@ -107,10 +107,10 @@
     <div x-show="step === 'name'">
         <p class="text-gray-800 text-lg mb-6">What is your nane?</p>
 
-        <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" autocomplete="given-name" />
+        <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" />
         <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
     
-        <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" autocomplete="family-name" />
+        <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" />
         <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
     </div>            
 
@@ -118,7 +118,7 @@
     <div x-show="step === 'address'">
         <p class="text-gray-800 text-lg mb-6">What is your address?</p>
 
-        <input placeholder="Address" type="text" name="address" x-model="address" />
+        <input placeholder="Address" type="text" name="address" x-model="address" @input="address = $event.target.value" />
         <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
 
         <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" />
@@ -153,10 +153,10 @@
     <div x-show="step === 'contactInfo'">
         <p class="text-gray-800 text-lg mb-6">What is your contact information?</p>
 
-        <input placeholder="Email Address" type="email" name="email" x-model="email" />
+        <input placeholder="Email Address" type="email" name="email" x-model="email" @input="email = $event.target.value" />
         <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
     
-        <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" x-mask="(999) 999-9999" />
+        <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" x-mask="(999) 999-9999" @input="phone = $event.target.value" />
         <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
     </div>
 
