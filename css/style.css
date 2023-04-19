@@ -35,6 +35,9 @@ h6 {
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   @apply p-3 border-2 border-gray-300 border-solid rounded w-full mt-3
 }
 input[type=text].invalid,
