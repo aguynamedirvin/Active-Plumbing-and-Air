@@ -1,181 +1,188 @@
-<div>
-    <div x-data="multiStepForm()">
-        <form
-            name="HVAC Replacement Quote"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            x-on:submit.prevent="validateAndProceed()"
-            x-data="multiStepForm()"
-            x-on:keydown="handleEnterKey($event)"
-        >
-            <input type="hidden" name="form-name" value="HVAC Replacement Quote">
-            <template x-if="step !== 'success'">
-                <input type="hidden" name="zipCode" x-model="zipCode" />
-                <input type="hidden" name="isSystemWorking" x-model="isSystemWorking" />
-                <input type="hidden" name="systemReplaced" x-model="systemReplaced" />
-                <input type="hidden" name="firstName" x-model="firstName" />
-                <input type="hidden" name="lastName" x-model="lastName" />
-                <input type="hidden" name="address" x-model="address" />
-                <input type="hidden" name="suiteApt" x-model="suiteApt" />
-                <input type="hidden" name="isHomeowner" x-model="isHomeowner" />
-                <input type="hidden" name="email" x-model="email" />
-                <input type="hidden" name="phone" x-model="phone" />
-                <input type="hidden" name="campaign" />
-                <input type="hidden" name="keyword" />
-                <input type="hidden" name="gclid" />
-            </template>
+<div x-data="multiStepForm()">
+    <form
+        name="HVAC Replacement Quote"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        x-on:submit.prevent="validateAndProceed()"
+        x-data="multiStepForm()"
+        x-on:keydown="handleEnterKey($event)"
+    >
+        <input type="hidden" name="form-name" value="HVAC Replacement Quote">
+        <template x-if="step !== 'success'">
+            <input type="hidden" name="zipCode" x-model="zipCode" />
+            <input type="hidden" name="isSystemWorking" x-model="isSystemWorking" />
+            <input type="hidden" name="systemReplaced" x-model="systemReplaced" />
+            <input type="hidden" name="firstName" x-model="firstName" />
+            <input type="hidden" name="lastName" x-model="lastName" />
+            <input type="hidden" name="address" x-model="address" />
+            <input type="hidden" name="suiteApt" x-model="suiteApt" />
+            <input type="hidden" name="isHomeowner" x-model="isHomeowner" />
+            <input type="hidden" name="email" x-model="email" />
+            <input type="hidden" name="phone" x-model="phone" />
+            <input type="hidden" name="details" x-model="details" />
+            <input type="hidden" name="campaign" />
+            <input type="hidden" name="keyword" />
+            <input type="hidden" name="gclid" />
+        </template>
 
-            <!-- Step 1: Zip Code -->
-            <template x-if="step === 'zipCode'" class="step">
-                <div>
-                    <p class="text-gray-800 text-lg mb-6" for="zipCode">Enter your zip code to get started</p>
-                    
-                    <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
-                    <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
-                </div>
-            </template>
-
-            <!-- Step 2: Is your system currently working? -->
-            <template x-if="step === 'isSystemWorking'" class="step">
-                <div>
-                    <p class="text-gray-800 text-lg mb-6">Is your system currently working?</p>
-                    
-                    <div>
-                        <ul class="input-options--pretty">
-                            <li>
-                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()" required
-                                        id="isSystemWorkingYes" 
-                                        value="Yes">
-                                <label for="isSystemWorkingYes">Yes</label>
-                            </li>
-    
-                            <li>
-                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
-                                        id="isSystemWorkingNo" 
-                                        value="No">
-                                <label for="isSystemWorkingNo">No</label>
-                            </li>
-    
-                            <li>
-                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
-                                        id="isSystemWorkingIDK" 
-                                        value="I Don't Know">
-                                <label for="isSystemWorkingIDK">I Don't Know</label>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </template>
-
-
-            <!-- Step 3: Has your system been replaced within the last 10 years? -->
-            <template x-if="step === 'systemReplaced'" class="step">
-                <div>
-                    <p class="text-gray-800 text-lg mb-6">Has your system been replaced within the last 10 years?</p>
-                    
-                    <div>
-                        <ul class="input-options--pretty">
-                            <li>
-                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()" required
-                                        id="systemReplacedYes" 
-                                        value="Yes">
-                                <label for="systemReplacedYes">Yes</label>
-                            </li>
-    
-                            <li>
-                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
-                                        id="systemReplacedNo" 
-                                        value="No">
-                                <label for="systemReplacedNo">No</label>
-                            </li>
-    
-                            <li>
-                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
-                                        id="systemReplacedIDK" 
-                                        value="I Don't Know">
-                                <label for="systemReplacedIDK">I Don't Know</label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </template>
-
-            <!-- Step 4: What is your name? -->
-            <div x-show="step === 'name'" class="step">
-                <p class="text-gray-800 text-lg mb-6">What is your nane?</p>
-
-                <input placeholder="First Name" type="text" name="firstName" x-model="firstName" class="input" />
-                <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
-            
-                <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" class="input" />
-                <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
-            </div>            
-
-            <!-- Step 5: What is your address? -->
-            <div x-show="step === 'address'" class="step">
-                <p class="text-gray-800 text-lg mb-6">What is your address?</p>
-
-                <input placeholder="Address" type="text" name="address" x-model="address" class="input" />
-                <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
-
-                <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="input" />
-            
+        <!-- Step 1: Zip Code -->
+        <template x-if="step === 'zipCode'">
+            <div>
+                <p class="text-gray-800 text-lg mb-6" for="zipCode">Enter your zip code to get started</p>
+                
+                <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
+                <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
             </div>
+        </template>
 
-            <!-- Step 6: Are you the homeowner? -->
-            <template x-if="step === 'isHomeowner'" class="step">
+        <!-- Step 2: Is your system currently working? -->
+        <template x-if="step === 'isSystemWorking'">
+            <div>
+                <p class="text-gray-800 text-lg mb-6">Is your system currently working?</p>
+                
                 <div>
-                    <p class="text-gray-800 text-lg mb-6">Are you the homeowner?</p>
-                    <div>
-                        <ul class="input-options--pretty">
-                            <li>
-                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()" required
-                                        id="isHomeownerYes" 
-                                        value="Yes">
-                                <label for="isHomeownerYes">Yes</label>
-                            </li>
-    
-                            <li>
-                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()"
-                                        id="isHomeownerNo" 
-                                        value="No">
-                                <label for="isHomeownerNo">No</label>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="input-options--pretty">
+                        <li>
+                            <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()" required
+                                    id="isSystemWorkingYes" 
+                                    value="Yes">
+                            <label for="isSystemWorkingYes">Yes</label>
+                        </li>
+
+                        <li>
+                            <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
+                                    id="isSystemWorkingNo" 
+                                    value="No">
+                            <label for="isSystemWorkingNo">No</label>
+                        </li>
+
+                        <li>
+                            <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
+                                    id="isSystemWorkingIDK" 
+                                    value="I Don't Know">
+                            <label for="isSystemWorkingIDK">I Don't Know</label>
+                        </li>
+                    </ul>
+
                 </div>
-            </template>
-
-            <!-- Step 7: Your contact info -->
-            <div x-show="step === 'contactInfo'" class="step">
-                <p class="text-gray-800 text-lg mb-6">What is your contact information?</p>
-
-                <input placeholder="Email Address" type="email" name="email" x-model="email" class="input" />
-                <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
-            
-                <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" x-mask="(999) 999-9999" class="input" />
-                <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
-            </div>            
-
-            <!-- Navigation Buttons -->
-            <div class="mt-4 flex flex-col justify-center gap-3">
-                <button type="button" x-show="step !== 'contactInfo'" @click="nextStep()" class="bg-blue-600 hover:bg-blue-700 font-semibold text-white px-12 py-3 rounded">Next</button>
-
-                <button type="submit" x-show="step === 'contactInfo'" class="bg-green-500 hover:bg-green-700 text-white font-semibold px-12 py-3 rounded">Submit</button>
-
-                <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="text-gray-500 hover:text-gray-800 mr-2 px-12 py-3 rounded">Previous</button>
             </div>
+        </template>
 
-            <!-- Success message -->
-            <template x-if="step === 'success'">
-                <div class="text-center">
-                    <p class="text-green-500">Thank you! Your form has been submitted successfully.</p>
+
+        <!-- Step 3: Has your system been replaced within the last 10 years? -->
+        <template x-if="step === 'systemReplaced'">
+            <div>
+                <p class="text-gray-800 text-lg mb-6">Has your system been replaced within the last 10 years?</p>
+                
+                <div>
+                    <ul class="input-options--pretty">
+                        <li>
+                            <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()" required
+                                    id="systemReplacedYes" 
+                                    value="Yes">
+                            <label for="systemReplacedYes">Yes</label>
+                        </li>
+
+                        <li>
+                            <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
+                                    id="systemReplacedNo" 
+                                    value="No">
+                            <label for="systemReplacedNo">No</label>
+                        </li>
+
+                        <li>
+                            <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
+                                    id="systemReplacedIDK" 
+                                    value="I Don't Know">
+                            <label for="systemReplacedIDK">I Don't Know</label>
+                        </li>
+                    </ul>
                 </div>
-            </template>
-        </form>
-    </div>
+            </div>
+        </template>
+
+        <!-- Step 4: What is your name? -->
+        <div x-show="step === 'name'">
+            <p class="text-gray-800 text-lg mb-6">What is your nane?</p>
+
+            <input placeholder="First Name" type="text" name="firstName" x-model="firstName" />
+            <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
+        
+            <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" />
+            <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
+        </div>            
+
+        <!-- Step 5: What is your address? -->
+        <div x-show="step === 'address'">
+            <p class="text-gray-800 text-lg mb-6">What is your address?</p>
+
+            <input placeholder="Address" type="text" name="address" x-model="address" />
+            <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
+
+            <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" />
+        
+        </div>
+
+        <!-- Step 6: Are you the homeowner? -->
+        <template x-if="step === 'isHomeowner'">
+            <div>
+                <p class="text-gray-800 text-lg mb-6">Are you the homeowner?</p>
+                <div>
+                    <ul class="input-options--pretty">
+                        <li>
+                            <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()" required
+                                    id="isHomeownerYes" 
+                                    value="Yes">
+                            <label for="isHomeownerYes">Yes</label>
+                        </li>
+
+                        <li>
+                            <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()"
+                                    id="isHomeownerNo" 
+                                    value="No">
+                            <label for="isHomeownerNo">No</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+        <!-- Step 7: Your contact info -->
+        <div x-show="step === 'contactInfo'">
+            <p class="text-gray-800 text-lg mb-6">What is your contact information?</p>
+
+            <input placeholder="Email Address" type="email" name="email" x-model="email" />
+            <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
+        
+            <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" x-mask="(999) 999-9999" />
+            <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
+        </div>
+
+        <!-- Step 8: Additional details -->
+        <div x-show="step === 'additionalDetails'">
+            <p class="text-gray-800 text-lg mb-6">Anything else you would like us to know? (optional)</p>
+            <textarea placeholder="Tell us more about it" name="details" x-model="details"></textarea>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-4 flex flex-col justify-center gap-3" x-show="step !== 'success'">
+            <button type="button" x-show="step !== 'additionalDetails'" @click="nextStep()" class="bg-blue-600 hover:bg-blue-700 font-semibold text-white px-12 py-3 rounded">Next</button>
+
+            <button type="submit" x-show="step === 'additionalDetails'" class="bg-green-500 hover:bg-green-700 text-white font-semibold px-12 py-3 rounded">Submit</button>
+
+            <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="text-gray-500 hover:text-gray-800 mr-2 px-12 py-3 rounded">Previous</button>
+
+            <p x-show="step === 'zipCode'" class="text-gray-800 text-lg mt-6">Takes less than 2 minutes</p>
+        </div>
+
+        <!-- Success message -->
+        <template x-if="step === 'success'">
+            <div class="text-center">
+                <p class="text-green-600">Thank you! Your inquiry has been submitted successfully. One of our representatives will be in touch with you shortly.</p>
+            </div>
+        </template>
+    </form>
 </div>
 
 <script>
@@ -197,12 +204,13 @@ function multiStepForm() {
         emailError: false,
         phone: '',
         phoneError: false,
+        details: '',
         submitting: false,
 
         handleEnterKey(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                if (this.step !== 'contactInfo') {
+                if (this.step !== 'additionalDetails') {
                     this.nextStep();
                 } else {
                     this.validateAndProceed();
@@ -269,8 +277,11 @@ function multiStepForm() {
                         case 'isHomeowner':
                             this.step = 'contactInfo';
                             break;
+                        case 'contactInfo':
+                            this.step = 'additionalDetails';
+                            break;
                     }
-                }, 250); // 250 ms delay
+                }, 300); // 300 ms delay
             }
         },
 
@@ -293,6 +304,9 @@ function multiStepForm() {
                     break;
                 case 'contactInfo':
                     this.step = 'isHomeowner';
+                    break;
+                case 'additionalDetails':
+                    this.step = 'contactInfo';
                     break;
             }
         },
@@ -317,6 +331,7 @@ function multiStepForm() {
             formData.append('isHomeowner', this.isHomeowner);
             formData.append('email', this.email);
             formData.append('phone', this.phone);
+            formData.append('details', this.details);
 
             fetch('/', {
                 method: 'POST',
@@ -332,6 +347,9 @@ function multiStepForm() {
                 } else {
                     // Handle submission error here
                 }
+            })
+            .catch((error) => {
+                console.error('Fetch error:', error); // Log the error for debugging
             })
             .finally(() => {
                 this.submitting = false;
