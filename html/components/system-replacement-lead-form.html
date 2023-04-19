@@ -218,6 +218,7 @@ function multiStepForm() {
         phone: '',
         phoneError: false,
         details: '',
+        additionalDetailsError: false,
         submitting: false,
         progress: 0,
 
@@ -258,6 +259,9 @@ function multiStepForm() {
                 case 'systemReplaced':
                 case 'isHomeowner':
                     valid = this[this.step] !== '';
+                    break;
+                case 'additionalDetails':
+                    valid = true;
                     break;
             }
             return valid;
