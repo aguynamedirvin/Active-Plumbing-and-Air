@@ -52,16 +52,16 @@
 <div    x-cloak 
         x-show="$store.modal.open" 
         @click.away="$store.modal.toggle()" 
-        x-transition:enter="transition ease-out duration-200" 
-        x-transition:enter-start="opacity-0 scale-90" 
-        x-transition:enter-end="opacity-100 scale-100" 
-        x-transition:leave="transition ease-in duration-200" 
-        x-transition:leave-start="opacity-100 scale-100" 
-        x-transition:leave-end="opacity-0 scale-90" 
+        x-transition:enter="transition ease-out duration-300" 
+        x-transition:enter-start="opacity-0" 
+        x-transition:enter-end="opacity-100" 
+        x-transition:leave="transition ease-in duration-300" 
+        x-transition:leave-start="opacity-100" 
+        x-transition:leave-end="opacity-0" 
         class="fixed inset-0 flex items-center justify-center z-50"
     >
     
-    <div class="bg-white w-full h-full md:max-w-md md:h-auto z-10 overflow-hidden flex flex-col">
+    <div class="flex flex-col w-full h-full md:max-w-md md:h-auto bg-white rounded z-10 overflow-hidden">
         
         <div class="px-6 py-4 bg-red-600 flex flex-row items-center gap-3">
             <div class="rounded-full bg-white w-9 h-9 flex items-center justify-center shrink-0">
@@ -99,7 +99,7 @@
             <img class="w-full absolute -top-1 md:-top-3 -left-3" src="assets/images/logo-color.png" alt="Logo">
         </div>
 
-        <div class="hidden md:block text-sm">
+        <div class="hidden md:block text-sm text-gray-600">
             <div>Local Las Vegas Heating & Cooling Specialist</div>
             <div>Serving Las Vegas Community For Over 25 Years</div>
             <div class="text-green-600">
@@ -108,15 +108,17 @@
             </div>
         </div>
 
-        <div class="text-right ml-auto shrink-0 text-sm">
-            <div class="text-sm">Call Now For A Free Quote</div>
-            <a href="tel:+1" class="font-semibold text-lg text-blue-950 md:text-2xl flex gap-1 items-center">
+        <a href="tel:+17025531171" class="text-right ml-auto shrink-0 text-sm border border-red-600 rounded py-2 px-6 flex gap-1 items-center">
+            <div class="rounded-full bg-color">
                 <svg class="w-5 h-5 md:h-8 md:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
-                (999) 999-9999
-            </a>
-        </div>
+            </div>
+            <div class="">
+                <div class="text-sm">Call Now For A Free Quote</div>
+                <div class="font-semibold text-lg md:text-2xl">(702) 553-1171</div>
+            </div>
+        </a>
 
     </div>
 </header>
@@ -138,7 +140,7 @@
                 <span class="font-semibold">607+</span> Trusted Local Reviews
             </div>
             
-            <h1 class="text-2xl md:text-5xl mb-3 mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
+            <h1 class="text-2xl md:text-5xl md:leading-tight mb-3 mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
             
             <p class="md:text-lg max-w-3xl mb-3">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
             <p class="md:text-lg">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
@@ -146,17 +148,17 @@
             <div class="flex flex-col md:flex-row gap-4 mt-3 md:mt-6">
                 <button @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
 
-                <a href="#" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
+                <a href="tel:+17025531171" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                     </svg>
-                    Or call us: (999) 999-3434
+                    Or call us: (702) 553-1171
                 </a>
             </div>
 
         </div>
 
-        <div class="lg:col-span-4 lg:flex flex-col bg-white shadow-2xl">
+        <div class="lg:col-span-4 lg:flex flex-col bg-white shadow-2xl rounded overflow-hidden">
             <div class="px-6 py-4 bg-red-600 flex flex-row items-center gap-3">
                 <div class="rounded-full bg-white w-9 h-9 flex items-center justify-center shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(220, 30, 38, 1)" class="w-6 h-6">
@@ -235,6 +237,57 @@
 </section>
 
 
+
+<!-- Process -->
+<section class="py-10 md:py-24 bg-slate-50">
+    <div class="container grid md:grid-cols-12 md:gap-24">
+
+        <div class="md:col-span-5 md:order-last h-[250px] md:h-full overflow-hidden mb-6">
+            <img class="object-cover w-full h-full" src="assets/images/trane-technician-walking-into-home.jpg" />
+        </div>
+        
+        <div class="md:col-span-7">
+            <div class="text-center md:text-left mb-8">
+                <h2 class="text-2xl md:text-4xl mb-3">How It Works: Our HVAC System Replacement Process</h2>
+                <p class="text-lg">A Seamless, Stress-Free Process – Ensuring Your Home's Comfort & Efficiency</p>
+            </div>
+
+            <div class="grid md:grid-rows-1 gap-8 md:gap-12 py-6">
+                <div class="flex flex-row gap-4">
+                    <div class="rounded-full bg-green-600 w-8 h-8 flex items-center justify-center shrink-0 text-white font-semibold">1</div>
+                    <div>
+                        <h3 class="text-lg md:mb-3">Call To Schedule Your Free Expert Consultation & Get a Free Estimate</h3>
+                        <p class="text-gray-700">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-4">
+                    <div class="rounded-full bg-green-600 w-8 h-8 flex items-center justify-center shrink-0 text-white font-semibold">2</div>
+                    <div>
+                        <h3 class="text-lg md:mb-3">Expert Installation With Workmanship Gurantee</h3>
+                        <p class="text-gray-700">When you're ready to move forward, we'll schedule a convenient installation date. Our team of experts will bring all equipment and supplies necessary to install your new system and thoroughly clean up the job site. HVAC installation can typically be completed in a single day.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-4">
+                    <div class="rounded-full bg-green-600 w-8 h-8 flex items-center justify-center shrink-0 text-white font-semibold">3</div>
+                    <div>
+                        <h3 class="text-lg md:mb-3">Quality Assurance & Follow-Up</h3>
+                        <p class="text-gray-700">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 md:items-start mt-6 md:mt-12">
+                <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Request an Appointment</button>
+                <a href="tel:+17025531171" class="font-semibold">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 <!-- Process -->
 <section class="py-10 md:py-24 bg-slate-50">
     <div class="container flex flex-col">
@@ -276,7 +329,7 @@
 
         <div class="flex flex-col gap-4 md:items-center mt-6 md:mt-12">
             <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Request an Appointment</button>
-            <a href="#" class="font-semibold self-center">Or call us: <span class="text-blue-600">(999) 999-9999</span></a>
+            <a href="tel:+17025531171" class="font-semibold self-center">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
         </div>
 
     </div>
@@ -344,7 +397,7 @@
 
         <div class="flex flex-col gap-4 md:items-center mt-6 md:mt-12">
             <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Schedule a Consultation</button>
-            <a href="#" class="font-semibold self-center">Or call us: <span class="text-blue-600">(999) 999-9999</span></a>
+            <a href="#" class="font-semibold self-center">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
         </div>
 
     </div>
@@ -356,7 +409,7 @@
     <div class="container">
 
         <div class="flex flex-col text-center mb-8 md:mb-12">
-            <p class="text-yellow-500 tracking-widest text-xl md:text-2xl">★★★★★</p>
+            <p class="text-yellow-500 tracking-widest text-2xl">★★★★★</p>
             <p class="mb-3"><span class="font-semibold">4.9 Average</span> (Based on 607 Google Reviews)</p>
 
             <h2 class="text-2xl md:text-4xl mb-3">See What Our Satisfied Customers Have to Say</h2>
@@ -367,20 +420,20 @@
 
             <div>
                 <div class="text-yellow-500 tracking-widest text-lg mb-2">★★★★★</div>
-                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
-                <p class="font-semibold">- John Doe</p>
+                <p class="mb-3 text-gray-800 italic">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
+                <p class="font-semibold">- Kathy D</p>
             </div>
 
             <div>
                 <div class="text-yellow-500 tracking-widest text-lg mb-2">★★★★★</div>
-                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
-                <p class="font-semibold">- John Doe</p>
+                <p class="mb-3 text-gray-800 italic">“The team at Active Plumbing and Air is top-notch. From the initial consultation to the installation and follow-up, I couldn't be happier with their service. My new HVAC system is working perfectly.”</p>
+                <p class="font-semibold">- Corazon Mason</p>
             </div>
 
             <div>
                 <div class="text-yellow-500 tracking-widest text-lg mb-2">★★★★★</div>
-                <p class="mb-3 text-gray-800">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
-                <p class="font-semibold">- John Doe</p>
+                <p class="mb-3 text-gray-800 italic">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
+                <p class="font-semibold">- Jim Asche</p>
             </div>
 
         </div>
@@ -400,14 +453,14 @@
                 <h4 class="text-lg md:text-2xl mb-3">Get up to $1,000 Off on New HVAC System Installations + Get A Free Thermostat</h4>
                 <p class="text-gray-700 mb-6 md:mb-12">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
 
-                <a href="#" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+                <button @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
             </div>
 
             <div class="bg-white p-6 shadow-lg">
                 <h4 class="text-lg md:text-2xl mb-3">Complete System Replacement Starting As Low As $97 a Month and Up to 240-Month Payment Term.</h4>
                 <p class="text-gray-700 mb-6 md:mb-12">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
 
-                <a href="#" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+                <button @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
             </div>
         </div>
     </div>
@@ -422,16 +475,16 @@
             <h2 class="text-4xl md:text-5xl mb-6">Ready To Upgrade Your Comfort?</h2>
             <p class="md:text-lg">Don't Wait – Improve Your Home's Comfort, Efficiency & Value with a Professional HVAC System Replacement from Active Plumbing and Air</p>
             <p class="font-semibold md:text-lg">Schedule Your FREE Consultation & Estimate Today!</p>
-            <p class="md:text-lg">Contact Us at <a href="tel:+1" class="font-semibold">(999) 999-9999</a> or Schedule Online</p>
+            <p class="md:text-lg">Contact Us at <a href="tel:+17025531171" class="font-semibold">(702) 553-1171</a> or Schedule Online</p>
         </div>
 
         <div class="flex flex-col gap-4 md:flex-row mb-8 md:justify-center">
             <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
-            <a href="#" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
+            <a href="tel:+17025531171" class="font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
-                Or call us: (999) 999-3434
+                Or call us: (702) 553-1171
             </a>
         </div>
 
@@ -483,7 +536,7 @@
         <div class="md:col-span-4">
             <h6>Contact Us</h6>
             <ul class="text-sm text-gray-700 leading-8">
-                <li><a href="tel:+1">Call us at: (999) 999-9999</a></li>
+                <li><a href="tel:+17025531171">Call us at: (702) 553-1171</a></li>
                 <li>We are located at: 1234 Main St. Las Vegas, NV 88888</li>
             </ul>
         </div>
@@ -491,6 +544,16 @@
         <p class="md:col-span-12 md:text-center text-xs text-gray-500">2023 © Active Plumbing & Air Conditioning, LLC. All Rights Reserved. A Licensed, Insured, and Bonded Business.</p>
     </div>
 </section>
+
+<div class="fixed py-2 px-4 w-full bottom-0 bg-white flex flex-row gap-4 shadow-2xl md:hidden">
+    <button class="border border-gray-500 text-gray-800 text-center px-8 py-2 rounded">Get a Quote</button>
+    <a href="tel:+17025531171" class="flex flex-1 justify-center gap-2 bg-red-600 border border-red-700 text-white text-center px-4 py-2 rounded">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+        </svg>
+        Tap to call
+    </a>
+</div>
 
 
 </body>
