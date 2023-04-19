@@ -1,0 +1,302 @@
+<div>
+    <div x-data="multiStepForm()">
+        <form
+            name="HVAC Replacement Quote"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            x-show="step === 'success'"
+            x-ref="submitForm"
+        >
+            <input type="hidden" name="zipCode" x-model="zipCode" />
+            <input type="hidden" name="isSystemWorking" x-model="isSystemWorking" />
+            <input type="hidden" name="systemReplaced" x-model="systemReplaced" />
+            <input type="hidden" name="firstName" x-model="firstName" />
+            <input type="hidden" name="lastName" x-model="lastName" />
+            <input type="hidden" name="address" x-model="address" />
+            <input type="hidden" name="suiteApt" x-model="suiteApt" />
+            <input type="hidden" name="isHomeowner" x-model="isHomeowner" />
+            <input type="hidden" name="email" x-model="email" />
+            <input type="hidden" name="phone" x-model="phone" />
+            <input type="hidden" name="campaign" />
+            <input type="hidden" name="keyword" />
+            <input type="hidden" name="gclid" />
+        </form>
+
+        <form
+            class="text-center"
+            id="lead-form"
+            x-show="step !== 'success'"
+            x-on:submit.prevent="validateAndProceed()"
+            x-data="multiStepForm()"
+            x-on:keydown="handleEnterKey($event)"
+        >
+            <!-- Step 1: Zip Code -->
+            <template x-if="step === 'zipCode'" class="step">
+                <div>
+                    <p class="text-gray-800 text-lg mb-6" for="zipCode">Enter your zip code to get started</p>
+                    
+                    <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
+                    <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
+                </div>
+            </template>
+
+            <!-- Step 2: Is your system currently working? -->
+            <template x-if="step === 'isSystemWorking'" class="step">
+                <div>
+                    <p class="text-gray-800 text-lg mb-6">Is your system currently working?</p>
+                    
+                    <div>
+                        <ul class="input-options--pretty">
+                            <li>
+                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()" required
+                                        id="isSystemWorkingYes" 
+                                        value="Yes">
+                                <label for="isSystemWorkingYes">Yes</label>
+                            </li>
+    
+                            <li>
+                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
+                                        id="isSystemWorkingNo" 
+                                        value="No">
+                                <label for="isSystemWorkingNo">No</label>
+                            </li>
+    
+                            <li>
+                                <input  type="radio" name="isSystemWorking" x-model="isSystemWorking" @change="checkValidity() && nextStep()"
+                                        id="isSystemWorkingIDK" 
+                                        value="I Don't Know">
+                                <label for="isSystemWorkingIDK">I Don't Know</label>
+                            </li>
+                        </ul>
+
+                        <!--<input type="radio" name="isSystemWorking" value="Yes" x-model="isSystemWorking" @change="checkValidity() && nextStep()" required /> Yes
+                        <input type="radio" name="isSystemWorking" value="No" x-model="isSystemWorking" @change="checkValidity() && nextStep()" /> No
+                        <input type="radio" name="isSystemWorking" value="I don't know" x-model="isSystemWorking" @change="checkValidity() && nextStep()" /> I don't know-->
+                    </div>
+                </div>
+            </template>
+
+
+            <!-- Step 3: Has your system been replaced within the last 10 years? -->
+            <template x-if="step === 'systemReplaced'" class="step">
+                <div>
+                    <p class="text-gray-800 text-lg mb-6">Has your system been replaced within the last 10 years?</p>
+                    
+                    <div>
+                        <ul class="input-options--pretty">
+                            <li>
+                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()" required
+                                        id="systemReplacedYes" 
+                                        value="Yes">
+                                <label for="systemReplacedYes">Yes</label>
+                            </li>
+    
+                            <li>
+                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
+                                        id="systemReplacedNo" 
+                                        value="No">
+                                <label for="systemReplacedNo">No</label>
+                            </li>
+    
+                            <li>
+                                <input  type="radio" name="systemReplaced" x-model="systemReplaced" @change="checkValidity() && nextStep()"
+                                        id="systemReplacedIDK" 
+                                        value="I Don't Know">
+                                <label for="systemReplacedIDK">I Don't Know</label>
+                            </li>
+                        </ul>
+
+                        <!--<input type="radio" name="systemReplaced" value="Yes" x-model="systemReplaced" @change="checkValidity() && nextStep()" required /> Yes
+                        <input type="radio" name="systemReplaced" value="No" x-model="systemReplaced" @change="checkValidity() && nextStep()" /> No
+                        <input type="radio" name="systemReplaced" value="I don't know" x-model="systemReplaced" @change="checkValidity() && nextStep()" /> I don't know-->
+                    </div>
+                </div>
+            </template>
+
+            <!-- Step 4: What is your name? -->
+            <div x-show="step === 'name'" class="step">
+                <p class="text-gray-800 text-lg mb-6">What is your nane?</p>
+
+                <input placeholder="First Name" type="text" name="firstName" x-model="firstName" class="input" />
+                <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
+            
+                <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" class="input" />
+                <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
+            </div>            
+
+            <!-- Step 5: What is your address? -->
+            <div x-show="step === 'address'" class="step">
+                <p class="text-gray-800 text-lg mb-6">What is your address?</p>
+
+                <input placeholder="Address" type="text" name="address" x-model="address" class="input" />
+                <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
+
+                <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="input" />
+            
+            </div>
+
+            <!-- Step 6: Are you the homeowner? -->
+            <template x-if="step === 'isHomeowner'" class="step">
+                <div>
+                    <p class="text-gray-800 text-lg mb-6">Are you the homeowner?</p>
+                    <div>
+                        <input type="radio" name="isHomeowner" value="Yes" x-model="isHomeowner" @click="nextStep()" required /> Yes
+                        <input type="radio" name="isHomeowner" value="No" x-model="isHomeowner" @click="nextStep()" /> No
+                    </div>
+                </div>
+            </template>
+
+            <!-- Step 7: Your contact info -->
+            <div x-show="step === 'contactInfo'" class="step">
+                <p class="text-gray-800 text-lg mb-6">What is your contact information?</p>
+
+                <input placeholder="Email Address" type="email" name="email" x-model="email" class="input" />
+                <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
+            
+                <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" x-mask="(999) 999-9999" class="input" />
+                <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
+            </div>            
+
+            <!-- Navigation Buttons -->
+            <div class="mt-4 flex flex-col justify-center gap-3">
+                <button type="button" x-show="step !== 'contactInfo'" @click="nextStep()" class="bg-blue-500 hover:bg-blue-700 text-white px-12 py-3 rounded">Next</button>
+
+                <button type="submit" x-show="step === 'contactInfo'" class="bg-green-500 hover:bg-green-700 text-white font-semibold px-12 py-3 rounded">Submit</button>
+
+                <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="text-gray-500 hover:text-gray-800 mr-2 px-12 py-3 rounded">Previous</button>
+            </div>
+
+            <!-- Success message -->
+            <template x-if="step === 'success'">
+                <div class="text-center">
+                    <p class="text-green-500">Thank you! Your form has been submitted successfully.</p>
+                </div>
+            </template>
+        </form>
+    </div>
+</div>
+
+<script>
+function multiStepForm() {
+    return {
+        step: 'zipCode',
+        zipCode: '',
+        zipCodeError: false,
+        isSystemWorking: '',
+        systemReplaced: '',
+        firstName: '',
+        lastName: '',
+        nameError: false,
+        address: '',
+        suiteApt: '',
+        addressError: false,
+        isHomeowner: '',
+        email: '',
+        emailError: false,
+        phone: '',
+        phoneError: false,
+
+        handleEnterKey(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (this.step !== 'contactInfo') {
+                    this.nextStep();
+                } else {
+                    this.validateAndProceed();
+                }
+            }
+        },
+
+        checkValidity() {
+            let valid = false;
+            switch (this.step) {
+                case 'zipCode':
+                    valid = /^\d{5}$/.test(this.zipCode);
+                    this.zipCodeError = !valid;
+                    break;
+                case 'name':
+                    valid = this.firstName.trim() !== '' && this.lastName.trim() !== '';
+                    this.nameError = !valid;
+                    break;
+                case 'address':
+                    valid = this.address.trim() !== '';
+                    this.addressError = !valid;
+                    break;
+                case 'contactInfo':
+                    const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+                    const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+                    valid = emailRegex.test(this.email) && phoneRegex.test(this.phone);
+                    this.emailError = !emailRegex.test(this.email);
+                    this.phoneError = !phoneRegex.test(this.phone);
+                    break;
+                case 'isSystemWorking':
+                case 'systemReplaced':
+                    valid = this[this.step] !== '';
+                    break;
+            }
+            return valid;
+        },
+
+        nextStep() {
+            switch (this.step) {
+                case 'zipCode':
+                    if (this.checkValidity()) {
+                        this.step = 'isSystemWorking';
+                    }
+                    break;
+                case 'isSystemWorking':
+                    this.step = 'systemReplaced';
+                    break;
+                case 'systemReplaced':
+                    this.step = 'name';
+                    break;
+                case 'name':
+                    if (this.checkValidity()) {
+                        this.step = 'address';
+                    }
+                    break;
+                case 'address':
+                    if (this.checkValidity()) {
+                        this.step = 'isHomeowner';
+                    }
+                    break;
+                case 'isHomeowner':
+                    this.step = 'contactInfo';
+                    break;
+            }
+        },
+
+        previousStep() {
+            switch (this.step) {
+                case 'isSystemWorking':
+                    this.step = 'zipCode';
+                    break;
+                case 'systemReplaced':
+                    this.step = 'isSystemWorking';
+                    break;
+                case 'name':
+                    this.step = 'systemReplaced';
+                    break;
+                case 'address':
+                    this.step = 'name';
+                    break;
+                case 'isHomeowner':
+                    this.step = 'address';
+                    break;
+                case 'contactInfo':
+                    this.step = 'isHomeowner';
+                    break;
+            }
+        },
+
+        validateAndProceed() {
+            if (this.checkValidity()) {
+                this.$refs.submitForm.submit();
+                this.step = 'success';
+            }
+        },
+    };
+}
+
+</script>
