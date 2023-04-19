@@ -107,10 +107,10 @@
     <div x-show="step === 'name'">
         <p class="text-gray-800 text-lg mb-6">What is your nane?</p>
 
-        <input placeholder="First Name" type="text" name="firstName" x-model="firstName" autocomplete="given-name" />
+        <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" autocomplete="given-name" />
         <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
     
-        <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" autocomplete="family-name" />
+        <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" autocomplete="family-name" />
         <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
     </div>            
 
