@@ -29,12 +29,63 @@
 
     <!-- JavaScript -->
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
-    <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
 
 </head>
 
-<body>
+<body x-data x-init="
+Alpine.store('modal', {
+    open: false,
+    toggle() {
+        this.open = !this.open;
+    },
+});
+">
+
+
+<!-- The modal -->
+<div    x-cloak 
+        x-show="$store.modal.open" 
+        @click.away="$store.modal.toggle()" 
+        x-transition:enter="transition ease-out duration-200" 
+        x-transition:enter-start="opacity-0 scale-90" 
+        x-transition:enter-end="opacity-100 scale-100" 
+        x-transition:leave="transition ease-in duration-200" 
+        x-transition:leave-start="opacity-100 scale-100" 
+        x-transition:leave-end="opacity-0 scale-90" 
+        class="fixed inset-0 flex items-center justify-center z-50"
+    >
+    
+    <div class="bg-white w-full max-w-md z-10 overflow-hidden min-h-full min-w-full">
+        
+        <div class="px-6 py-4 bg-red-600 flex flex-row items-center gap-3">
+            <div class="rounded-full bg-white w-9 h-9 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(220, 30, 38, 1)" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zm9.586 4.594a.75.75 0 00-1.172-.938l-2.476 3.096-.908-.907a.75.75 0 00-1.06 1.06l1.5 1.5a.75.75 0 001.116-.062l3-3.75z" clip-rule="evenodd" />
+                </svg>                                  
+            </div>
+
+            <h3 class="text-xl text-white">Get A Free Quote</h3>
+
+            <button @click.prevent="$store.modal.toggle()" type="button" class="bg-white text-black p-2 ml-auto rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                </svg>                  
+            </button>
+        </div>
+
+        <div class="p-9 text-center">
+            include "components/system-replacement-lead-form.html"
+        </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div @click="$store.modal.toggle()" class="fixed inset-0 bg-black opacity-50"></div>
+</div>
+
 
 <!-- Header -->
 <header class="z-20 relative">
@@ -89,7 +140,7 @@
             <p class="md:text-lg">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
             
             <div class="flex flex-col md:flex-row gap-4 mt-3 md:mt-6">
-                <a href="#" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+                <a @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
 
                 <a href="#" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -436,7 +487,6 @@
         <p class="md:col-span-12 md:text-center text-xs text-gray-500">2023 © Active Plumbing & Air Conditioning, LLC. All Rights Reserved. A Licensed, Insured, and Bonded Business.</p>
     </div>
 </section>
-
 
 
 </body>
