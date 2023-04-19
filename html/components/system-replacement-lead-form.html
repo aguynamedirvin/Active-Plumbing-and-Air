@@ -32,7 +32,7 @@
         <div>
             <p class="text-gray-800 text-lg mb-6" for="zipCode">Enter your zip code to get started</p>
             
-            <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
+            <input placeholder="Zip Code" type="text" name="zipCode" x-model="zipCode" inputmode="numeric" pattern="\d{5}" @blur="zipCodeError = !checkValidity()" required />
             <p x-show="zipCodeError" class="error-message">Please enter a valid zip code.</p>
         </div>
     </template>
