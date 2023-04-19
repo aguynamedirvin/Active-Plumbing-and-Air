@@ -172,7 +172,7 @@
 
         <button type="submit" x-show="step === 'additionalDetails'" class="bg-green-500 hover:bg-green-700 text-white font-semibold px-12 py-3 rounded">Submit</button>
 
-        <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="text-gray-500 hover:text-gray-800 mr-2 px-12 py-3 rounded">Previous</button>
+        <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="text-gray-500 hover:text-gray-800 px-12 py-3 rounded">Previous</button>
 
         <p x-show="step === 'zipCode'" class="text-gray-800 text-lg mt-6">Takes less than 2 minutes</p>
     </div>
