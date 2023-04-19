@@ -35,12 +35,16 @@
 </head>
 
 <body x-data x-init="
-Alpine.store('modal', {
-    open: false,
-    toggle() {
-        this.open = !this.open;
-    },
-});
+    Alpine.store('modal', {
+        open: false,
+        toggle() {
+            this.open = !this.open;
+            this.toggleBodyClass();
+        },
+        toggleBodyClass() {
+            document.body.classList.toggle('overflow-hidden');
+        },
+    });
 ">
 
 
@@ -57,7 +61,7 @@ Alpine.store('modal', {
         class="fixed inset-0 flex items-center justify-center z-50"
     >
     
-    <div class="bg-white w-full max-w-md z-10 overflow-hidden min-h-full min-w-full">
+    <div class="bg-white w-full h-full md:max-w-md md:h-auto z-10 overflow-hidden flex flex-col">
         
         <div class="px-6 py-4 bg-red-600 flex flex-row items-center gap-3">
             <div class="rounded-full bg-white w-9 h-9 flex items-center justify-center shrink-0">
@@ -69,14 +73,14 @@ Alpine.store('modal', {
 
             <h3 class="text-xl text-white">Get A Free Quote</h3>
 
-            <button @click.prevent="$store.modal.toggle()" type="button" class="bg-white text-black p-2 ml-auto rounded-full">
+            <button @click.prevent="$store.modal.toggle()" type="button" class="bg-white hover:opacity-80 text-black p-2 ml-auto rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
                 </svg>                  
             </button>
         </div>
 
-        <div class="p-9 text-center">
+        <div class="p-9 text-center h-full">
             include "components/system-replacement-lead-form.html"
         </div>
 
@@ -140,7 +144,7 @@ Alpine.store('modal', {
             <p class="md:text-lg">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
             
             <div class="flex flex-col md:flex-row gap-4 mt-3 md:mt-6">
-                <a @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+                <button @click="$store.modal.toggle()" class="block font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
 
                 <a href="#" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -271,7 +275,7 @@ Alpine.store('modal', {
         </div>
 
         <div class="flex flex-col gap-4 md:items-center mt-6 md:mt-12">
-            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Request an Appointment</a>
+            <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Request an Appointment</button>
             <a href="#" class="font-semibold self-center">Or call us: <span class="text-blue-600">(999) 999-9999</span></a>
         </div>
 
@@ -339,7 +343,7 @@ Alpine.store('modal', {
         </div>
 
         <div class="flex flex-col gap-4 md:items-center mt-6 md:mt-12">
-            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Schedule a Consultation</a>
+            <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 rounded text-white border border-red-700">Schedule a Consultation</button>
             <a href="#" class="font-semibold self-center">Or call us: <span class="text-blue-600">(999) 999-9999</span></a>
         </div>
 
@@ -422,7 +426,7 @@ Alpine.store('modal', {
         </div>
 
         <div class="flex flex-col gap-4 md:flex-row mb-8 md:justify-center">
-            <a href="#" class="font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</a>
+            <button @click="$store.modal.toggle()" class="font-semibold text-center px-12 py-3 bg-red-600 hover:bg-red-700 rounded text-white border border-red-700">Get a Free Quote</button>
             <a href="#" class="block font-semibold text-center px-12 py-3 rounded text-white border border-white flex gap-2 justify-center">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
