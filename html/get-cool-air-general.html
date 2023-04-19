@@ -93,30 +93,34 @@
 
 <!-- Header -->
 <header class="relative z-20">
-    <div class="container flex items-center gap-2 py-2 md:gap-5 md:py-5">
+    <div class="container flex items-center gap-6 py-2 md:py-4">
 
         <div class="relative self-stretch w-20 md:w-28">
-            <img class="absolute w-full -top-1 md:-top-3 -left-3" src="assets/images/logo-color.png" alt="Logo">
+            <img class="absolute w-full -top-1 md:-top-3 -left-4 md:left-0" src="assets/images/logo-color.png" alt="Logo">
         </div>
 
         <div class="hidden text-sm text-gray-600 md:block">
             <div>Local Las Vegas Heating & Cooling Specialist</div>
-            <div>Serving Las Vegas Community For Over 25 Years</div>
+            <div class="hidden lg:block">Serving Las Vegas Community For Over 25 Years</div>
             <div class="text-green-600">
                 <span class="inline-block w-3 h-3 bg-green-600 border border-green-700 rounded-full"></span>
                 <span class="font-semibold">OPEN</span> until 5pm
             </div>
         </div>
 
-        <a href="tel:+17025531171" class="ml-auto text-right shrink-0">
-            <div class="text-xs italic text-gray-800 md:text-sm">Area Wide <span class="text-green-600">Live</span> Hotline</div>
-            <div class="flex items-center justify-end gap-1 text-base font-semibold md:text-xl">
-                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <a href="tel:+17025531171" class="ml-auto italic text-right shrink-0">
+            <div class="text-xs text-gray-800 md:text-sm">Area Wide <span class="text-green-600">Live</span> Hotline</div>
+            <div class="flex items-center justify-end gap-3 text-base font-semibold md:text-2xl">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
-                (702) 553-1171
+                702-553-1171
             </div>
         </a>
+
+        <button @click="$store.modal.toggle()" class="flex items-center justify-center px-6 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded shadow-md shrink-0 md:py-4 md:px-8 hover:bg-red-700">
+            Get a Quote
+        </button>
 
     </div>
 </header>
@@ -126,7 +130,7 @@
 <section class="bg-blue-800 md:bg-[url('../images/trane-technician-servicing-compressor.png')] bg-cover bg-center relative">
 
     <!-- Background Overlay for Table & Desktop -->
-    <div class="absolute hidden w-full h-full bg-blue-900 md:block bg-opacity-90"></div>
+    <div class="absolute hidden w-full h-full bg-slate-800 bg-opacity-80 md:block"></div>
 
     <div class="md:hidden bg-[url('../images/trane-technician-servicing-compressor.png')] bg-cover bg-center h-[180px]"></div>
 
@@ -135,22 +139,25 @@
         <div class="text-white lg:col-span-3">
             <div class="mb-2 text-sm md:text-base md:mb-4">
                 <span class="mb-2 tracking-[.25em] text-yellow-400">★★★★★</span>
-                <span class="opacity-90">Over 4,000 Satisfied Customers</span>
+                <span>Over 4,000 Satisfied Customers</span>
             </div>
 
-            <div class="mb-1 text-sm md:text-lg opacity-80 md:opacity-90">Central AC Installation Las Vegas, NV</div>
+            <div class="mb-1 text-sm md:text-lg">Central AC Installation Las Vegas, NV</div>
             
             <h1 class="mb-3 text-2xl md:text-5xl md:leading-tight mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
             
-            <p class="max-w-3xl mb-4 text-sm md:text-base opacity-90">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
-            <p class="text-sm md:text-base opacity-90">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
+            <p class="max-w-3xl mb-4 text-sm md:text-base">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
+            <p class="text-sm md:text-base">Schedule Your <span class="font-semibold">FREE Consultation & Estimate</span> Today!</p>
             
             <div class="flex flex-col gap-4 mt-4 md:flex-row md:mt-6">
-                <button @click="$store.modal.toggle()" class="flex items-center justify-center px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded shadow-md md:py-4 hover:bg-red-700">
+                <button @click="$store.modal.toggle()" class="flex items-center justify-center gap-2 px-12 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded shadow-md md:py-4 hover:bg-red-700">
                     Get a Free Estimate
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd" />
+                    </svg>                                           
                 </button>
 
-                <a href="tel:+17025531171" class="flex items-center justify-center gap-2 px-12 py-3 font-semibold text-center text-white border border-white rounded md:py-4">
+                <a href="tel:+17025531171" class="flex items-center justify-center gap-2 px-12 py-3 font-semibold text-center text-white border border-white rounded shadow-lg md:py-4">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                     </svg>
@@ -161,8 +168,7 @@
         </div>
 
         <!-- Free Quote Form -->
-        <div class="flex-col hidden overflow-hidden bg-white rounded shadow-2xl lg:col-span-2 lg:flex">
-
+        <div class="flex-col hidden overflow-hidden bg-white rounded shadow-2xl">
             <div class="flex flex-row items-center gap-3 px-6 py-4 bg-red-600">
                 <div class="flex items-center justify-center bg-white rounded-full w-9 h-9 shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(220, 30, 38, 1)" class="w-6 h-6">
@@ -176,7 +182,25 @@
             <div class="text-center p-9">
                 include "components/system-replacement-lead-form.html"
             </div>
+        </div>
 
+        <!-- Financing -->
+        <div class="flex-col overflow-hidden bg-white rounded shadow-2xl lg:col-span-2 lg:flex">
+            <div class="flex flex-row items-center gap-3 px-6 py-3 text-center bg-yellow-400">
+                <h3 class="text-lg uppercase">Start For $0 Down, Call For Flexible Payment Options</h3>
+            </div>
+
+            <div class="px-6 py-4 text-center">
+                <div>
+                    <div>Starting From</div>
+                    <span class="text-5xl font-semibold">$97</span>
+                    <span>/month</span>
+                </div>
+                <div class="py-3 mb-3 border-b border-gray-300">
+                    $0 Down and 240 Month Payment Terms Available!
+                </div>
+                include "components/system-replacement-lead-form.html"
+            </div>
         </div>
 
     </div>
@@ -260,7 +284,7 @@
             <div class="flex flex-row gap-4">
                 <div class="flex items-center justify-center w-8 h-8 font-semibold text-white bg-green-600 rounded-full shrink-0">1</div>
                 <div>
-                    <h3 class="text-lg md:mb-2">Call To Schedule Your Free Expert Consultation & Get a Free Estimate</h3>
+                    <h3 class="text-lg md:mb-2">Call To Schedule Your Free Expert Consultation & Estimate</h3>
                     <p class="text-sm text-gray-700 md:text-base">Call to schedule your free in-home consultation. During the consultation, our expert technician will help determine the right system for your home, then create and review your free estimate.</p>
                 </div>
             </div>
@@ -269,7 +293,7 @@
                 <div class="flex items-center justify-center w-8 h-8 font-semibold text-white bg-green-600 rounded-full shrink-0">2</div>
                 <div>
                     <h3 class="text-lg md:mb-2">Expert Installation With Workmanship Gurantee</h3>
-                    <p class="text-sm text-gray-70 md:text-base0">When you're ready to move forward, we'll schedule a convenient installation date. Our team of experts will bring all equipment and supplies necessary to install your new system and thoroughly clean up the job site. HVAC installation can typically be completed in a single day.</p>
+                    <p class="text-sm text-gray-700 md:text-base">When you're ready to move forward, we'll schedule a convenient installation date. Our team of experts will bring all equipment and supplies necessary to install your new system and thoroughly clean up the job site. HVAC installation can typically be completed in a single day.</p>
                 </div>
             </div>
 
@@ -282,7 +306,7 @@
             </div>
 
             <div class="flex flex-col gap-4 md:flex-row md:items-center">
-                <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded md:py-4">Request an Appointment</button>
+                <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded hover:bg-red-700 md:py-4">Request an Appointment</button>
                 <a href="tel:+17025531171" class="font-semibold">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
             </div>
             
@@ -296,14 +320,14 @@
 
 <!-- CTA Financing Offer -->
 <section class="py-10 bg-blue-800">
-    <div class="container grid items-center grid-cols-12 gap-6">
-        <div class="col-span-8 col-start-2 md:order-last md:col-span-4">
+    <div class="container grid items-center grid-cols-12 gap-5">
+        <div class="col-span-8 col-start-2 md:order-last md:col-span-5">
             <img class="min-w-full" src="assets/images/trane-units.png" alt="HVAC Installation and Replacement Services"/>
         </div>
 
-        <div class="col-span-12 text-white md:col-span-8">
-            <h2 class="mb-3 text-2xl md:text-4xl">Upgrade you Comfort With Low Monthly Payments</h2>
-            <p class="mb-6 text-sm md:text-base">Affordable payments starting from as low as $97/m and up to 15% OFF select system. We offer same-day installations. Contact us today for more information and get a free no-obligation quote.</p>
+        <div class="col-span-12 text-white md:col-span-7">
+            <h2 class="mb-3 text-2xl md:text-4xl">Upgrade Your Comfort & Save Money</h2>
+            <p class="mb-6 text-sm md:text-base">Don't wait until your old AC unit breaks down in the middle of a heatwave. Contact us today for a free in-home estimate and take advantage of our $1,000 off rebate. Upgrade your home's comfort and efficiency with a new AC unit.</p>
             
             <ul class="flex flex-col gap-4 text-sm md:text-base">
                 <li class="flex gap-2 md:gap-3">
@@ -312,7 +336,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                     </div>
-                    Fast, Same-Day Service
+                    Say Hello To Lower Energy Bills
                 </li>
                 <li class="flex gap-2 md:gap-3">
                     <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
@@ -320,7 +344,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                     </div>
-                    Upfront Pricing
+                    Keep Your Home Cool & Comfortable
                 </li>
                 <li class="flex gap-2 md:gap-3">
                     <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
@@ -328,7 +352,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                     </div>
-                    Flexible Financing
+                    Improve Your Indoor Air Quality
                 </li>
                 <li class="flex gap-2 md:gap-3">
                     <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
@@ -336,12 +360,20 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                     </div>
-                    10-Year Part & Labor Warranty
+                    Save Money On Repairs
+                </li>
+                <li class="flex gap-2 md:gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    Get A Free Estimate & $1,000 Off Rebate
                 </li>
             </ul>
 
             <div class="flex flex-col gap-4 mt-6 md:flex-row md:items-center">
-                <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded md:py-4">Get a Free Quote</button>
+                <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded hover:bg-red-700 md:py-4">Upgrade Comfort & Save</button>
                 <a href="tel:+17025531171" class="font-semibold">Or call us: (702) 553-1171</a>
             </div>
         </div>
@@ -409,7 +441,7 @@
         </div>
 
         <div class="flex flex-col gap-4 mt-6 md:items-center md:mt-12">
-            <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded md:py-4">Schedule a Consultation</button>
+            <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded hover:bg-red-700 md:py-4">Schedule a Consultation</button>
             <a href="#" class="self-center font-semibold">Or call us: <span class="text-blue-600">(702) 553-1171</span></a>
         </div>
 
@@ -433,7 +465,7 @@
 
             <div class="p-4 bg-white border-2 border-gray-100 rounded">
                 <div class="mb-2 text-lg tracking-widest text-yellow-500">★★★★★</div>
-                <p class="mb-2 text-lg italic">"...I had an enterily new system by dark"</p>
+                <p class="mb-2 text-lg italic font-semibold">"...I had an enterily new system by dark"</p>
                 <p class="mb-3 text-sm italic text-gray-800 md:text-base">“I had a great experience with Active Plumbing and Air. They replaced my old HVAC system quickly and professionally, and the results are fantastic. I highly recommend them!”</p>
                 <p class="font-semibold">Kathy D</p>
             </div>
@@ -492,7 +524,7 @@
         </div>
 
         <div class="flex flex-col gap-4 mb-12 md:flex-row md:justify-center">
-            <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white bg-red-600 border border-red-700 rounded shadow-md md:py-4 hover:bg-red-700">
+            <button @click="$store.modal.toggle()" class="px-12 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded shadow-md md:py-4 hover:bg-red-700">
                 Get a Free Quote
             </button>
 
