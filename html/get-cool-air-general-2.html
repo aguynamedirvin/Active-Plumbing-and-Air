@@ -268,6 +268,63 @@
 
 
 
+<section class="py-10 md:py-24 bg-gray-50" x-data="{ slide: 0, slides: 2 }">
+    <!-- ... -->
+
+    <div class="relative grid grid-cols-1 gap-12 px-4 lg:grid-cols-2" @keydown.window.arrow-right="slide = (slide + 1) % slides" @keydown.window.arrow-left="slide = (slide - 1 + slides) % slides">
+
+        <!-- Slider wrapper with overflow-hidden and fixed width -->
+        <div class="overflow-hidden">
+            <!-- Slides container -->
+            <div class="flex" :style="'transform: translateX(-' + (slide * 100) + '%); transition: transform 0.3s ease-out;'">
+                <!-- First slide -->
+                <div class="flex-none w-full">
+                    <div class="grid grid-cols-6 bg-white shadow-sm">
+                        <div class="col-span-2 overflow-hidden">
+                            <img class="object-cover w-full h-full" src="assets/images/trane-technician-servicing-compressor.png" />
+                        </div>
+                        <div class="flex flex-col justify-center col-span-4 p-6">
+                            <h3 class="mb-3 text-xl">HVAC Repair</h3>
+                            <p class="text-sm text-gray-700 md:text-base">When your system stops working, you can trust Active Plumbing & Air to diagnose and repair the issue—fast.</p>
+                            <a class="block mt-3 text-sm text-blue-600 md:text-base" href="">Request Appointment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second slide -->
+                <div class="flex-none w-full">
+                    <div class="grid grid-cols-6 bg-white shadow-sm">
+                        <div class="col-span-2 overflow-hidden">
+                            <img class="object-cover w-full h-full" src="assets/images/trane-technician-servicing-compressor.png" />
+                        </div>
+                        <div class="flex flex-col justify-center col-span-4 p-6">
+                            <h3 class="mb-3 text-xl">HVAC Repair</h3>
+                            <p class="text-sm text-gray-700 md:text-base">When your system stops working, you can trust Active Plumbing & Air to diagnose and repair the issue—fast.</p>
+                            <a class="block mt-3 text-sm text-blue-600 md:text-base" href="">Request Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Slider buttons -->
+    <div class="flex justify-center mt-4 space-x-2">
+        <button class="p-2 bg-gray-200 rounded-full" @click="slide = (slide - 1 + slides) % slides">
+            <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <button class="p-2 bg-gray-200 rounded-full" @click="slide = (slide + 1) % slides">
+            <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</section>
+
+
 
 <section class="py-10 md:py-24 bg-gray-50" x-data="{ slide: 0, slides: 2 }">
     <!-- ... -->
