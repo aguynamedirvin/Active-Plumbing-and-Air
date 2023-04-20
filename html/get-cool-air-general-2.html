@@ -102,10 +102,6 @@
         <div class="hidden text-sm text-gray-800 md:block">
             <div>Local Las Vegas Heating & Cooling Specialists</div>
             <div class="hidden lg:block">Serving Las Vegas For Over 25 Years</div>
-            <div class="text-green-600">
-                <span class="inline-block w-3 h-3 bg-green-600 border border-green-700 rounded-full"></span>
-                <span class="font-semibold">OPEN</span> until 5pm
-            </div>
         </div>
 
         <a href="tel:+17025531171" class="ml-auto italic text-right shrink-0">
@@ -144,7 +140,7 @@
 
             <div class="mb-1 text-sm md:text-lg">Central AC Installation Las Vegas, NV</div>
             
-            <h1 class="mb-3 text-3xl leading-tight md:text-5xl mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
+            <h1 class="mb-3 text-3xl leading-tight md:leading-tight md:text-5xl mb:mb-4">Experience Comfort & Reliability with Expert HVAC System Replacement Services</h1>
             
             <p class="max-w-3xl mb-4 md:text-lg">25+ Years of Exceptional Service in the Las Vegas Area. Discover the Difference a Professional HVAC System Replacement Can Make.</p>
             <p class="md:text-lg">Schedule Your <span class="font-semibold">FREE Expert Consultation & Estimate</span> Today!</p>
@@ -197,7 +193,7 @@
 
             <div class="px-6 py-4 text-center">
                 <div>
-                    <div>New System Starting From</div>
+                    <div>New AC System Starting From</div>
                     <span class="text-5xl font-bold text-blue-700">$97</span>
                     <span>/month</span>
                 </div>
@@ -270,6 +266,44 @@
     </div>
 </section>
 
+
+<!-- Services -->
+<section class="py-10 md:py-24 bg-gray-50">
+    <div class="container">
+        
+        <div class="flex flex-col items-center mb-8 text-center md:mb-12">
+            <h2 class="mb-3 text-2xl md:text-4xl">Fast, Reliable, Affordable HVAC Services</h2>
+            <p class="max-w-3xl text-base md:text-lg">Unparalleled Expertise, Quality Workmanship & a Commitment to Your Satisfaction</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+            <div class="grid grid-cols-6 bg-white shadow-sm">
+                <div class="col-span-2 overflow-hidden">
+                    <img class="object-cover w-full h-full" src="assets/images/trane-technician-servicing-compressor.png" />
+                </div>
+                <div class="flex flex-col justify-center col-span-4 p-6">
+                    <h3 class="mb-3 text-xl">HVAC Repair</h3>
+                    <p class="text-sm text-gray-700 md:text-base">When your system stops working, you can trust Active Plumbing & Air to diagnose and repair the issue—fast.</p>
+                    <a class="block mt-3 text-sm text-blue-600 md:text-base" href="">Request Appointment</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-6 bg-white shadow-sm">
+                <div class="col-span-2 overflow-hidden">
+                    <img class="object-cover w-full h-full" src="assets/images/trane-technician-servicing-compressor.png" />
+                </div>
+                <div class="flex flex-col justify-center col-span-4 p-6">
+                    <h3 class="mb-3 text-xl">HVAC Maintenance</h3>
+                    <p class="text-sm text-gray-700 md:text-base">Seasonal tune-ups can help identify potential issues, increase energy efficiency, and extend the life of your system.</p>
+                    <a class="block mt-3 text-sm text-blue-600 md:text-base" href="">Request Appointment</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 <!-- Process -->
 <section class="py-10 md:py-24 bg-slate-50">
@@ -494,20 +528,52 @@
             <h2 class="text-2xl md:text-4xl">Current Special Offers</h2>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 md:gap-12">
-            <div class="p-6 bg-white rounded shadow-lg">
-                <h4 class="mb-3 text-lg md:text-2xl">Install A New AC. Get A FREE Smart Home Upgrade.</h4>
-                <p class="mb-6 text-sm text-gray-700 md:mb-12 md:text-base">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+        <div class="grid gap-4 lg:grid-cols-3 md:gap-12">
+            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
+                <h4 class="text-2xl">Install A New AC. Get A FREE Smart Home Upgrade</h4>
 
-                <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
+                <div>
+                    <div>Smart Home Upgrade</div>
+                    <span class="text-6xl font-bold text-blue-800">Free</span>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
+                    <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                </div>
             </div>
 
-            <div class="p-6 bg-white rounded shadow-lg">
-                <h4 class="mb-3 text-lg md:text-2xl">Complete System Replacement Starting As Low As $97 a Month.</h4>
-                <p class="mb-6 text-sm text-gray-700 md:mb-12 md:text-base">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
+                <h4 class="text-2xl">Complete AC System Replacement</h4>
 
-                <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
+                <div>
+                    <div>Starting From</div>
+                    <span class="text-6xl font-bold text-blue-800">$97</span>
+                    <span class="text-xl font-semibold">/month</span>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
+
+                    <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                </div>
             </div>
+
+            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
+                <h4 class="text-2xl">Get Up To $1,000 Rebate On AC Replacements</h4>
+
+                <div>
+                    <div>Get</div>
+                    <span class="text-6xl font-bold text-blue-800">$1,000</span>
+                    <span class="text-xl font-semibold">OFF</span>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
+                    <p class="text-sm text-gray-500 textxs">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
