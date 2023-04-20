@@ -630,7 +630,7 @@
   x-show="isVisible" 
   @scroll.window="isVisible = (window.scrollY > lastScrollY) && (window.scrollY > 600); lastScrollY = window.scrollY" 
   x-cloak 
-  class="fixed bottom-0 flex flex-row w-full gap-1 p-2 transition-all duration-300 transform md:hidden" 
+  class="fixed bottom-0 flex flex-row w-full gap-1 p-2 transition-all duration-300 transform bg-white shadow-lg md:hidden" 
   x-transition:enter="translate-y-full" 
   x-transition:enter-start="translate-y-full" 
   x-transition:enter-end="translate-y-0" 
