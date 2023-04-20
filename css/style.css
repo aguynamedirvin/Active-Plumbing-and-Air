@@ -191,3 +191,21 @@ textarea.invalid {
 .input-options--pretty input[type="radio"]:checked ~ label {
   @apply border-blue-600 text-blue-600 
 }
+
+
+
+.pulse {
+  box-shadow: 0 0 0 0px rgba(255,255,255,0);
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255,255,255,0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255,255,255,0);
+  }
+}
