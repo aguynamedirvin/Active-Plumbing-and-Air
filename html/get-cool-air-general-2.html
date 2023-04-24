@@ -101,7 +101,7 @@
 
         <div class="hidden text-sm text-gray-800 md:block">
             <div>Local Las Vegas Heating & Cooling Specialists</div>
-            <div class="hidden lg:block">Serving Las Vegas For Over 25 Years</div>
+            <div>Serving Las Vegas For Over 25 Years</div>
         </div>
 
         <a href="tel:+17025531171" class="ml-auto italic text-right shrink-0">
@@ -115,7 +115,7 @@
         </a>
 
         <button @click="$store.modal.toggle()" class="items-center justify-center px-3 py-3 font-semibold text-center text-white transition bg-red-600 border border-red-700 rounded shadow-md md:block shrink-0 md:py-4 md:px-8 hover:bg-red-700">
-            Get a <span class="hidden md:inline-block">Free </span> Quote
+            Get a <span class="hidden sm:inline-block">Free </span> Quote
         </button>
 
     </div>
@@ -135,7 +135,7 @@
         <div class="text-white lg:col-span-3">
             <div class="mb-2 text-sm md:text-base md:mb-4">
                 <span class="mb-2 tracking-[.25em] text-yellow-400">★★★★★</span>
-                <span>Over 4,000 Satisfied Customers</span>
+                <span>Over 4,000+ Satisfied Customers</span>
             </div>
 
             <div class="mb-1 md:text-lg">Central AC Installation Las Vegas, NV</div>
@@ -193,7 +193,7 @@
 
             <div class="px-6 py-4 text-center">
                 <div>
-                    <div>New AC System Starting From</div>
+                    <div>AC Installations Starting As Low As</div>
                     <span class="text-5xl font-bold text-blue-700">$97</span>
                     <span>/month</span>
                 </div>
@@ -273,6 +273,7 @@
     <div class="container">
         <div class="flex flex-col items-center mb-6 text-center md:mb-12">
             <h2 class="mb-3 text-2xl md:text-4xl">Fast, Reliable, Affordable HVAC Services</h2>
+            <p class="max-w-3xl text-base md:text-lg">We offer a full range of commercial and residential HVAC services. Contact us today to learn more about our HVAC services and get pricing.</p>
         </div>
     </div>
 
@@ -288,7 +289,7 @@
                 <div class="flex-none w-full md:pr-6 md:w-1/2">
                     <div class="grid h-full grid-cols-6 bg-white shadow-sm">
                         <div class="col-span-2 overflow-hidden">
-                            <img class="object-cover w-full h-full max-h-44 md:max-h-64" src="assets/images/trane-technician-servicing-compressor.png" />
+                            <img class="object-cover w-full h-full max-h-48" src="assets/images/trane-technician-servicing-compressor.png" />
                         </div>
                         <div class="flex flex-col justify-center col-span-4 p-6">
                             <h3 class="mb-1 text-xl md:mb-3">HVAC Repair</h3>
@@ -301,7 +302,7 @@
                 <div class="flex-none w-full md:pr-6 md:w-1/2">
                     <div class="grid h-full grid-cols-6 bg-white shadow-sm">
                         <div class="col-span-2 overflow-hidden">
-                            <img class="object-cover w-full h-full max-h-44 md:max-h-64" src="assets/images/hvac-maintenance.jpg" />
+                            <img class="object-cover w-full h-full max-h-48" src="assets/images/hvac-maintenance.jpg" />
                         </div>
                         <div class="flex flex-col justify-center col-span-4 p-6">
                             <h3 class="mb-1 text-xl md:mb-3">HVAC Maintenance</h3>
@@ -314,7 +315,7 @@
                 <div class="flex-none w-full md:pr-6 md:w-1/2">
                     <div class="grid h-full grid-cols-6 bg-white shadow-sm">
                         <div class="col-span-2 overflow-hidden">
-                            <img class="object-cover w-full h-full max-h-44 md:max-h-64" src="assets/images/ac-units-outside.webp" />
+                            <img class="object-cover w-full h-full max-h-48" src="assets/images/ac-units-outside.webp" />
                         </div>
                         <div class="flex flex-col justify-center col-span-4 p-6">
                             <h3 class="mb-1 text-xl md:mb-3">HVAC Installation</h3>
@@ -330,12 +331,12 @@
 
     <!-- Slider buttons -->
     <div class="flex justify-center mt-3 space-x-3">
-        <button class="p-2 bg-gray-200 rounded-full" @click="slide = (slide - 1 + slides) % slides">
+        <button class="p-2 bg-gray-200 rounded-full hover:bg-gray-300" @click="slide = (slide - 1 + slides) % slides">
             <svg class="w-6 h-6 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
             </svg>
         </button>
-        <button class="p-2 bg-gray-200 rounded-full" @click="slide = (slide + 1) % slides">
+        <button class="p-2 bg-gray-200 rounded-full hover:bg-gray-300" @click="slide = (slide + 1) % slides">
             <svg class="w-6 h-6 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
             </svg>
@@ -582,46 +583,46 @@
         </div>
 
         <div class="grid gap-4 lg:grid-cols-3 md:gap-12">
-            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
-                <h4 class="text-2xl">Install A New AC. Get A FREE Smart Home Upgrade</h4>
+            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
+                <h4 class="text-2xl">Get A FREE Smart Home Upgrade</h4>
 
                 <div>
                     <div>Smart Home Upgrade</div>
-                    <span class="text-6xl font-bold text-blue-800">Free</span>
+                    <span class="text-6xl font-bold text-blue-900">Free</span>
                 </div>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
                     <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
                 </div>
             </div>
 
-            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
-                <h4 class="text-2xl">Complete AC System Replacement</h4>
+            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
+                <h4 class="text-2xl">Complete AC Installation As Low As $97/m</h4>
 
                 <div>
-                    <div>Starting From</div>
-                    <span class="text-6xl font-bold text-blue-800">$97</span>
+                    <div>As Low As</div>
+                    <span class="text-6xl font-bold text-blue-900">$97</span>
                     <span class="text-xl font-semibold">/month</span>
                 </div>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
 
                     <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
                 </div>
             </div>
 
-            <div class="flex flex-col content-between justify-between gap-8 p-6 text-center bg-gray-100 rounded">
+            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
                 <h4 class="text-2xl">Get Up To $1,000 Rebate On AC Replacements</h4>
 
                 <div>
                     <div>Get</div>
-                    <span class="text-6xl font-bold text-blue-800">$1,000</span>
-                    <span class="text-xl font-semibold">OFF</span>
+                    <span class="text-6xl font-bold text-blue-900">$1,000</span>
+                    <span class="text-xl font-semibold text-red-600">OFF</span>
                 </div>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="block px-12 py-4 font-semibold text-center text-white bg-red-600 border border-red-700 rounded hover:bg-red-700">Get a Free Quote</button>
                     <p class="text-sm text-gray-500 textxs">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
                 </div>
