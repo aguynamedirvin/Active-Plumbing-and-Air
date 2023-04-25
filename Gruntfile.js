@@ -58,6 +58,10 @@ module.exports = function (grunt) {
         **/
         includes: {
             default: {
+                options: {
+                    // Exclude html/components directory
+                    exclude: '<%= path.src.html %>/components/**',
+                },
                 files: [{
                     cwd: '<%= path.src.html %>/',
                     src: '**/*.html',
