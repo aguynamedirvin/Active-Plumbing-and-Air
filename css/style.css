@@ -21,15 +21,25 @@ h6 {
     @apply font-poppins font-semibold
 }
 
+@layer components {
+  .btn {
+    @apply relative flex items-center justify-center gap-4 px-8 py-4 font-semibold text-white transition border rounded shadow-md;
+    @apply bg-red-600 border-red-700 hover:bg-red-700;
 
-.btn {
-    @apply inline-flex text-white items-center text-left bg-red-600 hover:bg-red-700 shadow-md py-4 px-9 rounded-md transition duration-300 font-semibold text-lg
-}
-.btn--secondary {
-  @apply bg-secondary
-}
-.btn--white {
-    @apply text-black bg-slate-50
+  }
+
+  .btn--white {
+    @apply text-white bg-transparent hover:bg-white/10;
+    @apply border-white hover:border-white;
+  }
+
+  .btn--secondary {
+    @apply bg-secondary
+  }
+
+  .btn--icon {
+    @apply flex items-center justify-center bg-red-800 rounded-full w-14 h-14 pulse;
+  }
 }
 
 input,
@@ -209,3 +219,6 @@ textarea.invalid {
     box-shadow: 0 0 0 10px rgba(255,255,255,0);
   }
 }
+
+
+
