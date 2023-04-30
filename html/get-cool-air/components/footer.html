@@ -1,0 +1,83 @@
+<footer class="bg-gray-950">
+    <div class="container grid grid-rows-1 gap-10 py-20 text-gray-100 md:grid-cols-12 md:gap-20">
+        <div class="md:col-span-4">
+            <div class="relative self-stretch w-20 md:w-28">
+                <img loading="lazy" class="absolute w-full bottom-4" src="assets/images/logo-color.png" alt="Logo">
+            </div>
+            <p class="text-sm text-gray-400">Locally-owned & operated plumbing, air conditioning, and heating company with over 31 years of experience. We get the job done right the first time around.</p>
+        </div>
+
+        <div class="md:col-span-2">
+            <h6 class="mb-3">Services</h6>
+            <ul class="flex flex-col gap-3 text-sm text-gray-400">
+                <li>Repair</li>
+                <li>Installation</li>
+                <li>Maintenance</li>
+            </ul>
+        </div>
+        <div class="md:col-span-3">
+            <h6 class="mb-3">Contact Us</h6>
+            <ul class="flex flex-col gap-3 text-sm text-gray-400">
+                <li><a href="tel:+17025531171">(702) 553-1171</a></li>
+                <li>3580 Polaris Ave #17, Las Vegas, NV 89103</li>
+            </ul>
+        </div>
+        <div class="md:text-right md:col-span-3">
+            <h6 class="mb-3">Need Service or Repair?</h6>
+            <a class="text-2xl font-semibold text-white" href="tel:+17025531171">Call (702) 553-1171</a>
+            <p class="text-sm leading-8 text-gray-400">Our Friendly Team Is Ready To Help!</p>
+        </div>
+    </div>
+
+    <div class="container grid gap-6 py-12 text-xs text-gray-400 border-t border-gray-800 md:grid-cols-2">
+        <div>
+            <p>NV Plumbing License: #47021 | NV HVAC License: #0084450</p>
+            <p>2023 © Active Plumbing & Air Conditioning, LLC. All Rights Reserved. A Licensed, Insured, and Bonded Business.</p>
+        </div>
+
+        <div class="md:text-right">
+            <p>Digital Marketing By <a href="https://hvacmarketingengine.com/">HVAC Marketing Engine</a></p>
+        </div>
+    </div>
+
+</footer>
+
+<!-- Quick Mobile Actions -->
+<div 
+  x-data="{
+    isVisible: false, 
+    lastScrollY: 0
+  }" 
+  x-init="isVisible = window.scrollY > 420" 
+  x-show="isVisible" 
+  @scroll.window="isVisible = (window.scrollY > lastScrollY) && (window.scrollY > 420); lastScrollY = window.scrollY" 
+  x-cloak 
+  class="fixed bottom-0 flex flex-row w-full gap-1 p-2 transition-all duration-300 transform bg-white shadow-lg md:hidden" 
+  x-transition:enter="translate-y-full" 
+  x-transition:enter-start="translate-y-full" 
+  x-transition:enter-end="translate-y-0" 
+  x-transition:leave="translate-y-full" 
+  x-transition:leave-start="translate-y-0" 
+  x-transition:leave-end="translate-y-full"
+>
+    <button @click="$store.modal.toggle()" class="flex-1 gap-2 px-0 text-sm rounded-r-none btn btn--secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zm9.586 4.594a.75.75 0 00-1.172-.938l-2.476 3.096-.908-.907a.75.75 0 00-1.06 1.06l1.5 1.5a.75.75 0 001.116-.062l3-3.75z" clip-rule="evenodd" />
+        </svg>
+        Request a Quote
+    </button>
+
+    <a href="tel:+17025531171" class="flex-1 gap-2 px-0 text-sm rounded-l-none btn">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+        </svg>
+        Tap to Call
+    </a>
+</div>
+
+
+
+
+</body>
+</html>
