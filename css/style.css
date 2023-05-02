@@ -210,7 +210,7 @@ textarea.invalid {
   animation-iteration-count: infinite;
 }
 .pulse-shadow {
-  @apply absolute min-w-full min-h-full bg-green-500 rounded-full;
+  @apply absolute min-w-full min-h-full rounded-full;
 
   animation-name: pulse-shadow;
   animation-duration: 2s;
