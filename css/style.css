@@ -7,11 +7,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
-p {
-    @apply font-poppins
-}
-
 h1,
 h2,
 h3,
@@ -21,10 +16,14 @@ h6 {
     @apply font-poppins font-semibold
 }
 
+p {
+    @apply font-poppins
+}
+
 @layer components {
   .btn {
     @apply relative flex items-center justify-center gap-4 px-8 py-4;
-    @apply font-semibold text-white transition bg-red-600 border border-red-700 rounded shadow-md hover:bg-red-700;
+    @apply font-semibold text-white transition bg-red-600 border border-red-700 rounded-full shadow-lg hover:bg-red-700;
 
   }
 
