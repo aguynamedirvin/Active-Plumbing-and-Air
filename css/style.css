@@ -22,9 +22,11 @@ p {
 
 @layer components {
   .btn {
-    @apply relative flex items-center justify-center gap-4 px-10 py-4;
-    @apply font-semibold text-white transition bg-red-600 border border-red-700 rounded-full shadow-lg hover:bg-red-700;
-
+    @apply relative flex items-center justify-center gap-3 px-10 py-4 overflow-hidden;
+    @apply font-semibold text-white transition bg-red-600 rounded-full shadow-lg;
+  }
+  .btn:hover {
+    box-shadow: 0 0 0 5px rgba(124, 124, 124, 0.15);
   }
 
   .btn--white {
@@ -35,8 +37,12 @@ p {
     @apply bg-blue-700 hover:bg-blue-800 border-blue-800
   }
 
-  .btn--icon {
-    @apply flex items-center justify-center bg-red-800 rounded-full w-14 h-14 pulse;
+  /** Button with Icon **/
+  .btn:has(svg) svg {
+    @apply transition-all
+  }
+  .btn:has(svg):hover svg {
+    transform: translateX(3px);
   }
 }
 
