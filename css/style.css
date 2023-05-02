@@ -26,7 +26,7 @@ p {
     @apply font-semibold text-white transition bg-red-600 rounded-full shadow-lg;
   }
   .btn:hover {
-    box-shadow: 0 0 0 5px rgba(124, 124, 124, 0.15);
+    box-shadow: 0 0 0 6px rgba(124, 124, 124, 0.2);
   }
 
   .btn--white {
