@@ -101,30 +101,33 @@
     </template>
 
     <!-- Step 4: What is your name? -->
-    <div x-show="step === 'name'">
-        <p class="mb-4 text-lg text-gray-800">What is your nane?</p>
+    <template x-if="step === 'name'">
+        <div>
+            <p class="mb-4 text-lg text-gray-800">What is your nane?</p>
 
-        <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" />
-        <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" />
-        
-        <p x-show="nameError" x-cloak class="error-message">Please enter your first and last name.</p>
-    </div>            
+            <input placeholder="First Name" type="text" name="firstName" x-model="firstName" @input="firstName = $event.target.value" />
+            <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" @input="lastName = $event.target.value" />
+            
+            <p x-show="nameError" x-cloak class="error-message">Please enter your first and last name.</p>
+        </div>
+    </template>       
 
     <!-- Step 5: What is your address? -->
-    <div x-show="step === 'address'">
-        <p class="mb-4 text-lg text-gray-800">What is your address?</p>
+    <template x-if="step === 'address'">
+        <div>
+            <p class="mb-4 text-lg text-gray-800">What is your address?</p>
 
-        <div class="grid grid-cols-6 gap-4">
-            <div class="col-span-4">
-                <input placeholder="Address" type="text" name="address" x-model="address" @input="address = $event.target.value" />
-                <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
-            </div>
-            <div class="col-span-2">
-                <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" />
+            <div class="grid grid-cols-6 gap-4">
+                <div class="col-span-4">
+                    <input placeholder="Address" type="text" name="address" x-model="address" @input="address = $event.target.value" />
+                    <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
+                </div>
+                <div class="col-span-2">
+                    <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" />
+                </div>
             </div>
         </div>
-    
-    </div>
+    </template>
 
     <!-- Step 6: Are you the homeowner? -->
     <template x-if="step === 'isHomeowner'">
@@ -150,21 +153,25 @@
     </template>
 
     <!-- Step 7: Your contact info -->
-    <div x-show="step === 'contactInfo'">
-        <p class="mb-4 text-lg text-gray-800">What is your contact information?</p>
+    <template x-if="step === 'contactInfo'">
+        <div>
+            <p class="mb-4 text-lg text-gray-800">What is your contact information?</p>
 
-        <input placeholder="Email Address" type="email" name="email" x-model="email" @input="email = $event.target.value" />
-        <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
-    
-        <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" @input="phone = applyPhoneMask($event.target.value)" />
-        <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
-    </div>
+            <input placeholder="Email Address" type="email" name="email" x-model="email" @input="email = $event.target.value" />
+            <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
+        
+            <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" @input="phone = applyPhoneMask($event.target.value)" />
+            <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
+        </div>
+    </template>
 
     <!-- Step 8: Additional details -->
-    <div x-show="step === 'additionalDetails'">
-        <p class="mb-6 text-lg text-gray-800">Anything else you would like us to know? (optional)</p>
-        <textarea placeholder="Tell us more about it" name="details" x-model="details"></textarea>
-    </div>
+    <template x-if="step === 'additionalDetails'">
+        <div>
+            <p class="mb-6 text-lg text-gray-800">Anything else you would like us to know? (optional)</p>
+            <textarea placeholder="Tell us more about it" name="details" x-model="details"></textarea>
+        </div>
+    </template>
 
     <!-- Navigation Buttons -->
     <div class="flex flex-col justify-center gap-3 mt-4" x-show="step !== 'success'">
@@ -178,12 +185,14 @@
     </div>
 
     <!-- Progress bar -->
-    <div class="mt-auto" x-show="step !== 'success' && step !== 'zipCode'">
-        <div class="w-full h-1 bg-gray-200 rounded">
-            <div :style="'width:' + progress + '%'" class="h-1 transition-all bg-blue-500 rounded"></div>
+    <template x-if="step !== 'success' && step !== 'zipCode'">
+        <div class="mt-auto">
+            <div class="w-full h-1 bg-gray-200 rounded">
+                <div :style="'width:' + progress + '%'" class="h-1 transition-all bg-blue-500 rounded"></div>
+            </div>
+            <p class="mt-1 text-sm text-left text-gray-800" x-text="Math.round(progress) + '%'"></p>
         </div>
-        <p class="mt-1 text-sm text-left text-gray-800" x-text="Math.round(progress) + '%'"></p>
-    </div>
+    </template>
 
     <!-- Success message -->
     <template x-if="step === 'success'">
@@ -412,3 +421,4 @@ function multiStepForm() {
 }
 
 </script>
+
