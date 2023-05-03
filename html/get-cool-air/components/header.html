@@ -99,28 +99,28 @@
             <img loading="lazy" class="absolute w-full -top-1 md:-top-3" src="assets/images/logo-color.png" alt="Logo">
         </div>
 
-        <div class="hidden text-sm text-gray-800 md:block">
+        <div class="hidden text-xs text-gray-800 lg:text-sm sm:block">
             <div>Local Las Vegas Heating & Cooling Specialists</div>
-            <div>Serving <span class="font-semibold">Las Vegas</span> For Over 25 Years</div>
+            <div class="hidden md:block">Serving <span class="font-semibold">Las Vegas</span> For Over 25 Years</div>
         </div>
 
         <a href="tel:+17025531171" class="ml-auto italic text-right shrink-0">
-            <div class="text-xs text-gray-800 md:text-sm">
+            <div class="text-xs text-gray-800 lg:text-sm">
                 <span class="relative inline-block w-2 h-2 bg-green-600 rounded-full">
                     <div class="bg-green-500 pulse-shadow"></div>
                 </span>
                 Area Wide <span class="text-green-600">Live</span> Hotline
             </div>
-            <div class="flex items-center justify-end gap-1 text-xl font-bold md:font-semibold md:gap-3 md:text-3xl">
-                <svg class="w-5 md:w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <div class="flex items-center justify-center gap-1 text-xl font-semibold lg:gap-3 lg:text-3xl">
+                <svg class="w-4 lg:w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
                 702-553-1171
             </div>
         </a>
 
-        <button @click="$store.modal.toggle()" class="gap-0 px-6 py-3 btn shrink-0 md:py-4 md:px-8">
-            Schedule <span class="hidden sm:inline"> Your Free Estimate</span>
+        <button @click="$store.modal.toggle()" class="gap-0 px-5 py-3 btn shrink-0 md:py-4 md:px-8">
+            Schedule<span class="hidden md:inline"><span class="hidden lg:inline">&nbsp;My Free</span>&nbsp;Estimate</span></span>
         </button>
 
     </div>
