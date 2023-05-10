@@ -2,7 +2,7 @@ include "get-cool-air/components/header.html"
 
 
 <!-- Hero -->
-<section class="bg-[url('../images/ac-installation-header.jpg')] md:pt-0 bg-contain bg-top md:bg-cover overflow-hidden relative min-h-screen">
+<section class="bg-[url('../images/ac-installation-header.jpg')] md:pt-0 bg-contain bg-top md:bg-cover overflow-hidden relative">
 
     <!-- Background Overlay for Table & Desktop -->
     <div class="absolute w-full min-h-full bg-blue-900 md:bg-blue-950 md:opacity-90"></div>
@@ -13,7 +13,7 @@ include "get-cool-air/components/header.html"
 
     <div class="container relative grid items-center gap-12 py-6 lg:grid-cols-5 md:py-20">
 
-        <div class="flex flex-col items-center min-h-[65vh] text-center text-white md:items-start md:text-base md:text-left lg:col-span-3">
+        <div class="flex flex-col items-center h-[65vh] md:h-auto text-center text-white md:items-start md:text-base md:text-left lg:col-span-3">
             
             
             <div class="mb-2 md:mb-4">
@@ -25,7 +25,7 @@ include "get-cool-air/components/header.html"
             
             <h1 class="mb-2 text-3xl md:font-bold md:leading-tight md:text-5xl">Expert AC Replacement Services In Las Vegas</h1>
 
-            <p class="max-w-2xl leading-relaxed md:text-lg md:font-extralight">Experience Unbeatable Cooling with the Las Vegas' Top AC Replacement Service. Our Professional Technicians Will Guide You to the Perfect AC Solution for Your Home.</p>
+            <p class="max-w-2xl mb-4 ding-relaxed mb- md:text-lg md:font-extralight">Experience Unbeatable Cooling with the Las Vegas' Top AC Replacement Service. Our Professional Technicians Will Guide You to the Perfect AC Solution for Your Home.</p>
 
             <p class="mt-auto mb-6 md:text-lg md:font-extralight">Take The First Step – Schedule Your Expert Consultation & <span class="font-semibold">FREE Estimate</span></p>
 
@@ -44,7 +44,7 @@ include "get-cool-air/components/header.html"
                 </div>                                     
             </a>
             
-            <button @click="$store.modal.toggle()" class="btn btn--white">Or Request Free Quote Online</button>
+            <button @click="$store.modal.toggle()" class="btn btn--white md:hidden">Or Request Free Quote Online</button>
 
         </div>
 
