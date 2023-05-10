@@ -1,8 +1,10 @@
 <form
     name="HVAC Replacement Quote"
     method="POST"
+    
     data-netlify="true"
     netlify-honeypot="bot-field"
+    
     x-on:submit.prevent="validateAndProceed()"
     x-data="multiStepForm()"
     x-on:keydown="handleEnterKey($event)"
@@ -396,6 +398,8 @@ function multiStepForm() {
             formData.append('email', this.email);
             formData.append('phone', this.phone);
             formData.append('details', this.details);
+
+            CallTrk.captureForm('#leadForm');
 
             fetch('/', {
                 method: 'POST',
