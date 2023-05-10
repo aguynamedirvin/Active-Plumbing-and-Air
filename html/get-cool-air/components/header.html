@@ -30,7 +30,25 @@
     <!-- JavaScript -->
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+    <!--<script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>-->
+
+    <script data-remove="true">
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Usage:
+        const paramHeading = getUrlParameter('heading');
+
+        function getMessage() {
+            let message = "";
+            if (message) {
+                message = "Expert AC Replacement Services In Las Vegas";
+                return message;
+            }
+        }
+    </script>
 
 </head>
 
