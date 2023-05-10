@@ -339,8 +339,8 @@ include "get-cool-air/components/header.html"
         <div class="grid gap-8 py-6 md:grid-cols-2 md:gap-12">
             
             <div class="flex flex-row gap-4 md:gap-6">
-                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-h-green-600 md:text-white shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full md:h-12 md:w-12 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:h-8 md:w-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>                      
                 </div>
@@ -351,8 +351,8 @@ include "get-cool-air/components/header.html"
             </div>
 
             <div class="flex flex-row gap-4 md:gap-6">
-                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full md:h-12 md:w-12 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:h-8 md:w-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>  
                 </div>
@@ -363,8 +363,8 @@ include "get-cool-air/components/header.html"
             </div>
 
             <div class="flex flex-row gap-4 md:gap-6">
-                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full md:h-12 md:w-12 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:h-8 md:w-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
@@ -375,8 +375,8 @@ include "get-cool-air/components/header.html"
             </div>
 
             <div class="flex flex-row gap-4 md:gap-6">
-                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <div class="flex items-center justify-center w-8 h-8 text-white bg-green-600 rounded-full md:h-12 md:w-12 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:h-8 md:w-8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
@@ -388,9 +388,9 @@ include "get-cool-air/components/header.html"
         </div>
 
         <div class="flex flex-col items-center gap-4 mt-6 text-center md:mt-12">
-            <p>For A FREE No-Obligation Quote & Expert Consultation</p>
+            <p class="font-semibold">For A FREE No-Obligation Quote & Expert Consultation</p>
             <a href="tel:+17025531171" class="btn">
-                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-5 h-5 md:h-8 md:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
                 Call now: (702) 553-1171
@@ -466,7 +466,7 @@ include "get-cool-air/components/header.html"
 </section>
 
 <!-- Promotions -->
-<section class="py-10 md:py-24">
+<section class="py-10 md:py-24" x-data="dateComponent()" x-init="getLastDayOfCurrentMonth()">
     <div class="container">
         <div class="flex flex-col mb-8 text-center md:mb-12">
             <h2 class="text-2xl md:text-4xl">Current Special Offers</h2>
@@ -483,7 +483,7 @@ include "get-cool-air/components/header.html"
 
                 <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
-                    <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
                 </div>
             </div>
 
@@ -499,7 +499,7 @@ include "get-cool-air/components/header.html"
                 <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
 
-                    <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
                 </div>
             </div>
 
@@ -514,7 +514,7 @@ include "get-cool-air/components/header.html"
 
                 <div class="flex flex-col gap-6">
                     <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
-                    <p class="text-sm text-gray-500">Offer expires April 30th, 2023. Contact us for full promotion details.</p>
+                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
                 </div>
             </div>
 
