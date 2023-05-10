@@ -7,6 +7,7 @@
     x-data="multiStepForm()"
     x-on:keydown="handleEnterKey($event)"
 
+    id="leadForm"
     cr-attached=’true’ 
     
     class="flex flex-col w-full h-full"
@@ -421,6 +422,14 @@ function multiStepForm() {
 
     };
 }
+
+var form = document.querySelector('#leadForm');
+form.addEventListener(
+    'submit',
+    function() {
+        CallTrk.captureForm('#leadForm');
+    }
+);
 
 </script>
 
