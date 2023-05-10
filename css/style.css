@@ -22,15 +22,22 @@ p {
 
 @layer components {
   .btn {
-    @apply relative inline-flex items-center justify-center gap-3 px-10 py-4 overflow-hidden;
+    @apply relative inline-flex items-center justify-center gap-3 px-10 py-4 overflow-hidden cursor-pointer shrink-0;
     @apply font-semibold text-white transition bg-red-600 border border-red-700 rounded-full shadow-lg;
   }
   .btn:hover {
-    box-shadow: 0 0 0 6px rgba(124, 124, 124, 0.2);
+    @apply ring-4;
+   
   }
 
   .btn--white {
     @apply bg-transparent border-white hover:bg-white/10 hover:border-white;
+  }
+  .btn--blue {
+    @apply bg-blue-600 border-blue-700 hover:bg-blue-700;
+  }
+  .btn--green {
+    @apply bg-green-500 border-green-600 hover:bg-green-600;
   }
 
   .btn--secondary {
@@ -54,7 +61,7 @@ textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  @apply p-3 border-2 border-gray-300 border-solid rounded w-full mt-3
+  @apply p-4 border-2 border-gray-300 border-solid rounded w-full mt-3
 }
 input[type="text"].invalid,
 input[type="email"].invalid,
