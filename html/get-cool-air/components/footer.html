@@ -1,16 +1,17 @@
 <footer class="bg-gray-950">
     
     <div class="container grid gap-10 py-20 text-sm text-center text-gray-400 md:text-left md:grid-flow-col">
-        <div class="flex flex-col items-center max-w-xs md:items-start">
+        
+        <div class="flex flex-col items-center md:items-start">
             <div class="relative w-20 h-20 md:h-0 md:w-28">
                 <img loading="lazy" class="absolute w-full bottom-4" src="assets/images/logo-color.png" alt="Logo">
             </div>
-            <p class="leading-relaxed text-gray-400">Locally-owned & operated plumbing, air conditioning, and heating company with over 31 years of experience. We get the job done right the first time around.</p>
+            <p class="w-full leading-relaxed text-gray-400 md:max-w-xs">Locally-owned & operated plumbing, air conditioning, and heating company with over 31 years of experience. We get the job done right the first time around.</p>
         </div>
 
         <div class="justify-self-stretch">
             <h6 class="mb-3 text-lg text-white">Services</h6>
-            <ul class="grid gap-3 text-gray-400 md:grid-cols-2">
+            <ul class="grid gap-3 text-gray-400 lg:grid-cols-2">
                 <li>AC Repair</li>
                 <li>AC Installation</li>
                 <li>AC Maintenance</li>
@@ -80,6 +81,37 @@
 </div>
 
 
+<script>
+function dateComponent() {
+    return {
+        dateString: '',
+        getLastDayOfCurrentMonth() {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let lastDay = new Date(year, month, 0).getDate();
+
+            // Array of month names
+            let monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+
+            // Add ordinal suffix
+            let suffix;
+            if (lastDay % 10 == 1 && lastDay != 11) {
+                suffix = 'st';
+            } else if (lastDay % 10 == 2 && lastDay != 12) {
+                suffix = 'nd';
+            } else if (lastDay % 10 == 3 && lastDay != 13) {
+                suffix = 'rd';
+            } else {
+                suffix = 'th';
+            }
+            
+            this.dateString = `${monthNames[month - 1]} ${lastDay}${suffix}, ${year}`;
+        }
+    }
+}
+</script>
 
 
 </body>
