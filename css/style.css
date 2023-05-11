@@ -279,3 +279,6 @@ article ol {
 article li {
   @apply list-item list-disc mb-3
 }
+article p a {
+  @apply text-blue-600 underline
+}
