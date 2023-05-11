@@ -1,5 +1,4 @@
-include "get-cool-air/components/header.html"
-
+include "get-cool-air/parts/header.html"
 
 <!-- Hero -->
 <section class="bg-[url('../images/ac-installation-header.jpg')] md:pt-0 bg-contain bg-top md:bg-cover overflow-hidden relative">
@@ -61,7 +60,7 @@ include "get-cool-air/components/header.html"
             </div>
 
             <div class="max-w-lg mx-auto text-center p-9">
-                include "get-cool-air/components/lead-form.html"
+                include "get-cool-air/parts/lead-form.html"
             </div>
         </div>
 
@@ -472,7 +471,50 @@ include "get-cool-air/components/header.html"
             <h2 class="text-2xl md:text-4xl">Current Special Offers</h2>
         </div>
 
-        <div class="grid gap-4 lg:grid-cols-3 md:gap-12">
+
+
+
+        <div class="grid gap-4 lg:grid-cols-3 md:gap-12" id="promotion-container">
+
+            <script src="components/promotionComponent.js"></script>
+            <script>
+                let promotions = [
+                    {
+                        title: 'Get A FREE Smart Home Upgrade', 
+                        subtitle: 'Smart Home Upgrade', 
+                        price: 'Free', 
+                        suffix: ''
+                    },
+                    {
+                        title: 'Complete AC Installation As Low As $97/m', 
+                        subtitle: 'As Low As', 
+                        price: '$97', 
+                        suffix: '/m'
+                    },
+                    {
+                        title: 'Get Up To $1,000 Rebate On AC Replacements', 
+                        subtitle: 'Get', 
+                        price: '$1,000', 
+                        suffix: 'OFF'
+                    },
+                ];
+
+                fetch('components/promotionComponent.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const promotionTemplate = doc.getElementById('promotion-component').content;
+
+                    const promotionContainer = document.getElementById('promotion-container');
+                    promotionContainer.appendChild(promotionTemplate.cloneNode(true));
+
+                    // Initialize Alpine.js components with promotions
+                    Alpine.start({ promotions });
+                });
+            </script>
+
+            
             <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
                 <h4 class="text-2xl">Get A FREE Smart Home Upgrade</h4>
 
@@ -589,4 +631,4 @@ include "get-cool-air/components/header.html"
 </section>
 
 
-include "get-cool-air/components/footer.html"
+include "get-cool-air/parts/footer.html"

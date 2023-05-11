@@ -8,6 +8,23 @@ module.exports = function (grunt) {
         **/
         pkg: grunt.file.readJSON('package.json'),
 
+        /** 
+         * 
+         * Start Local Server
+         * https://github.com/gruntjs/grunt-contrib-connect
+         */
+        connect: {
+            server: {
+                options: {
+                    port: 8000, // the port on which the webserver will respond
+                    base: '.', // the root of your project
+                    keepalive: false, // keeps the Grunt process running indefinitely, which would prevent the watch task from running if you're starting them with the same command
+                    livereload: true, // reload on changes
+                    open: true // open default browser while launching
+                }
+            }
+        },
+
         /**
             Paths
             Use ex: '<%= path.src.js %>/main.js' -> 'src/js/main.js'
@@ -20,6 +37,7 @@ module.exports = function (grunt) {
                 js: 'js',
                 fonts: 'fonts',
                 html: 'html',
+                components: 'components'
             },
 
             // Distribution
@@ -29,6 +47,7 @@ module.exports = function (grunt) {
                 js: 'dist/assets/js',
                 fonts: 'dist/assets/fonts',
                 html: 'dist',
+                components: 'dist/components'
             }
         },
 
@@ -59,8 +78,8 @@ module.exports = function (grunt) {
         includes: {
             default: {
                 options: {
-                    // Exclude html/components directory
-                    exclude: '<%= path.src.html %>/components/**',
+                    // Exclude html/parts directory
+                    exclude: '<%= path.src.html %>/parts/**',
                 },
                 files: [{
                     cwd: '<%= path.src.html %>/',
@@ -76,14 +95,19 @@ module.exports = function (grunt) {
             https://github.com/gruntjs/grunt-contrib-copy
         **/
         copy: {
-            default: {
-                files: [
-                    {
-                        expand: true,
-                        src: ['<%= path.src.fonts %>/**/*', '<%= path.src.img %>/**/*', '<%= path.src.js %>/**/*'],
-                        dest: 'dist/assets/',
-                    }
+            assets: {
+                expand: true,
+                src: [
+                    '<%= path.src.fonts %>/**/*', 
+                    '<%= path.src.img %>/**/*', 
+                    '<%= path.src.js %>/**/*',
                 ],
+                dest: 'dist/assets/',
+            },
+            components: {
+                expand: true,
+                src: ['<%= path.src.components %>/**/*'],
+                dest: 'dist/',
             }
         },
 
@@ -145,6 +169,11 @@ module.exports = function (grunt) {
             js: {
                 files: '<%= path.src.js %>/**/*.js',
                 tasks: ['concat'],
+            },
+
+            components: {
+                files: '<%= path.src.components %>/**/*.*',
+                tasks: ['copy:components'],
             }
         }
 
@@ -164,6 +193,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', ['includes', 'dom_munger', 'postcss', 'copy', 'concat']);
 
     // Watch our files and compile if any changes
-    grunt.registerTask('default', ['build', 'watch']);
+    grunt.registerTask('default', ['build', 'connect', 'watch']);
 
 }
