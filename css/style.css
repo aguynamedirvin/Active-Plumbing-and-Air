@@ -251,3 +251,22 @@ textarea.invalid {
 
 
 
+/**
+ *
+ * Article Styles
+ *
+**/
+
+article h2 {
+  @apply mt-12 mb-4 text-xl md:text-3xl;
+}
+article p {
+  @apply mb-4 leading-relaxed;
+}
+article ul,
+article ol {
+  @apply pl-4 my-6
+}
+article li {
+  @apply list-item list-disc mb-3
+}
