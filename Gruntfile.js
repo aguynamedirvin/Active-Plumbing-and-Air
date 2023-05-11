@@ -191,7 +191,7 @@ module.exports = function (grunt) {
      */
 
     // Build our CSS and JS files
-    grunt.registerTask('build', ['includes', 'dom_munger', 'postcss', 'copy', 'concat']);
+    grunt.registerTask('build', ['includes', 'dom_munger', 'postcss', 'copy:assets', 'copy:components', 'concat']);
 
     // Watch our files and compile if any changes
     grunt.registerTask('default', ['build', 'connect', 'watch']);
