@@ -157,7 +157,8 @@ module.exports = function (grunt) {
                 files: ['<%= path.src.css %>/**/*.css', 'tailwind.config.js'],
                 tasks: ['postcss'],
                 options: {
-                    interrupt: true
+                    interrupt: true,
+                    livereload: true
                 },
             },
 
