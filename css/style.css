@@ -256,12 +256,21 @@ textarea.invalid {
  * Article Styles
  *
 **/
-
-article h2 {
-  @apply mt-12 mb-4 text-xl md:text-3xl;
+article {
+  @apply text-lg text-gray-700;
+}
+article h1 {
+  @apply py-6 mb-6 text-4xl leading-snug text-black border-b border-gray-300 md:text-5xl;
+}
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  @apply mt-12 mb-4 text-3xl text-black md:text-4xl;
 }
 article p {
-  @apply mb-4 leading-relaxed;
+  @apply mb-10 leading-8;
 }
 article ul,
 article ol {
