@@ -471,9 +471,6 @@ include "get-cool-air/parts/header.html"
             <h2 class="text-2xl md:text-4xl">Current Special Offers</h2>
         </div>
 
-
-
-
         <div class="grid gap-4 lg:grid-cols-3 md:gap-12" id="promotion-container">
 
             <script src="components/promotionComponent.js"></script>
@@ -496,7 +493,7 @@ include "get-cool-air/parts/header.html"
                         subtitle: 'Get', 
                         price: '$1,000', 
                         suffix: 'OFF'
-                    },
+                    }
                 ];
 
                 fetch('components/promotionComponent.html')
@@ -513,52 +510,6 @@ include "get-cool-air/parts/header.html"
                     Alpine.start({ promotions });
                 });
             </script>
-
-            
-            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
-                <h4 class="text-2xl">Get A FREE Smart Home Upgrade</h4>
-
-                <div>
-                    <div>Smart Home Upgrade</div>
-                    <span class="text-6xl font-bold text-blue-900">Free</span>
-                </div>
-
-                <div class="flex flex-col gap-6">
-                    <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
-                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
-                <h4 class="text-2xl">Complete AC Installation As Low As $97/m</h4>
-
-                <div>
-                    <div>As Low As</div>
-                    <span class="text-6xl font-bold text-blue-900">$97</span>
-                    <span class="text-xl font-semibold">/month</span>
-                </div>
-
-                <div class="flex flex-col gap-6">
-                    <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
-
-                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col content-between justify-between gap-12 p-10 text-center bg-gray-100 rounded">
-                <h4 class="text-2xl">Get Up To $1,000 Rebate On AC Replacements</h4>
-
-                <div>
-                    <div>Get</div>
-                    <span class="text-6xl font-bold text-blue-900">$1,000</span>
-                    <span class="text-xl font-semibold text-red-600">OFF</span>
-                </div>
-
-                <div class="flex flex-col gap-6">
-                    <button @click="$store.modal.toggle()" class="btn">Get a FREE Quote</button>
-                    <p class="text-sm text-gray-500">Offer expires <span x-text="dateString"></span>. Contact us for full promotion details.</p>
-                </div>
-            </div>
 
         </div>
     </div>
