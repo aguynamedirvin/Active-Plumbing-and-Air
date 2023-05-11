@@ -49,7 +49,7 @@ p {
     @apply transition-all
   }
   .btn:has(svg):hover svg {
-    transform: translateX(3px);
+    transform: scale(1.2);
   }
 }
 
