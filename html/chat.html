@@ -469,6 +469,7 @@ class ConversationRenderer {
     }
 
     async renderStoredConversation() {
+        console.log(this.conversationHandler.getConversation());
         let conversation = this.conversationHandler.getConversation();
 
         // If the conversation exists and it's an array
@@ -613,7 +614,7 @@ class AIBot {
 const conversationHandler = new ConversationHandler();
 const conversationRenderer = new ConversationRenderer(conversationHandler);
 const bot = new AIBot(
-    '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', 
+    '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', 
     'https://api.openai.com/v1/completions', 
     'Irvin', // Bot role
     'Lead', // User role
