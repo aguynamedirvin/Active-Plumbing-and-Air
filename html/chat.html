@@ -590,6 +590,8 @@ class AIBot {
 
             const prompt = `${conversation}\n\nGenerate up to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nEach response is a maximum of 5 words.\n\nResponses:\n`;
 
+            console.log(prompt);
+
             const data = await this.makeAPICall(prompt, 950);
             let choices = data.choices[0].text.trim(); // Remove leading and trailing whitespace
             let choicesArray = choices.split('\n'); // Split the string into an array
