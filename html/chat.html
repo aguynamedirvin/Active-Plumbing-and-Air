@@ -422,7 +422,7 @@ class ConversationHandler {
     }
 
     storeConversation() {
-        this.setCookie('conversation', JSON.stringify(this.conversation));
+        this._etCookie('conversation', JSON.stringify(this.conversation));
     }
 
     storeMessage(sender, message) {
@@ -626,12 +626,17 @@ const bot = new AIBot(
 );
 
 window.onload = async () => {
-    await conversationRenderer.renderStoredConversation();
+    try {
+        await conversationRenderer.renderStoredConversation();
 
-    // Get quick replies and render them
-    const quickReplies = await bot.getQuickReplies();
-    conversationRenderer.renderQuickReplies(quickReplies);
+        // Get quick replies and render them
+        const quickReplies = await bot.getQuickReplies();
+        conversationRenderer.renderQuickReplies(quickReplies);
+    } catch (error) {
+        console.error('Error during initial rendering:', error);
+    }
 };
+
 
 async function sendMessage(message) {
     // Validation before sending message
@@ -648,7 +653,6 @@ async function sendMessage(message) {
     chatContainer.appendChild(typingBubble);
 
     try {
-        console.log('Getting bot response...' + message);
         const botResponse = await bot.getResponse(message);
         const quickReplies = await bot.getQuickReplies();
 
@@ -663,6 +667,7 @@ async function sendMessage(message) {
         }, botResponse.length * 0.01 * 200);
     } catch (error) {
         console.error('Error getting bot response:', error);
+        typingBubble.remove();
     }
 }
 
@@ -725,9 +730,6 @@ chatToggle.addEventListener('click', function(e) {
 chatClose.addEventListener('click', function(e) {
     chatBox.classList.remove('open');
 });
-
-
-
 
 
 /**
