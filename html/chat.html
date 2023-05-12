@@ -555,12 +555,10 @@ class AIBot {
                 prompt += `\n${message.role}: ${message.content}`;
             }
             prompt += `\n${this.botRole}:`;
+            console.log(prompt);
 
             const data = await this.makeAPICall(prompt, 2000);
 
-            console.log(data);
-
-            
             let botResponse = data.choices[0].text.trim();
             
             botResponse = botResponse.replace(new RegExp(`^${this.botRole}:\s*`), ''); // Remove "Irvin:" from the bot response, if present
@@ -623,11 +621,7 @@ const bot = new AIBot(
     conversationRenderer
 );
 
-var responses = bot.getQuickReplies();
-console.log(responses);
-
 window.onload = () => conversationRenderer.renderStoredConversation();
-window.onload = () => conversationRenderer.renderQuickReplies();
 
 
 async function sendMessage(message) {
