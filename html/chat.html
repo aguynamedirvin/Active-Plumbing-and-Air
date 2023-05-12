@@ -634,7 +634,7 @@ class AIBot {
                 conversation += `\n${message.role}: ${message.content}`;
             }
 
-            const prompt = `${conversation}\n\nGenerate one to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nResponse is only a maximum of 3 words.\n\nResponses:\n`;
+            const prompt = `${conversation}\n${this.userRole}: \n\nGenerate one to three different possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One.\n2. Response Two\n3. Response Three\n\n\nDo not repeat questions/responses.\nResponse is only a maximum of 3 words.\n\nResponses:\n`;
 
             console.log(prompt);
 
@@ -770,8 +770,8 @@ document.addEventListener('click', event => {
         const buttonMessage = event.target.innerText;
 
         if (buttonMessage) {
-            conversationRenderer.renderMessage('user', buttonMessage);
-            conversationHandler.storeMessage('user', buttonMessage);
+            conversationRenderer.renderMessage('Lead', buttonMessage);
+            conversationHandler.storeMessage('Lead', buttonMessage);
 
             sendMessage(buttonMessage); 
         
@@ -801,6 +801,7 @@ document.addEventListener('click', event => {
     }
 
     if (event.target.matches('div.clear-chat')) {
+        console.log('Clear chat...');
         conversationHandler.clearConversation();
         clearChat();
     }
