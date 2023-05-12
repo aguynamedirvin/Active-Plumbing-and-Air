@@ -556,9 +556,11 @@ class AIBot {
                 prompt += `\n${message.role}: ${message.content}`;
             }
             prompt += `\n${this.botRole}:`;
-            console.log(prompt);
+            console.log('Bot prompt: ' + prompt);
 
+            console.log('Getting bot response...');
             const data = await this.makeAPICall(prompt, 2000);
+            console.log(data);
 
             let botResponse = data.choices[0].text.trim();
             
@@ -566,8 +568,8 @@ class AIBot {
             
             this.botLastMessage = botResponse;
 
-            this.conversationHandler.storeMessage(this.botRole, botResponse);
-            this.conversationRenderer.renderMessage(this.botRole, botResponse);
+            //this.conversationHandler.storeMessage(this.botRole, botResponse);
+            //this.conversationRenderer.renderMessage(this.botRole, botResponse);
 
             return botResponse;
         } catch (error) {
@@ -614,7 +616,7 @@ class AIBot {
 const conversationHandler = new ConversationHandler();
 const conversationRenderer = new ConversationRenderer(conversationHandler);
 const bot = new AIBot(
-    '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', 
+    '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', 
     'https://api.openai.com/v1/completions', 
     'Irvin', // Bot role
     'Lead', // User role
