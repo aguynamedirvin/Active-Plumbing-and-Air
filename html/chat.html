@@ -173,6 +173,9 @@ body {
     border: 1px solid #EEE;
     background: #EEE;
 }
+.message-prompt input:focus {
+    background: #fff;
+}
 .message-prompt button {
     border-radius: 15px;
     border-radius: 0 15px 15px 0;
@@ -215,7 +218,7 @@ body {
 
 /** Quick Replies **/
 .quick-replies {
-    padding: 6px 20px;
+    padding: 8px 20px;
     display: flex;
     gap: 10px;
     flex-shrink: 0;
@@ -225,9 +228,9 @@ body {
 .quick-replies button {
     color: #1552b2;
     background: #FFF;
-    padding: 10px 12px;
+    padding: 8px 12px;
     border-radius: 15px;
-    border: 1px solid #1552b2;
+    border: 1px solid #4c91ff;
     font-size: 12px;
     flex-shrink: 0;
     transition: all 250ms;
@@ -237,9 +240,10 @@ body {
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .quick-replies button:hover {
-    background: #E1E1E1;
+    background: #ddeaff;
     cursor: pointer;
     transform: scale(1.05);
+    border-color: #1552b2;
 }
 @keyframes quickReplies {
     from {
@@ -605,7 +609,7 @@ class AIBot {
                 conversation += `\n${message.role}: ${message.content}`;
             }
 
-            const prompt = `${conversation}\n\nGenerate up to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nEach response should be a maximum of 4 words.\n\nResponses:\n`;
+            const prompt = `${conversation}\n\nGenerate one to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nResponse is only a maximum of 3 words.\n\nResponses:\n`;
 
             console.log(prompt);
 
@@ -679,7 +683,7 @@ async function sendMessage(message) {
 
             // Remove the typing bubble
             typingBubble.remove();
-        }, botResponse.length * 0.01 * 200);
+        }, botResponse.length * 0.01 * 100);
     } catch (error) {
         console.error('Error getting bot response:', error);
         typingBubble.remove();
