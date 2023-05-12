@@ -574,8 +574,6 @@ class AIBot {
     }
 
     async makeAPICall(prompt, maxTokens) {
-
-        console.log(this.apiKey);
         const response = await fetch(this.apiURL, {
             method: 'POST',
             headers: {
@@ -684,6 +682,12 @@ window.onload = async () => {
 };
 
 
+/**
+ * 
+ * Handle sending message to bot
+ * Handle rendering of agent typing/loading chat bubble
+ * 
+**/
 async function sendMessage(message) {
     // Validation before sending message
     if (!message || message.length > 1000) {
@@ -745,9 +749,8 @@ form.addEventListener('submit', event => {
     }
 });
 
-// Listen for input field focus
+// Listen for input field focus and load quick replies
 inputField.addEventListener('focus', async event => {
-    // Load the quick replies here
     // Use the Bot class's static method to get quick replies
     const quickReplies = await bot.getQuickReplies();
 
@@ -767,9 +770,14 @@ document.addEventListener('click', event => {
         const buttonMessage = event.target.innerText;
 
         if (buttonMessage) {
-            const messageInput = document.querySelector('.chat-box .message-prompt input');
-            messageInput.value = buttonMessage;
-            messageInput.focus();
+            conversationRenderer.renderMessage('user', buttonMessage);
+            conversationHandler.storeMessage('user', buttonMessage);
+
+            sendMessage(buttonMessage); 
+        
+            //const messageInput = document.querySelector('.chat-box .message-prompt input');
+            //messageInput.value = buttonMessage;
+            //messageInput.focus();
         }
     }
 });
@@ -792,9 +800,7 @@ document.addEventListener('click', event => {
         }
     }
 
-    //console.log('Clear chat was clicked');
     if (event.target.matches('div.clear-chat')) {
-        console.log('Clear conversation button was clicked');
         conversationHandler.clearConversation();
         clearChat();
     }
