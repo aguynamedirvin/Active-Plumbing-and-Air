@@ -335,7 +335,7 @@ body {
     margin-left: auto;
     gap: 6px;
 }
-.chat-buttons div {
+.chat-buttons button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,20 +345,22 @@ body {
     width: 35px;
     border: 1px solid rgba(255,255,255,0.15);
     transition: 200ms all ease-in;
+    background: unset;
 }
-.chat-buttons div:hover {
+.chat-buttons button:hover {
     background: rgba(255,255,255,0.15);
 }
-.chat-buttons .clear-chat svg {
-    height: 18px;
-}
-.chat-buttons svg {
+.chat-buttons button svg {
     opacity: .8;
+    fill: #fff;
     width: 25px;
     transform-origin: center;
     transition: 200ms all ease-in;
 }
-.chat-header .close-chat:hover {
+.chat-buttons button.clear-chat svg {
+    height: 18px;
+}
+.chat-header button.close-chat:hover {
     transform: scale(1.2);
     opacity: 1;
 }
@@ -399,17 +401,17 @@ body {
                     <div class="online-status">(Always) Online</div>
                 </div>
                 <div class="chat-buttons">
-                    <div class="clear-chat" id="clearChat">
+                    <button class="clear-chat" id="clearChat">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l.3-7.5z" clip-rule="evenodd" />
                           </svg>                          
                         </svg>     
-                    </div>
-                    <div class="close-chat" id="chatClose">
+                    </button>
+                    <button class="close-chat" id="chatClose">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                         </svg>                          
-                    </div>
+                    </button>
                 </div>
             </div>
             
@@ -669,17 +671,32 @@ const bot = new AIBot(
     conversationRenderer
 );
 
+
+/**
+ * 
+ *  Render conversation on load
+ * 
+**/
 window.onload = async () => {
     try {
         await conversationRenderer.renderStoredConversation();
-
-        // Get quick replies and render them
-        //const quickReplies = await bot.getQuickReplies();
-        //conversationRenderer.renderQuickReplies(quickReplies);
     } catch (error) {
         console.error('Error during initial rendering:', error);
     }
 };
+
+
+/**
+ * 
+ * Stop events propagation at the SVG level.
+ * 
+**/
+const svgs = document.querySelectorAll('.clear-chat svg, .close-chat svg');
+svgs.forEach(svg => {
+    svg.addEventListener('click', event => {
+        event.stopPropagation();
+    });
+});
 
 
 /**
@@ -774,10 +791,6 @@ document.addEventListener('click', event => {
             conversationHandler.storeMessage('Lead', buttonMessage);
 
             sendMessage(buttonMessage); 
-        
-            //const messageInput = document.querySelector('.chat-box .message-prompt input');
-            //messageInput.value = buttonMessage;
-            //messageInput.focus();
         }
     }
 });
@@ -795,15 +808,20 @@ document.addEventListener('click', event => {
         const messages = chatContainer.getElementsByClassName('message');
 
         // Convert HTMLCollection to array and iterate in reverse
-        for(let i = Array.from(messages).length - 1; i > 0; i--) {
+        for(let i = Array.from(messages).length - 1; i >= 0; i--) {
             chatContainer.removeChild(messages[i]);
         }
     }
 
-    if (event.target.matches('div.clear-chat')) {
-        console.log('Clear chat...');
-        conversationHandler.clearConversation();
+    if (event.target.matches('button.clear-chat')) {
+        // Clear conversation on frontend
         clearChat();
+        
+        // Clear conversation
+        conversationHandler.clearConversation();
+
+        // Load new conversation
+        conversationHandler.renderStoredConversation();
     }
 });
 
