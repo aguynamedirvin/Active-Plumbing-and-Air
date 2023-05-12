@@ -162,25 +162,36 @@ body {
     padding: 0 20px 20px 20px;
     display: flex;
     align-self: stretch;
-    gap: 10px;
+    gap: 0px;
     font-size: 14px;
 }
 .message-prompt input {
-    border-radius: 15px;
+    /*border-radius: 15px;*/
+    border-radius: 15px 0 0 15px;
     padding: 12px;
     width: 100%;
     border: 1px solid #EEE;
+    background: #EEE;
 }
 .message-prompt button {
     border-radius: 15px;
-    padding: 10px 30px;
+    border-radius: 0 15px 15px 0;
+    padding: 10px 20px;
     border: 0;
     background: #0a2764;
     color: #fff;
     cursor: pointer;
 }
+.message-prompt button svg {
+    fill: #fff;
+    height: 20px;
+    transition: all 250ms;
+}
 .message-prompt button:hover {
     opacity: 0.9;
+}
+.message-prompt button:hover svg {
+    transform: translateX(3px);
 }
 
 .buttons {
@@ -204,7 +215,7 @@ body {
 
 /** Quick Replies **/
 .quick-replies {
-    padding: 10px 20px;
+    padding: 6px 20px;
     display: flex;
     gap: 10px;
     flex-shrink: 0;
@@ -213,10 +224,10 @@ body {
 }
 .quick-replies button {
     color: #1552b2;
-    background: #eee;
-    padding: 12px;
+    background: #FFF;
+    padding: 10px 12px;
     border-radius: 15px;
-    border: 1px solid #E1E1E1;
+    border: 1px solid #1552b2;
     font-size: 12px;
     flex-shrink: 0;
     transition: all 250ms;
@@ -384,7 +395,11 @@ body {
             
             <form class="message-prompt">
                 <input type="text" placeholder="Type your message" />
-                <button type="submit">Send</button>
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                    </svg>                      
+                </button>
             </form>
         </div>
         <div class="chat-floaty" id="chatToggle"></div>
@@ -590,7 +605,7 @@ class AIBot {
                 conversation += `\n${message.role}: ${message.content}`;
             }
 
-            const prompt = `${conversation}\n\nGenerate up to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nEach response is a maximum of 5 words.\n\nResponses:\n`;
+            const prompt = `${conversation}\n\nGenerate up to three possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One\n2. Response Two\n3. Response Three\n\nEach response should be a maximum of 4 words.\n\nResponses:\n`;
 
             console.log(prompt);
 
