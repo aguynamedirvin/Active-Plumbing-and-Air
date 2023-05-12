@@ -387,8 +387,9 @@ body {
 
 <script>
 
-/** Conversation Storage **/
-class Conversation {
+
+
+class ConversationHandler {
     constructor() {
         this.conversation = this.getConversation();
     }
@@ -417,6 +418,19 @@ class Conversation {
     storeMessage(sender, message) {
         this.conversation.push({role: sender, content: message});
         this.storeConversation();
+    }
+
+    getConversation() {
+        const conversation = this.getCookie('conversation');
+        return conversation ? JSON.parse(conversation) : [];
+    }
+}
+
+
+
+class ConversationRenderer {
+    constructor(conversationHandler) {
+        this.conversationHandler = conversationHandler;
     }
 
     renderMessage(sender, message) {
@@ -448,21 +462,54 @@ class Conversation {
         chatContainer.appendChild(newMessage);
         newMessage.scrollIntoView({ behavior: 'smooth' });
     }
-    
-    getConversation() {
-        const conversation = this.getCookie('conversation');
-        return conversation ? JSON.parse(conversation) : [];
+
+    async renderStoredConversation() {
+        let conversation = this.conversationHandler.getConversation();
+
+        // If the conversation exists and it's an array
+        if (Array.isArray(conversation) && conversation.length ) {
+            // Loop through each message in the conversation
+            for (let i = 0; i < conversation.length; i++) {
+                // Get the message and sender from the conversation
+                let message = conversation[i].content;
+                let sender = conversation[i].role;
+
+                // Insert the message into the chat
+                this.renderMessage(sender, message);
+            }
+        } else {
+            this.renderMessage('Irvin', 'Hi there, how can I help?');
+            this.conversationHandler.storeMessage('Irvin', 'Hi there, how can I help?');
+        }
+    }
+
+    renderQuickReplies(quickReplies) {
+        const repliesContainer = document.querySelector('.quick-replies');
+
+        // Clear previous quick replies
+        repliesContainer.innerHTML = '';
+
+        if (quickReplies.length) {
+            for (let i = 0; i < quickReplies.length; i++) {
+                // Add quick replies
+                const quickReply = document.createElement('button');
+                quickReply.innerHTML = quickReplies[i];
+
+                repliesContainer.appendChild(quickReply);
+            }
+        }
     }
 }
-const convo = new Conversation();
 
 
 class AIBot {
-    constructor(apiKey, apiURL, botRole = 'Irvin', userRole = 'Lead') {
+    constructor(apiKey, apiURL, botRole, userRole, conversationHandler, conversationRenderer) {
         this.apiKey = apiKey;
         this.apiURL = apiURL;
         this.botRole = botRole;
         this.userRole = userRole;
+        this.conversationHandler = conversationHandler;
+        this.conversationRenderer = conversationRenderer;
 
         this.botPersonality = `The following is a chat between ${this.botRole}, a marketing consultant, and a potential lead. ${this.botRole} specializes in helping contractors, such as HVAC, plumbing, grow their business through digital marketing. He is helpful and friendly, answers clearly and concisely. He adopts a consultative approach, asking questions to identify the root issue. His agency, HVAC Marketing Engine, offers only SEO, PPC, and Web Design services. ${this.botRole}'s goal is to get the client to book a call if it sounds like he can help and sends his calendar link through the chat, https://calendly.com/hvacmarketingengine/:`;
 
@@ -470,6 +517,8 @@ class AIBot {
     }
 
     async makeAPICall(prompt, maxTokens) {
+
+        console.log(this.apiKey);
         const response = await fetch(this.apiURL, {
             method: 'POST',
             headers: {
@@ -492,9 +541,9 @@ class AIBot {
         return response.json();
     }
 
-    async getResponse() {
+    async getResponse(message) {
         try {
-            const conversationHistory = convo.getConversation();
+            const conversationHistory = this.conversationHandler.getConversation();
 
             let prompt = this.botPersonality;
             for (const message of conversationHistory) {
@@ -503,10 +552,18 @@ class AIBot {
             prompt += `\n${this.botRole}:`;
 
             const data = await this.makeAPICall(prompt, 2000);
+
+            console.log(data);
+
+            
             let botResponse = data.choices[0].text.trim();
+            
             botResponse = botResponse.replace(new RegExp(`^${this.botRole}:\s*`), ''); // Remove "Irvin:" from the bot response, if present
             
             this.botLastMessage = botResponse;
+
+            this.conversationHandler.storeMessage(this.botRole, botResponse);
+            this.conversationRenderer.renderMessage(this.botRole, botResponse);
 
             return botResponse;
         } catch (error) {
@@ -518,7 +575,7 @@ class AIBot {
     async getQuickReplies() {
         try {
             // Get the latest conversation history
-            const conversationHistory = convo.getConversation();
+            const conversationHistory = this.conversationHandler.getConversation();
             const lastThreeExchanges = conversationHistory.slice(-6);
 
             let conversation = this.botPersonality;
@@ -546,10 +603,21 @@ class AIBot {
     }
 }
 
-const Bot = new AIBot(
+
+
+const conversationHandler = new ConversationHandler();
+const conversationRenderer = new ConversationRenderer(conversationHandler);
+const bot = new AIBot(
     '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', 
-    'https://api.openai.com/v1/completions'
+    'https://api.openai.com/v1/completions', 
+    'Irvin', // Bot role
+    'Lead', // User role
+    conversationHandler, 
+    conversationRenderer
 );
+
+window.onload = () => conversationRenderer.renderStoredConversation();
+
 
 async function sendMessage(message) {
     // Validation before sending message
@@ -566,70 +634,22 @@ async function sendMessage(message) {
     chatContainer.appendChild(typingBubble);
 
     try {
-        const botResponse = await Bot.getResponse(message);
+        console.log('Getting bot response...' + message);
+        const botResponse = await bot.getResponse(message);
+        const quickReplies = await bot.getQuickReplies();
 
         setTimeout(() => {
-            convo.renderMessage('Irvin', botResponse);
-            convo.storeMessage('Irvin', botResponse);
+            conversationRenderer.renderMessage('Irvin', botResponse);
+            conversationHandler.storeMessage('Irvin', botResponse);
 
-            renderQuickReplies();
+            console.log('Render replies');
+            conversationRenderer.renderQuickReplies(quickReplies);
 
+            // Remove the typing bubble
             typingBubble.remove();
         }, botResponse.length * 0.01 * 200);
     } catch (error) {
         console.error('Error getting bot response:', error);
-    }
-}
-
-/**
- * 
- * Initiliaze chat by Rendering previous conversation
- * 
-**/
-async function renderStoredConversation() {
-    
-    let conversation = convo.getConversation();
-
-    // If the conversation exists and it's an array
-    if (Array.isArray(conversation) && conversation.length ) {
-        // Loop through each message in the conversation
-        for (let i = 0; i < conversation.length; i++) {
-            // Get the message and sender from the conversation
-            let message = conversation[i].content;
-            let sender = conversation[i].role;
-
-            // Insert the message into the chat
-            convo.renderMessage(sender, message);
-        }
-    } else {
-        convo.renderMessage('Irvin', 'Hi there, how can I help?');
-        convo.storeMessage('Irvin', 'Hi there, how can I help?');
-    }
-
-    renderQuickReplies();
-}
-// Call the function when the page loads
-window.onload = renderStoredConversation;
-
-
-
-
-async function renderQuickReplies() {
-    const quickReplies = await Bot.getQuickReplies();
-    
-    const repliesContainer = document.querySelector('.quick-replies');
-
-    // Clear previous quick replies
-    repliesContainer.innerHTML = '';
-    
-    if (quickReplies.length) {
-        for (let i = 0; i < quickReplies.length; i++) {
-            // Add quick replies
-            const quickReply = document.createElement('button');
-            quickReply.innerHTML = quickReplies[i];
-
-            repliesContainer.appendChild(quickReply);
-        }
     }
 }
 
@@ -646,14 +666,13 @@ form.addEventListener('submit', event => {
 
     // Validation for empty or too long messages
     if (userMessage && userMessage.length <= 1000) {
-        convo.renderMessage('Lead', userMessage);
-        convo.storeMessage('Lead', userMessage);
+        conversationRenderer.renderMessage('Lead', userMessage);
+        conversationHandler.storeMessage('Lead', userMessage);
 
+        console.log('Message sent');
         sendMessage(userMessage); 
 
         form.querySelector('input').value = '';
-
-        console.log(convo.getConversation());
     } else {
         console.error('Invalid message.');
     }
@@ -675,14 +694,6 @@ document.addEventListener('click', event => {
         }
     }
 });
-
-
-
-
-
-
-
-
 
 
 const chatBox       = document.getElementById('chatWidget');
