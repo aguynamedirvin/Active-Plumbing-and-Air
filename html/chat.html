@@ -422,7 +422,7 @@ class ConversationHandler {
     }
 
     storeConversation() {
-        this._etCookie('conversation', JSON.stringify(this.conversation));
+        this.setCookie('conversation', JSON.stringify(this.conversation));
     }
 
     storeMessage(sender, message) {
