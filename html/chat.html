@@ -329,21 +329,34 @@ body {
     font-size: 12px !important;
     color: rgba(255,255,255,.5);
 }
-.chat-header .close-chat {
-    opacity: .8;
-    width: 30px;
-    height: 30px;
-    line-height: 25px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 14px;
-    text-align: center;
+.chat-buttons {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
+    gap: 6px;
+}
+.chat-buttons div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     cursor: pointer;
+    height: 35px;
+    width: 35px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 200ms all ease-in;
+}
+.chat-buttons div:hover {
+    background: rgba(255,255,255,0.15);
+}
+.chat-buttons .clear-chat svg {
+    height: 18px;
+}
+.chat-buttons svg {
+    opacity: .8;
+    width: 25px;
     transform-origin: center;
     transition: 200ms all ease-in;
-    background: rgba(255,255,255,0.15);
 }
 .chat-header .close-chat:hover {
     transform: scale(1.2);
@@ -385,10 +398,18 @@ body {
                     Chat with IrvinGPT now
                     <div class="online-status">(Always) Online</div>
                 </div>
-                <div class="close-chat" id="chatClose">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
-                      </svg>
+                <div class="chat-buttons">
+                    <div class="clear-chat" id="clearChat">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l.3-7.5z" clip-rule="evenodd" />
+                          </svg>                          
+                        </svg>     
+                    </div>
+                    <div class="close-chat" id="chatClose">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>                          
+                    </div>
                 </div>
             </div>
             
@@ -399,7 +420,7 @@ body {
             <div class="quick-replies"></div>
             
             <form class="message-prompt">
-                <input type="text" placeholder="Type your message" />
+                <input type="text" placeholder="Ask me anything..." />
                 <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
@@ -439,6 +460,11 @@ class ConversationHandler {
             if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length, cookie.length);
         }
         return null;
+    }
+
+    clearConversation() {
+        this.setCookie('conversation', "", -1);
+        this.conversation = [];
     }
 
     storeConversation() {
@@ -650,8 +676,8 @@ window.onload = async () => {
         await conversationRenderer.renderStoredConversation();
 
         // Get quick replies and render them
-        const quickReplies = await bot.getQuickReplies();
-        conversationRenderer.renderQuickReplies(quickReplies);
+        //const quickReplies = await bot.getQuickReplies();
+        //conversationRenderer.renderQuickReplies(quickReplies);
     } catch (error) {
         console.error('Error during initial rendering:', error);
     }
@@ -674,11 +700,12 @@ async function sendMessage(message) {
 
     try {
         const botResponse = await bot.getResponse(message);
+        conversationHandler.storeMessage('Irvin', botResponse);
+
         const quickReplies = await bot.getQuickReplies();
 
         setTimeout(() => {
             conversationRenderer.renderMessage('Irvin', botResponse);
-            conversationHandler.storeMessage('Irvin', botResponse);
 
             conversationRenderer.renderQuickReplies(quickReplies);
 
@@ -692,15 +719,18 @@ async function sendMessage(message) {
 }
 
 
-/** 
+/**
  * 
- * Listen for User message submission
+ *  Handle User Submissions
  * 
-**/
+ **/
 const form = document.querySelector('.chat-box .message-prompt');
+const inputField = form.querySelector('input');
+
+// Listen for form submission
 form.addEventListener('submit', event => {
     event.preventDefault();
-    const userMessage = form.querySelector('input').value;
+    const userMessage = inputField.value;
 
     // Validation for empty or too long messages
     if (userMessage && userMessage.length <= 1000) {
@@ -709,11 +739,23 @@ form.addEventListener('submit', event => {
 
         sendMessage(userMessage); 
 
-        form.querySelector('input').value = '';
+        inputField.value = '';
     } else {
         console.error('Invalid message.');
     }
 });
+
+// Listen for input field focus
+inputField.addEventListener('focus', async event => {
+    // Load the quick replies here
+    // Use the Bot class's static method to get quick replies
+    const quickReplies = await bot.getQuickReplies();
+
+    // Use the ConversationRenderer instance to render the quick replies
+    conversationRenderer.renderQuickReplies(quickReplies);
+});
+
+
 
 /**
  * 
@@ -729,6 +771,32 @@ document.addEventListener('click', event => {
             messageInput.value = buttonMessage;
             messageInput.focus();
         }
+    }
+});
+
+
+/**
+ * 
+ * Clear Conversation
+ * 
+**/
+document.addEventListener('click', event => {
+    
+    function clearChat() {
+        const chatContainer = document.getElementById('chat-container');
+        const messages = chatContainer.getElementsByClassName('message');
+
+        // Convert HTMLCollection to array and iterate in reverse
+        for(let i = Array.from(messages).length - 1; i > 0; i--) {
+            chatContainer.removeChild(messages[i]);
+        }
+    }
+
+    //console.log('Clear chat was clicked');
+    if (event.target.matches('div.clear-chat')) {
+        console.log('Clear conversation button was clicked');
+        conversationHandler.clearConversation();
+        clearChat();
     }
 });
 
