@@ -70,6 +70,8 @@ body {
     padding: 10px 20px;
     border-radius: 15px 15px 0 0;
 }
+
+/** Message Bubbles **/
 .message {
     background: #DDD;
     color: #111;
@@ -81,7 +83,7 @@ body {
     line-height: 1.56em;
     animation-name: message;
     animation-duration: 1.2s;
-    font-size: 14px;
+    font-size: 13px;
     word-break: break-word;
 }
 @keyframes message {
@@ -154,18 +156,20 @@ body {
         transform: scale(1);
     }
 }
+
+/** User Inputs **/
 .message-prompt {
     padding: 0 20px 20px 20px;
     display: flex;
     align-self: stretch;
     gap: 10px;
+    font-size: 14px;
 }
 .message-prompt input {
     border-radius: 15px;
-    padding: 15px;
+    padding: 12px;
     width: 100%;
     border: 1px solid #EEE;
-    font-size: 16px;
 }
 .message-prompt button {
     border-radius: 15px;
@@ -174,7 +178,6 @@ body {
     background: #0a2764;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
 }
 .message-prompt button:hover {
     opacity: 0.9;
@@ -199,8 +202,9 @@ body {
     background: #E0E0E0;
 }
 
+/** Quick Replies **/
 .quick-replies {
-    padding: 5px 20px;
+    padding: 10px 20px;
     display: flex;
     gap: 10px;
     flex-shrink: 0;
@@ -212,7 +216,7 @@ body {
     padding: 12px;
     border-radius: 15px;
     border: 1px solid #E1E1E1;
-    font-size: 14px;
+    font-size: 12px;
     flex-shrink: 0;
     transition: all 250ms;
     animation-name: quickReplies;
@@ -239,9 +243,9 @@ body {
 .chat-header {
     background: #0a2764;
     color: #fff;
-    padding: 20px 20px;
+    padding: 15px 20px;
     line-height: 1.42;
-    font-size: 22px;
+    font-size: 18px;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     display: flex;
     flex-direction: row;
@@ -252,8 +256,8 @@ body {
 }
 .chat-header .image {
     background: #fff;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     position: relative;
     background-image: url('https://secure.gravatar.com/avatar/7e93de190766edb3f497d1c950c96129?s=96&d=mm&r=g');
@@ -305,13 +309,13 @@ body {
     }
 }
 .chat-header .online-status {
-    font-size: 14px !important;
+    font-size: 12px !important;
     color: rgba(255,255,255,.5);
 }
 .chat-header .close-chat {
     opacity: .8;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     line-height: 25px;
     position: absolute;
     top: 15px;
@@ -517,7 +521,7 @@ class AIBot {
         this.conversationHandler = conversationHandler;
         this.conversationRenderer = conversationRenderer;
 
-        this.botPersonality = `The following is a chat between ${this.botRole}, a marketing consultant, and a potential lead. ${this.botRole} specializes in helping contractors, such as HVAC, plumbing, grow their business through digital marketing. He is helpful and friendly, answers clearly and concisely. He adopts a consultative approach, asking questions to identify the root issue. His agency, HVAC Marketing Engine, offers only SEO, PPC, and Web Design services. ${this.botRole}'s goal is to get the client to book a call if it sounds like he can help and sends his calendar link through the chat, https://calendly.com/hvacmarketingengine/:`;
+        this.botPersonality = `The following is a chat between ${this.botRole}, a marketing consultant, and a potential lead. ${this.botRole} specializes in helping contractors, such as HVAC, plumbing, grow their business through digital marketing. He is helpful and friendly, answers clearly and concisely. He adopts a consultative approach, asking questions to identify the root issue. His agency, HVAC Marketing Engine, offers only SEO, PPC, and Web Design services. ${this.botRole}'s goal is to get the client to book a call if it sounds like he can help and sends his calendar link through the chat, https://calendly.com/hvacmarketingengine/:\n`;
 
         this.botLastMessage = '';
     }
@@ -550,6 +554,7 @@ class AIBot {
     async getResponse(message) {
         try {
             const conversationHistory = this.conversationHandler.getConversation();
+            const lastThreeExchanges = conversationHistory.slice(-12);
 
             let prompt = this.botPersonality;
             for (const message of conversationHistory) {
@@ -558,18 +563,13 @@ class AIBot {
             prompt += `\n${this.botRole}:`;
             console.log('Bot prompt: ' + prompt);
 
-            console.log('Getting bot response...');
-            const data = await this.makeAPICall(prompt, 2000);
-            console.log(data);
+            const data = await this.makeAPICall(prompt, 1000);
 
             let botResponse = data.choices[0].text.trim();
             
             botResponse = botResponse.replace(new RegExp(`^${this.botRole}:\s*`), ''); // Remove "Irvin:" from the bot response, if present
             
             this.botLastMessage = botResponse;
-
-            //this.conversationHandler.storeMessage(this.botRole, botResponse);
-            //this.conversationRenderer.renderMessage(this.botRole, botResponse);
 
             return botResponse;
         } catch (error) {
@@ -582,7 +582,7 @@ class AIBot {
         try {
             // Get the latest conversation history
             const conversationHistory = this.conversationHandler.getConversation();
-            const lastThreeExchanges = conversationHistory.slice(-6);
+            const lastThreeExchanges = conversationHistory.slice(-3);
 
             let conversation = this.botPersonality;
             for (const message of lastThreeExchanges) {
@@ -593,7 +593,7 @@ class AIBot {
 
             console.log(prompt);
 
-            const data = await this.makeAPICall(prompt, 950);
+            const data = await this.makeAPICall(prompt, 550);
             let choices = data.choices[0].text.trim(); // Remove leading and trailing whitespace
             let choicesArray = choices.split('\n'); // Split the string into an array
 
@@ -616,7 +616,7 @@ class AIBot {
 const conversationHandler = new ConversationHandler();
 const conversationRenderer = new ConversationRenderer(conversationHandler);
 const bot = new AIBot(
-    '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', 
+    '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', 
     'https://api.openai.com/v1/completions', 
     'Irvin', // Bot role
     'Lead', // User role
@@ -624,8 +624,13 @@ const bot = new AIBot(
     conversationRenderer
 );
 
-window.onload = () => conversationRenderer.renderStoredConversation();
+window.onload = async () => {
+    await conversationRenderer.renderStoredConversation();
 
+    // Get quick replies and render them
+    const quickReplies = await bot.getQuickReplies();
+    conversationRenderer.renderQuickReplies(quickReplies);
+};
 
 async function sendMessage(message) {
     // Validation before sending message
@@ -650,7 +655,6 @@ async function sendMessage(message) {
             conversationRenderer.renderMessage('Irvin', botResponse);
             conversationHandler.storeMessage('Irvin', botResponse);
 
-            console.log('Render replies');
             conversationRenderer.renderQuickReplies(quickReplies);
 
             // Remove the typing bubble
@@ -677,7 +681,6 @@ form.addEventListener('submit', event => {
         conversationRenderer.renderMessage('Lead', userMessage);
         conversationHandler.storeMessage('Lead', userMessage);
 
-        console.log('Message sent');
         sendMessage(userMessage); 
 
         form.querySelector('input').value = '';
