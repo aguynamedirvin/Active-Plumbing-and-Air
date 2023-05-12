@@ -636,7 +636,7 @@ class AIBot {
                 conversation += `\n${message.role}: ${message.content}`;
             }
 
-            const prompt = `${conversation}\n${this.userRole}: \n\nGenerate one to three different possible ${this.userRole} replies and/or questions for ${this.botRole}.\nReturn in the following format:\n\n1. Response One.\n2. Response Two\n3. Response Three\n\n\nDo not repeat questions/responses.\nResponse is only a maximum of 3 words.\n\nResponses:\n`;
+            const prompt = `${conversation}\n${this.userRole}: \n\nGenerate up to three different ${this.userRole} responses ${this.userRole} can use to respond to ${this.botRole}.\n\nFollow the following guidelines:\n- Do not repeat questions/responses.\n- Only one question.\n- Responses are to be a maximum of 3 words.\n\nReturn in the following format:\n\n1. Response One.\n2. Response Two\n3. Response Three\n\n\nResponses:\n`;
 
             console.log(prompt);
 
@@ -723,15 +723,17 @@ async function sendMessage(message) {
         const botResponse = await bot.getResponse(message);
         conversationHandler.storeMessage('Irvin', botResponse);
 
-        const quickReplies = await bot.getQuickReplies();
-
-        setTimeout(() => {
-            conversationRenderer.renderMessage('Irvin', botResponse);
-
-            conversationRenderer.renderQuickReplies(quickReplies);
-
+        setTimeout(async () => {
             // Remove the typing bubble
             typingBubble.remove();
+            
+            // Render bot's response
+            conversationRenderer.renderMessage('Irvin', botResponse);
+
+            // Fetch and render quick replies after bot's response
+            const quickReplies = await bot.getQuickReplies();
+            conversationRenderer.renderQuickReplies(quickReplies);
+            
         }, botResponse.length * 0.01 * 100);
     } catch (error) {
         console.error('Error getting bot response:', error);
