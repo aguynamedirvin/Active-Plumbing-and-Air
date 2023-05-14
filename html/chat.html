@@ -3,6 +3,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+
 <style>
 body {
     font-family: Arial;
@@ -390,7 +396,7 @@ body {
 <body>
 
     <div class="log"></div>
-    <div class="chat-container open" id="chatWidget">
+    <div class="chat-container" id="chatWidget">
         <div class="chat-box">
             <div class="chat-header">
                 <div class="image">
@@ -401,13 +407,13 @@ body {
                     <div class="online-status">(Always) Online</div>
                 </div>
                 <div class="chat-buttons">
-                    <button class="clear-chat" id="clearChat">
+                    <button class="clear-chat" id="chatClearButton">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l.3-7.5z" clip-rule="evenodd" />
                           </svg>                          
                         </svg>     
                     </button>
-                    <button class="close-chat" id="chatClose">
+                    <button class="close-chat" id="chatCloseButton">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                         </svg>                          
@@ -430,16 +436,123 @@ body {
                 </button>
             </form>
         </div>
-        <div class="chat-floaty" id="chatToggle"></div>
+        <div class="chat-floaty" id="chatBubble"></div>
     </div>
 
 </body>
 </html>
 
 
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getDatabase, ref, set, get, update, remove } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
-<script>
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAu4agkjhsg-hdPSkM4apik5vs9nCC1md4",
+    authDomain: "chatwidget-1b605.firebaseapp.com",
+    projectId: "chatwidget-1b605",
+    storageBucket: "chatwidget-1b605.appspot.com",
+    messagingSenderId: "366974156128",
+    appId: "1:366974156128:web:bc8aadb85a4e1827027205",
+    databaseURL: "https://chatwidget-1b605-default-rtdb.firebaseio.com"
+};
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// Firebase Database Service Class
+class FirebaseService {
+    constructor(db) {
+        this.database = db;
+    }
+
+    // Function to write data to a specific path
+    writeData(path, data) {
+        const dbRef = ref(this.database, path);
+        set(dbRef, data);
+    }
+
+    // Function to read data from a specific path
+    async readData(path) {
+        const dbRef = ref(this.database, path);
+        const snapshot = await get(dbRef);
+        return snapshot.val();
+    }
+
+    // Function to update data at a specific path
+    updateData(path, data) {
+        const dbRef = ref(this.database, path);
+        update(dbRef, data);
+    }
+
+    // Function to remove data at a specific path
+    removeData(path) {
+        const dbRef = ref(this.database, path);
+        remove(dbRef);
+    }
+}
+const firebase = new FirebaseService(db);
+
+
+/**
+ * 
+ * Helper Functions 
+ * 
+ **/
+function generateRandomId(length = 10) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+// Set a Cookie
+
+function setCookie(name, value, days = 7) { // Default days value
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    for(let cookie of cookies) {
+        while (cookie.charAt(0) === ' ') cookie = cookie.substring(1, cookie.length);
+        if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length, cookie.length);
+    }
+    return null;
+}
+
+const chatSessionID = getCookie('chatSessionID');
+if (!chatSessionID) {
+    var id = generateRandomId(20);
+    setCookie('chatSessionID', id, 7);
+}
+
+
+function firebaseStoreMessage(sender, message) {
+
+    const conversationId = chatSessionID; // id of the conversation
+    
+    // Add a message to the conversation
+    var MessageId = generateRandomId(length = 5); // some unique id
+    var MessageData = {
+        sender: sender,
+        content: message,
+        timestamp: Date.now() // current timestamp in milliseconds
+    };
+    
+    firebase.writeData(`conversations/${conversationId}/messages/${MessageId}`, MessageData);
+
+}
 
 
 class ConversationHandler {
@@ -484,8 +597,6 @@ class ConversationHandler {
     }
 }
 
-
-
 class ConversationRenderer {
     constructor(conversationHandler) {
         this.conversationHandler = conversationHandler;
@@ -522,7 +633,7 @@ class ConversationRenderer {
     }
 
     async renderStoredConversation() {
-        console.log(this.conversationHandler.getConversation());
+        console.log('Conversaiont: ' + this.conversationHandler.getConversation());
         let conversation = this.conversationHandler.getConversation();
 
         // If the conversation exists and it's an array
@@ -559,7 +670,6 @@ class ConversationRenderer {
         }
     }
 }
-
 
 class AIBot {
     constructor(apiKey, apiURL, botRole, userRole, conversationHandler, conversationRenderer) {
@@ -659,7 +769,6 @@ class AIBot {
 }
 
 
-
 const conversationHandler = new ConversationHandler();
 const conversationRenderer = new ConversationRenderer(conversationHandler);
 const bot = new AIBot(
@@ -677,27 +786,7 @@ const bot = new AIBot(
  *  Render conversation on load
  * 
 **/
-window.onload = async () => {
-    try {
-        await conversationRenderer.renderStoredConversation();
-    } catch (error) {
-        console.error('Error during initial rendering:', error);
-    }
-};
-
-
-/**
- * 
- * Stop events propagation at the SVG level.
- * 
-**/
-const svgs = document.querySelectorAll('.clear-chat svg, .close-chat svg');
-svgs.forEach(svg => {
-    svg.addEventListener('click', event => {
-        event.stopPropagation();
-    });
-});
-
+conversationRenderer.renderStoredConversation();
 
 /**
  * 
@@ -711,6 +800,9 @@ async function sendMessage(message) {
         console.error('Invalid message.');
         return;
     }
+
+    // Store user message on cloud
+    firebaseStoreMessage('Lead', message);
     
     // Insert typing bubble placeholder
     const chatContainer = document.getElementById('chat-container');
@@ -721,7 +813,10 @@ async function sendMessage(message) {
 
     try {
         const botResponse = await bot.getResponse(message);
+
+        
         conversationHandler.storeMessage('Irvin', botResponse);
+        firebaseStoreMessage('Irvin', botResponse);
 
         setTimeout(async () => {
             // Remove the typing bubble
@@ -798,24 +893,30 @@ document.addEventListener('click', event => {
 });
 
 
+const chatBox = document.getElementById('chatWidget');
+const chatBubble = document.getElementById('chatBubble');
+const chatCloseButton = document.getElementById('chatCloseButton');
+const chatClearButton = document.getElementById('chatClearButton');
+
+
+function clearChat() {
+    const chatContainer = document.getElementById('chat-container');
+    const messages = chatContainer.getElementsByClassName('message');
+
+    // Convert HTMLCollection to array and iterate in reverse
+    for(let i = Array.from(messages).length - 1; i >= 0; i--) {
+        chatContainer.removeChild(messages[i]);
+    }
+}
+
+
 /**
  * 
  * Clear Conversation
  * 
 **/
 document.addEventListener('click', event => {
-    
-    function clearChat() {
-        const chatContainer = document.getElementById('chat-container');
-        const messages = chatContainer.getElementsByClassName('message');
-
-        // Convert HTMLCollection to array and iterate in reverse
-        for(let i = Array.from(messages).length - 1; i >= 0; i--) {
-            chatContainer.removeChild(messages[i]);
-        }
-    }
-
-    if (event.target.matches('button.clear-chat')) {
+    if (event.target === chatClearButton) {
         // Clear conversation on frontend
         clearChat();
         
@@ -823,74 +924,37 @@ document.addEventListener('click', event => {
         conversationHandler.clearConversation();
 
         // Load new conversation
-        conversationHandler.renderStoredConversation();
+        conversationRenderer.renderStoredConversation();
+    }
+
+    if (event.target === chatCloseButton || event.target === chatBubble) {
+        chatBoxToggle();
     }
 });
 
 
-const chatBox       = document.getElementById('chatWidget');
-const chatToggle    = document.getElementById('chatToggle');
-const chatClose     = document.getElementById('chatClose');
-
-chatToggle.addEventListener('click', function(e) {
-    if (!chatBox.classList.contains('open')) {
-        chatBox.classList.add('open');
-        chatBox.classList.remove('close');
+var chatBoxState = getCookie('chatBoxState');
+function chatBoxToggle() {
+    if (chatBoxState === 'open') {
+        console.log('Open toggle..')
+        if(chatBox.classList.contains('open')) {
+            chatBox.classList.remove('open');
+            chatBoxState = 'close';
+            setCookie('chatBoxState', 'close', 30);
+        }
     } else {
-        chatBox.classList.add('close');
+        chatBox.classList.add('open');
+        chatBoxState = 'open';
+        setCookie('chatBoxState', 'open', 30);
+    }
+}
+
+window.onload = function() {
+    if (chatBoxState === 'open') {
+        chatBox.classList.add('open');
+    }
+    if (chatBoxState === 'close') {
         chatBox.classList.remove('open');
     }
-});
-
-chatClose.addEventListener('click', function(e) {
-    chatBox.classList.remove('open');
-});
-
-
-/**
-// Chatbox Open/Close State Cookie Function
-// setting a cookie
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
-/**
-// getting a cookie
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-// usage example
-var chatBoxState = getCookie("chatBoxState");
-if (chatBoxState === "open") {
-    // open the chat box
-} else {
-    // close the chat box
-}
-
-
-// updating the cookie when the chat box state changes
-document.getElementById("chatToggle").addEventListener("click", function() {
-    if (chatBoxState === "open") {
-        chatBoxState = "closed";
-        setCookie("chatBoxState", "closed", 30);
-    } else {
-        chatBoxState = "open";
-        setCookie("chatBoxState", "open", 30);
-    }
-});**/
 </script>
