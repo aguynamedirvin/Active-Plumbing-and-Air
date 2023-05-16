@@ -503,7 +503,6 @@ include "get-cool-air/parts/header.html"
             .then(html => {
                 const promotionContainer = document.getElementById('promotions-container');
                 promotionContainer.innerHTML = html;
-                Alpine.start();
                 window.promotions.promotions = promotions;
             });
         </script>
