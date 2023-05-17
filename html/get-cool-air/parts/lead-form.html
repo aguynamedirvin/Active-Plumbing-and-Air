@@ -381,11 +381,8 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
-                this.$refs.submitForm.submit();
-                this.step = 'success';
-                //this.$nextTick(() => this.submitForm());
 
-                this.submitting = true;
+                // Generate data needed to send to Smartlook
                 const formData = new FormData();
                 ormData.append('zipCode', this.zipCode);
                 formData.append('firstName', this.firstName);
@@ -402,6 +399,10 @@ function multiStepForm() {
                     "zipCode": this.zipCode,
                     "phone": this.phone
                 });
+
+                this.$refs.submitForm.submit();
+                this.step = 'success';
+                //this.$nextTick(() => this.submitForm());
             }
         },
 
