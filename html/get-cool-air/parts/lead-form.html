@@ -379,14 +379,17 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
-                const event = new Event('custom-submit');
-                this.$el.dispatchEvent(event);
-                
-                this.$nextTick(() => this.submitForm());
+                this.$refs.submitForm.submit();
+                //this.$nextTick(() => this.submitForm());
             }
         },
 
         submitForm() {
+
+            console.log('Submitted form'); // log before sending
+            CallTrk.captureForm('#leadForm'); // capture form data before sending
+
+    
             this.submitting = true;
             const formData = new FormData();
             formData.append('form-name', 'HVAC Replacement Quote');
