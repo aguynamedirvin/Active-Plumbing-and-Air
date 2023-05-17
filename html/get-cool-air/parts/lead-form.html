@@ -379,11 +379,12 @@ function multiStepForm() {
         validateAndProceed() {
             if (this.checkValidity()) {
                 this.$refs.submitForm.submit();
+                this.step = 'success';
                 //this.$nextTick(() => this.submitForm());
             }
         },
 
-        submitForm() {
+        /*submitForm() {
             this.submitting = true;
             const formData = new FormData();
             formData.append('form-name', 'HVAC Replacement Quote');
@@ -429,7 +430,7 @@ function multiStepForm() {
             .finally(() => {
                 this.submitting = false;
             });
-        },
+        },*/
 
     };
 }
