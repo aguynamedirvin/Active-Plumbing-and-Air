@@ -438,9 +438,9 @@ function multiStepForm() {
 }
 
 var form = document.querySelector('#leadForm');
-form.addEventListener(
-    'submit',
+form.addEventListener('submit',
     function() {
+        consoe.log('Submitted form');
         CallTrk.captureForm('#leadForm');
     }
 );
