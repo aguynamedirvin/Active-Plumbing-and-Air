@@ -10,7 +10,7 @@
     x-on:keydown="handleEnterKey($event)"
 
     id="leadForm"
-    cr-attached=’true’ 
+    cr-attached='true'
     
     class="flex flex-col w-full h-full"
 >
@@ -403,7 +403,7 @@ function multiStepForm() {
             CallTrk.captureForm('#leadForm');
 
             // Send to Smarklook
-            smartlook('identify', 123, {
+            smartlook('identify', userId, {
                 "name": this.firstName,
                 "email": this.email,
                 "address": this.address,
