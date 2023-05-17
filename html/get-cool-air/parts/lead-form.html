@@ -28,6 +28,9 @@
         x-on:submit.prevent="validateAndProceed()"
         x-data="multiStepForm()"
         x-on:keydown="handleEnterKey($event)"
+
+        id="lead-form"
+        x-show="step !== 'success'"
     >
         
         <!-- Step 1: Zip Code -->
