@@ -475,7 +475,6 @@ include "get-cool-air/parts/header.html"
         <div class="grid gap-4 lg:grid-cols-3 md:gap-12" id="promotions-container"></div>
 
         <!-- Load Promotions -->
-        <script defer src="components/promotionComponent.js"></script>
         <script>
             let promotions = [
                 {
@@ -503,7 +502,6 @@ include "get-cool-air/parts/header.html"
             .then(html => {
                 const promotionContainer = document.getElementById('promotions-container');
                 promotionContainer.innerHTML = html;
-                window.promotions.promotions = promotions;
             });
         </script>
         
