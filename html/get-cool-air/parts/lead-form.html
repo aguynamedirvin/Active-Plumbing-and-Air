@@ -6,6 +6,8 @@
         netlify-honeypot="bot-field"
         x-show="step === 'success'"
         x-ref="submitForm"
+        
+        cr-attached='true'
     >
     
         <div class="flex items-center justify-center mx-auto mb-6 bg-green-600 rounded-full w-14 h-14">
@@ -388,16 +390,6 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
-
-                // Generate data needed to send to Smartlook
-                const formData = new FormData();
-                formData.append('zipCode', this.zipCode);
-                formData.append('firstName', this.firstName);
-                formData.append('lastName', this.lastName);
-                formData.append('address', this.address);
-                formData.append('email', this.email);
-                formData.append('phone', this.phone);
-
                 // Send to Smarklook
                 smartlook('identify', userId, {
                     "name": this.firstName,
@@ -407,8 +399,9 @@ function multiStepForm() {
                     "phone": this.phone
                 });
 
-                this.$refs.submitForm.submit();
                 this.step = 'success';
+                this.$refs.submitForm.submit();
+                
                 //this.$nextTick(() => this.submitForm());
             }
         },
