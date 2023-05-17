@@ -384,6 +384,23 @@ function multiStepForm() {
                 this.$refs.submitForm.submit();
                 this.step = 'success';
                 //this.$nextTick(() => this.submitForm());
+
+                this.submitting = true;
+                const formData = new FormData();
+                ormData.append('zipCode', this.zipCode);
+                formData.append('firstName', this.firstName);
+                formData.append('lastName', this.lastName);
+                formData.append('address', this.address);
+                formData.append('email', this.email);
+                formData.append('phone', this.phone);
+
+                smartlook('identify', userId, {
+                    "name": this.firstName,
+                    "email": this.email,
+                    "address": this.address,
+                    "zipCode": this.zipCode,
+                    "phone": this.phone
+                });
             }
         },
 
