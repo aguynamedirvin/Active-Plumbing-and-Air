@@ -5,7 +5,7 @@
     data-netlify="true"
     netlify-honeypot="bot-field"
     
-    
+    x-on:submit.prevent="validateAndProceed()"
     x-data="multiStepForm()"
     x-on:keydown="handleEnterKey($event)"
 
@@ -379,6 +379,9 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
+                const event = new Event('custom-submit');
+                this.$el.dispatchEvent(event);
+                
                 this.$nextTick(() => this.submitForm());
             }
         },
@@ -438,7 +441,7 @@ function multiStepForm() {
 }
 
 var form = document.querySelector('#leadForm');
-form.addEventListener('submit',
+form.addEventListener('custom-submit',
     function() {
         console.log('Submitted form');
         CallTrk.captureForm('#leadForm');
