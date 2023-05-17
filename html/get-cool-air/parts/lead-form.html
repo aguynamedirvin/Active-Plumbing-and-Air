@@ -399,7 +399,17 @@ function multiStepForm() {
             formData.append('phone', this.phone);
             formData.append('details', this.details);
 
+            // Send to CallRail
             CallTrk.captureForm('#leadForm');
+
+            // Send to Smarklook
+            smartlook('identify', 123, {
+                "name": this.firstName,
+                "email": this.email,
+                "address": this.address,
+                "zipCode": this.zipCode,
+                "phone": this.phone
+            })
 
             fetch('/', {
                 method: 'POST',
