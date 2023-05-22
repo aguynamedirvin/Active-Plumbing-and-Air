@@ -1,5 +1,8 @@
 <div class="w-full">
-    <div  class="w-full" x-data="multiStepForm()">
+    <div  class="w-full" 
+        x-data="multiStepForm()" 
+        x-on:keydown="handleEnterKey($event)"
+    >
         <form
             name="HVAC Replacement Quote"
             method="POST"
@@ -28,8 +31,6 @@
             id="lead-form"
             x-show="step !== 'success'"
             x-on:submit.prevent="validateAndProceed()"
-            x-data="multiStepForm()"
-            x-on:keydown="handleEnterKey($event)"
         >
             <!-- Step 1: Zip Code -->
             <template x-if="step === 'zipCode'" class="step">
