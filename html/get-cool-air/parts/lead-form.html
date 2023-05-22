@@ -1,5 +1,5 @@
-<div>
-    <div x-data="multiStepForm()">
+<div class="w-full">
+    <div  class="w-full" x-data="multiStepForm()">
         <form
             name="HVAC Replacement Quote"
             method="POST"
@@ -165,6 +165,8 @@
                 <button type="submit" x-show="step === 'contactInfo'" class="px-12 py-3 font-semibold text-white bg-green-500 rounded hover:bg-green-700">Submit</button>
 
                 <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="px-12 py-3 mr-2 text-gray-500 rounded hover:text-gray-800">Previous</button>
+
+                <p x-show="step === 'zipCode'" class="mt-3 text-gray-800">Takes less than 2 minutes</p>
             </div>
 
             <!-- Success message -->
