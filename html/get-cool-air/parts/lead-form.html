@@ -155,7 +155,7 @@
                 <input placeholder="Email Address" type="email" name="email" x-model="email" class="input" />
                 <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
 
-                <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" class="input" />
+                <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" @input="phone = applyPhoneMask($event.target.value)" class="input" />
                 <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
             </div>            
 
@@ -209,6 +209,22 @@ function multiStepForm() {
                     this.validateAndProceed();
                 }
             }
+        },
+
+        applyPhoneMask(input) {
+            const value = input.replace(/\D/g, '');
+            let maskedValue = '';
+
+            if (value.length > 0) {
+                maskedValue += '(' + value.substring(0, 3);
+            }
+            if (value.length > 3) {
+                maskedValue += ') ' + value.substring(3, 6);
+            }
+            if (value.length > 6) {
+                maskedValue += '-' + value.substring(6, 10);
+            }
+            return maskedValue;
         },
 
         checkValidity() {
