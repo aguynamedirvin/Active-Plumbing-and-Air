@@ -128,83 +128,6 @@ include "get-cool-air/parts/header.html"
 </section>
 
 
-<!-- Services -->
-<section class="py-10 bg-gray-100 md:py-18" x-data="{ slide: 0, slides: 3 }">
-
-    <div class="container">
-        <div class="flex flex-col items-center mb-6 text-center md:mb-12">
-            <h2 class="mb-3 text-2xl md:text-4xl">Fast, Reliable, and Affordable AC Services</h2>
-            <p class="max-w-3xl text-base md:text-lg">We offer a full range of residential AC services in Las Vegas and surrounding areas. Contact us today to learn more about our AC services and get pricing.</p>
-        </div>
-
-        <div class="relative" @keydown.window.arrow-right="slide = (slide + 1) % slides" @keydown.window.arrow-left="slide = (slide - 1 + slides) % slides">
-
-            <!-- Slider wrapper with overflow-hidden and fixed width -->
-            <div class="overflow-hidden">
-                <!-- Slides container -->
-                <div class="flex py-1 md:py-0" :style="'transform: translateX(-' + (slide * 100) + '%); transition: transform 0.3s ease-out;'">
-                    
-                    <!-- First slide -->
-                    <div class="flex-none w-full md:pr-6 md:w-1/2">
-                        <div class="grid h-full grid-cols-6 bg-white shadow-sm">
-                            <div class="col-span-2 overflow-hidden">
-                                <img loading="lazy" class="object-cover w-full h-full max-h-48" src="assets/images/trane-technician-servicing-compressor.png" />
-                            </div>
-                            <div class="flex flex-col justify-center col-span-4 p-6">
-                                <h3 class="mb-1 text-xl md:mb-3">AC Repair</h3>
-                                <p class="text-sm text-gray-700 md:text-base">When your system stops working, you can trust Active Plumbing & Air to diagnose and repair the issue—fast.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Second slide -->
-                    <div class="flex-none w-full md:pr-6 md:w-1/2">
-                        <div class="grid h-full grid-cols-6 bg-white shadow-sm">
-                            <div class="col-span-2 overflow-hidden">
-                                <img loading="lazy" class="object-cover w-full h-full max-h-48" src="assets/images/hvac-maintenance.jpg" />
-                            </div>
-                            <div class="flex flex-col justify-center col-span-4 p-6">
-                                <h3 class="mb-1 text-xl md:mb-3">AC Maintenance</h3>
-                                <p class="text-sm text-gray-700 md:text-base">Seasonal tune-ups can help identify potential issues, increase energy efficiency, and extend the life of your system.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Third slide -->
-                    <div class="flex-none w-full md:pr-6 md:w-1/2">
-                        <div class="grid h-full grid-cols-6 bg-white shadow-sm">
-                            <div class="col-span-2 overflow-hidden">
-                                <img loading="lazy" class="object-cover w-full h-full max-h-48" src="assets/images/ac-units-outside.webp" />
-                            </div>
-                            <div class="flex flex-col justify-center col-span-4 p-6">
-                                <h3 class="mb-1 text-xl md:mb-3">AC Installation</h3>
-                                <p class="text-sm text-gray-700 md:text-base">If you need your heating or ac unit replaced, we can take care of your installation. Schedule your FREE in-home consultation today!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Slider buttons -->
-        <div class="flex justify-center mt-6 space-x-3">
-            <button class="p-2 bg-gray-200 rounded-full hover:bg-gray-300" @click="slide = (slide - 1 + slides) % slides">
-                <svg class="w-6 h-6 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-            </button>
-            <button class="p-2 bg-gray-200 rounded-full hover:bg-gray-300" @click="slide = (slide + 1) % slides">
-                <svg class="w-6 h-6 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-</section>
-
-
 <!-- Process -->
 <section class="py-10 md:py-24">
     <div class="container grid md:gap-12 md:grid-cols-6">
@@ -344,8 +267,8 @@ include "get-cool-air/parts/header.html"
                     </svg>                      
                 </div>
                 <div>
-                    <h3 class="text-lg md:mb-1">Industry Leading Experts: Over 25 Years of Experience</h3>
-                    <p class="text-sm text-gray-700 md:text-base">For over 25 years we’ve been the trusted HVAC experts in Las Vegas with over 40,000 satisfied customers and an A+ rating with the Better Business Bureau.</p>
+                    <h3 class="text-lg md:mb-1">Local & Trusted Professionals</h3>
+                    <p class="text-sm text-gray-700 md:text-base">As a locally owned and operated business, we're proud to serve our community and deliver the highest quality service. For over 25 years we’ve been the trusted HVAC experts in Las Vegas with over 40,000 satisfied customers and an A+ rating with the Better Business Bureau.</p>
                 </div>
             </div>
 
@@ -356,8 +279,8 @@ include "get-cool-air/parts/header.html"
                     </svg>  
                 </div>
                 <div>
-                    <h3 class="text-lg md:mb-1">Exceptional Customer Service: "Better of The Best" Guarantee</h3>
-                    <p class="text-sm text-gray-700 md:text-base">We continue to delight the homeowners of our community with legendary “Better of the Best” service.</p>
+                    <h3 class="text-lg md:mb-1">Exceptional Customer Service</h3>
+                    <p class="text-sm text-gray-700 md:text-base">We continue to delight the homeowners of our community with legendary “Better of the Best” service. From your initial consultation to the post-installation support, we're here to ensure that your experience with us exceeds your expectations.​</p>
                 </div>
             </div>
 
@@ -368,8 +291,8 @@ include "get-cool-air/parts/header.html"
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-lg md:mb-1">Licensed & Experienced Technicians</h3>
-                    <p class="text-sm text-gray-700 md:text-base">All our staff are licensed, insured and trained to the highest standard of work and ethics.</p>
+                    <h3 class="text-lg md:mb-1">Certified and Experienced Technicians</h3>
+                    <p class="text-sm text-gray-700 md:text-base">All our staff are licensed, insured and trained to the highest standard of work and ethics.  They ensure a hassle-free installation process, optimized for energy efficiency and long-lasting performance.</p>
                 </div>
             </div>
 
@@ -380,8 +303,8 @@ include "get-cool-air/parts/header.html"
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-lg md:mb-1">Local & Trusted Professionals</h3>
-                    <p class="text-sm text-gray-700 md:text-base">As a locally owned and operated business, we're proud to serve our community and deliver the highest quality service.</p>
+                    <h3 class="text-lg md:mb-1">Affordable, High-Quality AC Solutions</h3>
+                    <p class="text-sm text-gray-700 md:text-base">We offer competitive pricing for high-quality AC installation services. Understanding that budget is often a concern, we also provide flexible financing options tailored to your needs. With Active Plumbing & Air, you can trust that you're getting the best value for your investment.</p>
                 </div>
             </div>
         </div>
