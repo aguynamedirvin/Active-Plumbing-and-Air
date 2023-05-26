@@ -134,10 +134,11 @@
                 <div>
                     <p class="mb-6 text-lg text-gray-800">What is your address?</p>
 
-                    <input placeholder="Address" type="text" name="address" x-model="address" class="input" />
+                    <div class="grid gap-3 md:grid-cols-12">
+                        <input placeholder="Address" type="text" name="address" x-model="address" class="md:col-span-8 input" />
+                        <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="md:col-span-4 input" />
+                    </div>
                     <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
-
-                    <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="input" />
                 </div>
             </template>
 
