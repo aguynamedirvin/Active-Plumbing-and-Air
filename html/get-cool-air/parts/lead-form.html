@@ -117,7 +117,7 @@
             </template>
 
             <!-- Step 4: What is your name? -->
-            <template x-show="step === 'name'" class="step">
+            <template x-if="step === 'name'" class="step">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">What is your name?</p>
 
@@ -167,7 +167,7 @@
             </template>
 
             <!-- Step 7: Your contact info -->
-            <template x-show="step === 'contactInfo'" class="step">
+            <template x-if="step === 'contactInfo'" class="step">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">What is your contact information?</p>
 
