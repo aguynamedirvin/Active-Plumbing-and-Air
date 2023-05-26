@@ -117,7 +117,7 @@
 
             <!-- Step 4: What is your name? -->
             <div x-show="step === 'name'" class="step">
-                <p class="mb-6 text-lg text-gray-800">What is your nane?</p>
+                <p class="mb-6 text-lg text-gray-800">What is your name?</p>
 
                 <input placeholder="First Name" type="text" name="firstName" x-model="firstName" class="input" />
                 <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
@@ -142,8 +142,23 @@
                 <div>
                     <p class="mb-6 text-lg text-gray-800">Are you the homeowner?</p>
                     <div>
-                        <input type="radio" name="isHomeowner" value="Yes" x-model="isHomeowner" @click="nextStep()" required /> Yes
-                        <input type="radio" name="isHomeowner" value="No" x-model="isHomeowner" @click="nextStep()" /> No
+                        <!--<input type="radio" name="isHomeowner" value="Yes" x-model="isHomeowner" @click="nextStep()" required /> Yes
+                        <input type="radio" name="isHomeowner" value="No" x-model="isHomeowner" @click="nextStep()" /> No-->
+                        <ul class="input-options--pretty">
+                            <li>
+                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()" required
+                                        id="isHomeownerYes" 
+                                        value="Yes">
+                                <label for="isHomeownerYes">Yes</label>
+                            </li>
+
+                            <li>
+                                <input  type="radio" name="isHomeowner" x-model="isHomeowner" @change="checkValidity() && nextStep()"
+                                        id="isHomeownerNo" 
+                                        value="No">
+                                <label for="isHomeownerNo">No</label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </template>
@@ -163,7 +178,7 @@
             <div class="flex flex-col justify-center gap-3 mt-4">
                 <button type="button" x-show="step !== 'contactInfo'" @click="nextStep()" class="px-12 py-3 text-white bg-blue-500 rounded hover:bg-blue-700">Next</button>
 
-                <button type="submit" x-show="step === 'contactInfo'" class="px-12 py-3 font-semibold text-white bg-green-500 rounded hover:bg-green-700">Submit</button>
+                <button type="submit" x-show="step === 'contactInfo'" class="px-12 py-3 font-semibold text-white bg-green-500 rounded hover:bg-green-700">Request My Free Quote</button>
 
                 <button type="button" x-show="step !== 'zipCode'" @click="previousStep()" class="px-12 py-3 mr-2 text-gray-500 rounded hover:text-gray-800">Previous</button>
 
