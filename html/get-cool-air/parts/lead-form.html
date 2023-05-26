@@ -34,7 +34,7 @@
             @click.stop
         >
             <!-- Step 1: Zip Code -->
-            <template x-if="step === 'zipCode'" class="step">
+            <template x-if="step === 'zipCode'">
                 <div>
                     <p class="mb-6 text-lg text-gray-800" for="zipCode">Enter your zip code to get started</p>
 
@@ -44,7 +44,7 @@
             </template>
 
             <!-- Step 2: Is your system currently working? -->
-            <template x-if="step === 'isSystemWorking'" class="step">
+            <template x-if="step === 'isSystemWorking'">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">Is your system currently working?</p>
 
@@ -81,7 +81,7 @@
 
 
             <!-- Step 3: Has your system been replaced within the last 10 years? -->
-            <template x-if="step === 'systemReplaced'" class="step">
+            <template x-if="step === 'systemReplaced'">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">Has your system been replaced within the last 10 years?</p>
 
@@ -117,7 +117,7 @@
             </template>
 
             <!-- Step 4: What is your name? -->
-            <template x-if="step === 'name'" class="step">
+            <template x-if="step === 'name'">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">What is your name?</p>
 
@@ -130,18 +130,19 @@
             </template>            
 
             <!-- Step 5: What is your address? -->
-            <div x-show="step === 'address'" class="step">
-                <p class="mb-6 text-lg text-gray-800">What is your address?</p>
+            <template x-if="step === 'address'">
+                <div>
+                    <p class="mb-6 text-lg text-gray-800">What is your address?</p>
 
-                <input placeholder="Address" type="text" name="address" x-model="address" class="input" />
-                <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
+                    <input placeholder="Address" type="text" name="address" x-model="address" class="input" />
+                    <p x-show="addressError" x-cloak class="error-message">Please enter your address.</p>
 
-                <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="input" />
-
-            </div>
+                    <input placeholder="Suite/Apt." type="text" name="suiteApt" x-model="suiteApt" class="input" />
+                </div>
+            </template>
 
             <!-- Step 6: Are you the homeowner? -->
-            <template x-if="step === 'isHomeowner'" class="step">
+            <template x-if="step === 'isHomeowner'">
                 <div>
                     <p class="mb-6 text-lg text-gray-800">Are you the homeowner?</p>
                     <div>
@@ -271,6 +272,7 @@ function multiStepForm() {
                     break;
                 case 'isSystemWorking':
                 case 'systemReplaced':
+                case 'isHomeowner':
                     valid = this[this.step] !== '';
                     break;
             }
