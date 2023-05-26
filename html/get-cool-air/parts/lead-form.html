@@ -117,15 +117,17 @@
             </template>
 
             <!-- Step 4: What is your name? -->
-            <div x-show="step === 'name'" class="step">
-                <p class="mb-6 text-lg text-gray-800">What is your name?</p>
+            <template x-show="step === 'name'" class="step">
+                <div>
+                    <p class="mb-6 text-lg text-gray-800">What is your name?</p>
 
-                <input placeholder="First Name" type="text" name="firstName" x-model="firstName" class="input" />
-                <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
+                    <input placeholder="First Name" type="text" name="firstName" x-model="firstName" class="input" />
+                    <p x-show="nameError" x-cloak class="error-message">Please enter your first name.</p>
 
-                <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" class="input" />
-                <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
-            </div>            
+                    <input placeholder="Last Name" type="text" name="lastName" x-model="lastName" class="input" />
+                    <p x-show="nameError" x-cloak class="error-message">Please enter your last name.</p>
+                </div>
+            </template>            
 
             <!-- Step 5: What is your address? -->
             <div x-show="step === 'address'" class="step">
@@ -165,15 +167,17 @@
             </template>
 
             <!-- Step 7: Your contact info -->
-            <div x-show="step === 'contactInfo'" class="step">
-                <p class="mb-6 text-lg text-gray-800">What is your contact information?</p>
+            <template x-show="step === 'contactInfo'" class="step">
+                <div>
+                    <p class="mb-6 text-lg text-gray-800">What is your contact information?</p>
 
-                <input placeholder="Email Address" type="email" name="email" x-model="email" class="input" />
-                <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
+                    <input placeholder="Email Address" type="email" name="email" x-model="email" class="input" />
+                    <p x-show="emailError" x-cloak class="error-message">Please enter a valid email address.</p>
 
-                <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" @input="phone = applyPhoneMask($event.target.value)" class="input" />
-                <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
-            </div>            
+                    <input placeholder="Phone Number" type="tel" name="phone" x-model="phone" @input="phone = applyPhoneMask($event.target.value)" class="input" />
+                    <p x-show="phoneError" x-cloak class="error-message">Please enter a valid phone number.</p>
+                </div>
+            </template>            
 
             <!-- Navigation Buttons -->
             <div class="flex flex-col justify-center gap-3 mt-4">
@@ -327,10 +331,14 @@ function multiStepForm() {
 
         validateAndProceed() {
             if (this.checkValidity()) {
-                this.$refs.submitForm.submit();
-                this.step = 'success';
+                if (this.step === 'contactInfo') {
+                    this.step = 'success';
+                    this.$refs.submitForm.submit();  // Manually submit the form
+                } else {
+                    this.nextStep();
+                }
             }
-        },
+        }
     };
 }
 
