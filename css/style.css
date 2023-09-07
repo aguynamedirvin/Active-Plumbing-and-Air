@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-    @apply font-poppins font-semibold
+    @apply font-poppins font-bold
 }
 
 p {
@@ -23,7 +23,7 @@ p {
 @layer components {
   .btn {
     @apply relative inline-flex items-center justify-center gap-3 px-10 py-4 overflow-hidden cursor-pointer shrink-0;
-    @apply text-lg font-semibold text-white transition bg-red-600 border border-red-700 rounded-full shadow-lg;
+    @apply text-xl font-semibold text-white transition bg-red-600 border border-red-700 rounded-md shadow-lg;
   }
   .btn:hover {
     @apply ring-4;
