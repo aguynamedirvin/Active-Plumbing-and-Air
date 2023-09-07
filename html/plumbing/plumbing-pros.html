@@ -29,8 +29,6 @@
 
     <!-- JavaScript -->
     <script src="http://localhost:35729/livereload.js" data-remove="true"></script>
-    <script defer src="https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </head>
 
@@ -38,15 +36,15 @@
 
 <!-- Header -->
 <header class="relative z-20 shadow-md">
-    <div class="container flex items-center gap-3 px-2 py-2 md:gap-6 md:py-6">
+    <div class="container flex items-center gap-3 px-2 py-2 md:gap-6 md:py-2">
 
         <div class="relative self-stretch w-20 md:w-28">
             <img loading="lazy" class="absolute w-full -top-1 md:-top-3" src="assets/images/logo-color.png" alt="Logo">
         </div>
 
         <div class="hidden text-xs text-gray-800 lg:text-sm sm:block border-l-2 border-slate-300 py-1 px-6">
-            <div>Local Plumbing Experts</div>
-            <div>Serving <span class="font-semibold">Las Vegas</span> For Over 25 Years</div>
+            <div>Local Las Vegas Plumbing Experts</div>
+            <div>Serving <span class="font-semibold">Las Vegas</span> For Over 3 Decades</div>
         </div>
 
         <a href="tel:+17025531171" class="ml-auto text-right shrink-0">
@@ -54,14 +52,17 @@
                 <span class="relative inline-block w-2 h-2 bg-green-600 rounded-full">
                     <div class="bg-green-500 pulse-shadow"></div>
                 </span>
-                Area Wide <span class="text-green-600">Live</span> Hotline
+                Need Plumbing Services? We're Here To Help You!
             </div>
-            <div class="flex items-center justify-center gap-1 text-xl font-semibold lg:gap-3 lg:text-3xl">
-                <svg class="w-4 lg:w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <div class="flex items-center justify-end gap-1 text-2xl font-semibold lg:gap-3 md:text-4xl">
+                <svg class="w-6 lg:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
                 </svg>
                 702-553-1171
             </div>
+            <p class="text-xs text-gray-800 lg:text-sm">
+                Call Our Friendly Team For Advice & Pricing
+            </p>
         </a>
 
     </div>
@@ -69,47 +70,49 @@
 
 
 <!-- Hero -->
-<section class="bg-[url('../images/ac-installation-header.jpg')] md:pt-0 bg-contain bg-top md:bg-cover overflow-hidden relative">
+<section class="bg-[url('../images/ac-installation-header.jpg')] md:pt-0 bg-top bg-cover overflow-hidden relative min-h-[80vh]">
 
     <!-- Background Overlay for Table & Desktop -->
-    <div class="absolute w-full min-h-full bg-blue-900 md:bg-blue-950 md:opacity-90"></div>
-
-    <div class="h-[15vh] md:hidden relative overflow-hidden">
-        <img class="object-cover min-w-full min-h-full" src="assets/images/ac-installation-header.jpg">
-    </div>
+    <div class="absolute w-full min-h-full bg-blue-950 opacity-90"></div>
 
     <div class="container relative py-6 md:py-20">
 
         <div class="flex flex-col items-center text-center text-white md:text-base">
-            
             
             <div class="mb-2 md:mb-4">
                 <span class="tracking-[.15em] text-yellow-500">★★★★★</span>
                 Over 4,000+ Satisfied Customers
             </div>
 
-            <div class="mb-2 font-light md:text-lg opacity-90">Fast Response, Honest Pricing & Friendly Service, Guaranteed</div>
+            <div class="mb-2 md:font-light md:text-lg opacity-90">Safe & Effective Plumbing Services In Las Vegas & Surrounding Areas</div>
             
-            <h1 class="mb-6 text-3xl md:font-bold md:leading-tight md:text-6xl">Plumbing Services Las Vegas</h1>
+            <h1 class="mb-6 text-3xl md:font-bold md:leading-tight md:text-4xl">Your Local Las Vegas Plumbing Experts - Fast Response, Honest Pricing & Friendly Service, Guaranteed</h1>
 
-            <p class="max-w-3xl mb-12 leading-8 md:leading-8 md:text-lg md:font-extralight opacity-90">Leaking pipes? Clogged drains? Whatever your plumbing problems, make sure you contact your local plumbing service for the fast, efficient service & friendly customer care that you expect. Contact us to schedule service!</p>
+            <p class="max-w-5xl mb-6 md:mb-12 leading-8 md:leading-8 md:text-lg md:font-extralight opacity-90">Leaking pipes? Clogged drains? Whatever your plumbing problems, make sure you contact your local plumbing service for the fast, efficient service & friendly customer care that you expect. Contact us to schedule service!</p>
 
-            <a href="tel:+17025531171" class="py-2 pl-2 mb-6 rounded-full content btn md:py-2">
-                <div class="relative flex">
-                    <div class="z-10 flex items-center justify-center bg-red-800 rounded-full w-14 h-14 pulse">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-                        </svg>
+            <div class="bg-white rounded-xl p-6 md:p-12 text-black">
+
+                <div class="text-2xl md:text-3xl font-bold">Call Now For Immediate Service & Get $50 OFF Any Repair or Service</div>
+                <p class="text-base md:text-xl mb-6">You'll love our high-quality, fast, and professional service or it's FREE.</p>
+
+                <a href="tel:+17025531171" class="py-2 pl-2 mb-6 rounded-full content btn md:py-2">
+                    <div class="relative flex">
+                        <div class="z-10 flex items-center justify-center bg-red-800 rounded-full w-14 h-14 pulse">
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="z-0 bg-red-500 pulse-shadow"></div>
                     </div>
-                    <div class="z-0 bg-red-500 pulse-shadow"></div>
-                </div>
-                <div class="flex-1 text-left">
-                    <div class="text-sm italic font-normal md:text-base">Schedule Your <span class="font-semibold">FREE Estimate</span></div>
-                    <div class="text-2xl font-semibold">Call <span class="tracking-tight">702-553-1171</span></div>
-                </div>                                     
-            </a>
-            
-            <button @click="$store.modal.toggle()" class="btn btn--white md:hidden">Or Request FREE Quote Online</button>
+                    <div class="flex-1 text-left">
+                        <div class="text-sm italic font-normal md:text-base">Call Now For <span class="font-semibold">Immediate</span> Service</div>
+                        <div class="text-2xl font-semibold">Call <span class="tracking-tight">702-553-1171</span></div>
+                    </div>                                     
+                </a>
+
+                <p class="text-base md:text-lg text-gray-600">Residential Only. Offer Expires Aug 31, 2023 12:00pm. Call For Full Offer Details.</p>
+
+            </div>
 
         </div>
 
@@ -205,17 +208,17 @@
         <p class="max-w-3xl text-base text-gray-700 md:text-lg">And more! We offer a full range of residential plumbing services. Contact us today to learn more about our plumbing services and get pricing.</p>
     </div>
 
-</section>
+</section><!-- /Services -->
 
 
 <!-- CTA -->
 <section class="bg-blue-800 py-8 text-white">
     <div class="container grid md:grid-cols-2 gap-6">
-        <div class="">
+        <div class="text-center">
             <h3 class="text-xl md:text-2xl md:leading-snug">Call Now For Service Pricing & Get $50 Off Your Water Heater Service or Repair</h3>
         </div>
 
-        <div class="">
+        <div class="flex flex-row justify-center">
             <a href="#" class="btn">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
@@ -225,8 +228,75 @@
         </div>
 
     </div>
+</section><!-- /CTA -->
+
+
+<section class="container grid md:grid-cols-2 gap-20 py-20">
+    <div class="h-full w-full">
+        <div class="overflow-hidden h-full relative">
+            <img class="object-cover min-w-full min-h-full" src="assets/images/ac-installation-header.jpg">
+        </div>
+    </div>
+    <div class="">
+        <div class="text-xl text-blue-800">Professional Local Plumbing Specialists</div>
+        <h2 class="mb-3 text-2xl md:text-4xl md:leading-snug">Proudly Serving Las Vegas & Surrounding Areas</h2>
+        <p class="max-w-3xl text-base text-gray-800 md:text-lg">Active Plumbing & Air Conditioning, your Las Vegas service experts for over 25 years, continues to delight the homeowners and businesses of our community with legendary “Better of the Best” service that delivers amazingly high quality at surprisingly affordable prices.</p>
+        
+        <ul class="my-4 gap-3 grid text-base text-gray-800 md:text-lg">
+            <li class="flex flex-row gap-4 items-center">
+                <svg class="w-5 h-5 text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                    <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z"/>
+                </svg>
+                Trained and Certified Technicians
+            </li>
+            <li class="flex flex-row gap-4 items-center">
+                <svg class="w-5 h-5 text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
+                  </svg>
+                Friendly, On-Time Professionals
+            </li>
+            <li class="flex flex-row gap-4 items-center">
+                <svg class="w-5 h-5 text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM13.5 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-7 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm3.5 9.5A5.5 5.5 0 0 1 4.6 11h10.81A5.5 5.5 0 0 1 10 15.5Z"/>
+                </svg>
+                100% Satisfaction Guarantee
+            </li>
+            <li class="flex flex-row gap-4 items-center">
+                <svg class="w-5 h-5 text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                    <path d="m17.351 3.063-8-3a1.009 1.009 0 0 0-.7 0l-8 3A1 1 0 0 0 0 4a19.394 19.394 0 0 0 8.47 15.848 1 1 0 0 0 1.06 0A19.394 19.394 0 0 0 18 4a1 1 0 0 0-.649-.937Zm-3.644 4.644-5 5A1 1 0 0 1 8 13c-.033 0-.065 0-.1-.005a1 1 0 0 1-.733-.44l-2-3a1 1 0 0 1 1.664-1.11l1.323 1.986 4.138-4.138a1 1 0 0 1 1.414 1.414h.001Z"/>
+                </svg>
+                Fully Licensed and Insured
+            </li>
+            <li class="flex flex-row gap-4 items-center">
+                <svg class="w-5 h-5 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                    <path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/>
+                </svg>
+                Family Owned & Locally Operated
+            </li>
+        </ul>
+        <p class="max-w-3xl text-base text-gray-800 md:text-lg">Call Active Plumbing & Air Conditioning today at <a href="tel:" class="text-blue-600 font-semibold">(702) 930-8723</a> to learn more about our plumbing services and receive more information from a friendly, professional service representative.</p>
+    </div>
 </section>
 
+
+<!-- CTA -->
+<section class="bg-blue-800 py-8 text-white">
+    <div class="container grid md:grid-cols-2 gap-6">
+        <div class="text-center">
+            <h3 class="text-xl md:text-2xl md:leading-snug">Call Now For Service Pricing & Get $50 Off Your Water Heater Service or Repair</h3>
+        </div>
+
+        <div class="flex flex-row justify-center">
+            <a href="#" class="btn">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                </svg>
+                Call 999-333-3333
+            </a>
+        </div>
+
+    </div>
+</section><!-- /CTA -->
 
 
 <!-- Why Us -->
