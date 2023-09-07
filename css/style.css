@@ -23,7 +23,7 @@ p {
 @layer components {
   .btn {
     @apply relative inline-flex items-center justify-center gap-3 px-10 py-4 overflow-hidden cursor-pointer shrink-0;
-    @apply text-xl font-semibold text-white transition bg-red-600 border border-red-700 rounded-md shadow-lg;
+    @apply text-xl font-semibold text-white transition bg-red-600 border border-red-700 rounded-lg shadow-lg;
   }
   .btn:hover {
     @apply ring-4;
